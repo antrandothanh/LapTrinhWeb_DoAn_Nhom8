@@ -1,0 +1,96 @@
+#banner-brand-page{
+    width: 98vw;
+    height: 510px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+.picture-brand-page{
+    width: 100%;
+    height: 83%;
+    background-image: url(images/banner-brand-page.png);
+    background-size: contain;
+    margin: 0 auto;
+
+}
+.navbar-brand-page{
+    width: 100%;
+    height: 13%;
+    background-color: #efecea;
+    margin: 0 auto;
+
+}
+.navbar-content-brand-page{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0;
+    padding-left: 80px;
+}
+.navbar-content-brand-page a{
+    text-decoration: none;
+    color: black;
+}
+.navbar-content-brand-page a.home-link{
+    color: #b29c6e;
+}
+/* ================================== */
+#brand-container-block{
+    width: 1300px;
+    height: auto;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+.brand-container::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #393939;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+.brand-container:last-child::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #393939;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.brand-container{
+    display: flex;
+    padding: 20px;
+    width: 90%;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+}
+
+.brands{
+    display: flex;
+    padding: 10px;
+}
+.brands img{
+    width: 220px;
+    height: 120px;
+    border-radius: 10px;
+}
+.brands a {
+    margin-right: 15px;
+}
+.first-charater-brand {
+    width: 120px;
+    height: 120px;
+    margin: 0;
+    display: flex;
+}
+
+.first-charater-brand h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 10px 0 0 20px; /* Adjust the margins for the desired positioning */
+}

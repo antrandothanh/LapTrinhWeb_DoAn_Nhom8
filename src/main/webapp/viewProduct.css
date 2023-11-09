@@ -1,0 +1,421 @@
+body{
+    font-family: Arial;
+    font-size: 14px;
+
+    height: auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+.logo-brand{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 120px;
+    margin-bottom: 30px;
+    border: 1px solid transparent;
+    border-bottom-color: #5e5a5a;
+    margin-left: 129px;
+    margin-right: 129px;
+}
+.img-logo{
+    display: flex;
+    width: 150px;
+}
+.img-logo img{
+    height: 80px;
+}
+.type{
+    display: flex;
+    width: 570px;
+    align-items: center;
+}
+.type a{
+    margin-left: 30px;
+    text-decoration-line: none;
+    white-space: nowrap;
+    color: black;
+}
+.product{
+    height: 640px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 70px;
+    margin-left: 129px;
+    margin-right: 129px;
+}
+.img-mini{
+    width: 100px;
+    align-items: center;
+    text-align: center;
+
+}
+.img-mini img{
+    width: 73px;
+    height: 73px;
+    margin-top:2px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #d9dada;
+    padding: 5px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.img-max{
+    position: relative;
+    display: inline-block;
+    margin-left: -12px;
+    width:630px;
+    height: 510px;
+    align-items: center;
+    text-align: center;
+}
+.favourite{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: solid transparent;
+    background-color: #f1eeee;
+    font-size: 20px;
+    color: burlywood;
+
+}
+.buy h1{
+    margin-top: 0px;
+}
+.img-max img{
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: 35px;
+
+}
+.buy{
+    width: 500px;
+}
+
+.button-order{
+    color: white;
+    height: 50px;
+    width: 500px;
+    background-color: burlywood;
+    margin-bottom: 18px;
+    border-color: transparent;
+}
+.two-button{
+
+
+}
+.button-installment{
+    width: 240px;
+    background-color: #5e5a5a;
+    height: 40px;
+    border-color: transparent;
+    color: white;
+
+}
+.button-pay{
+    width: 240px;
+    margin-right: 15px;
+    background-color: #5e5a5a;
+    height: 40px;
+    border-color: transparent;
+    color: white;
+
+}
+.button-pay:hover,.button-installment:hover,.button-order:hover{
+    border-color: burlywood;
+    border-style: solid;
+    background-color: transparent;
+    color: burlywood;
+}
+.support{
+    background-color: #efeeeb;
+    margin-bottom: 35px;
+    height: 218px;
+
+}
+.support p{
+    margin-left: 25px;
+    font-size: 11px;
+}
+.support h3{
+    padding-top: 12px;
+    margin-left: 25px;
+    font-size: 14px;
+}
+.support span{
+    font-size: 11px;
+    font-weight: bold;
+}
+.nav-menu{
+    margin-left: 129px;
+    margin-right: 129px;
+}
+.nav-menu ul{
+    list-style-type: none;
+    text-align: center;
+}
+.nav-menu ul li{
+    font-size: 17px;
+    display: inline-block;
+    margin-left: 20px;
+}
+.nav-menu ul li a{
+    text-decoration-line: none;
+}
+section{
+    margin-left: 129px;
+    margin-right: 129px;
+}
+.text-introduce{
+
+    background-color: #efeeeb;
+}
+.text-introduce p,.text-introduce-hidden{
+    white-space: pre-line;
+    margin-left: 100px;
+    margin-right: 100px
+}
+.text-introduce h1{
+    padding-top: 80px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.text-introduce button{
+    text-align: center;
+    width: 100%;
+    border-style: none;
+    cursor: pointer;
+    height: 50px;
+    background-color: transparent;
+}
+#more {
+    display: none;
+}
+.parameter{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.container-parameter{
+    background-color: #efeeeb;
+    height: 560px;
+    margin-top: 50px;
+}
+.member-parameter{
+    width: 500px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    display: flex;
+    border-bottom: grey 1px solid;
+
+}
+.left{
+    margin-left: 100px;
+}
+.right{
+    margin-left: 30px;
+    margin-right: 100px;
+}
+.topic{
+    padding-top: 70px;
+    margin-bottom: 60px;
+    text-align: center;
+
+}
+.parameter-head{
+    font-weight: bold;
+    width: 120px;
+    margin-right: 45px;
+}
+.icon-contact{
+    margin-top: -10px;
+    display: none;
+    height: 70px;
+    font-size: 20px;
+}
+.share{
+    cursor: pointer;
+}
+.button-share:hover .icon-contact{
+    display: block;
+}
+
+.button-share:hover .share {
+    display: none;
+}
+.fa{
+    color: burlywood;
+    padding: 10px;
+    width: 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    border: solid;
+    transition: .9s;
+    margin-left: 9px;
+}
+.evaluate-container{
+    height: 560px;
+    background-color: #efeeeb ;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+.evaluate-member{
+    display: flex;
+    flex-direction: row;
+    margin-left: 100px;
+    margin-right: 100px;
+
+}
+.evaluate-input{
+    height: 250px;
+    width: 300px;
+    text-align: center;
+    border-bottom: solid #5e5a5a 1px ;
+}
+.point{
+    font-size: 30px;
+    margin-bottom: -0.1px;
+}
+.fa-star{
+    margin-top: 6px;
+    font-size: 24px;
+}
+.evaluate-output{
+    flex: 1;
+    height: 250px;
+    border-bottom: solid #5e5a5a 1px ;
+
+}
+.write-evaluate{
+    width: 220px;
+    height: 40px;
+    background-color:burlywood ;
+    color: white;
+    border-color: transparent;
+}
+.write-evaluate:hover{
+    border-style: solid;
+    background-color: transparent;
+    color: burlywood;
+    border-color: burlywood;
+}
+.fa-star:hover{
+    color: burlywood;
+}
+.add-info{
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 500px;
+    display: block;
+    background-color: white;
+    border-radius: 7px;
+
+}
+.info-member{
+    display: flex;
+    flex-direction: row;
+}
+.product-info{
+    width: 500px;
+    margin-right: 62px;
+    text-align: center;
+
+}
+.contact-info{
+    width: 500px;
+
+}
+.info-input , .info-input-1{
+    width: 470px;
+    margin-bottom: 10px;
+    height: 40px;
+    border: solid #5e5a5a 1px ;
+    border-radius: 4px;
+}
+.info-input-1{
+    height: 90px;
+    word-wrap: break-word;
+}
+.button-add-info{
+    width: 470px;
+    height: 40px;
+    margin-top:10px ;
+    margin-bottom: 30px;
+    color: white;
+    background-color: burlywood;
+    border: transparent;
+}
+.button-add-info:hover{
+    border-style: solid;
+    background-color: transparent;
+    color: burlywood;
+    border-color: burlywood;
+}
+.product-info img{
+    width: 127px;
+}
+.product-name{
+    font-size: 20px;
+}
+.product-evaluate .fa-star{
+    font-size: 13px;
+}
+.product-price{
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+.product-code{
+    font-weight: bold;
+}
+.name-form{
+    padding-left: 15px;
+    font-size: 23px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    border-bottom: solid 1px #5e5a5a ;
+
+}
+#add-info{
+    position: fixed;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+#webBody.darken {
+    opacity: 0.5;
+}
+#close-dialog{
+    margin-left: 700px;
+    font-size: 23px;
+    border: none transparent;
+    background-color: transparent;
+}
+button:hover{
+    cursor: pointer;
+}
+#open-dialog , .share{
+    height: 30px;
+    border: none transparent;
+    background-color: transparent;
+    font-size: 15px;
+}
+#open-dialog:hover{
+    color: burlywood;
+}
+.img-mini img:hover{
+    cursor: pointer;
+    border-color: burlywood;
+}
+

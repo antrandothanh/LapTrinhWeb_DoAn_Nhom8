@@ -1,0 +1,170 @@
+body{
+
+    font-size: 14px;
+}
+.cart-left{
+    width: 60%;
+}
+.cart-left a{
+    text-decoration-line: none;
+    color: burlywood;
+}
+.cart-right{
+    width: 40%;
+}
+.container-cart{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    height: 900px;
+    margin-left: 129px;
+    margin-right: 129px;
+}
+.input-long{
+    height: 50px;
+    width: 710px;
+    margin-bottom: 20px;
+
+
+}
+.input-short{
+    height: 50px;
+    width:  340px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+}
+.input-very-long{
+    height: 120px;
+    width: 710px;
+    margin-bottom: 20px;
+
+}
+input, select, textarea{
+    border-radius: 4px;
+    border: solid 1px;
+}
+.input-select{
+    height: 55px;
+    width:  345px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.member-method-pay{
+    margin-bottom: 20px;
+}
+.member-method-pay p{
+    margin-left: 7px;
+
+}
+.member-method-pay div{
+    margin-top: 9px;
+    padding-top: 2px;
+    background-color: #efeeeb;
+    margin-left: 30px;
+    width: 680px;
+    border-radius: 4px;
+    height: 75px;
+
+}
+.cart-left button{
+    width: 710px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    background-color: burlywood;
+    color: white;
+    border: 1px solid transparent;
+}
+.cart-left button:hover{
+    background-color:transparent ;
+    color: burlywood;
+    border-color: burlywood;
+    cursor: pointer;
+}
+.info-cart{
+    background-color: #efeeeb;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.info-cart-right{
+    display: flex;
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-right: 20px;
+    flex-direction: row;
+    border-bottom: solid 1px burlywood;
+    padding-bottom: 22px;
+}
+.product-cart{
+    height: auto;
+    text-align: center;
+    width: 20%;
+    margin-right: 4%;
+    position: relative;
+    display: inline-block;
+}
+.quantity{
+    position: absolute;
+    top: -8px;
+    right: 0px;
+    border-radius: 50%;
+    border: transparent solid;
+    background-color: burlywood;
+    color: white;
+}
+.move{
+    position: absolute;
+    top: -8px;
+    left: -5px;
+    border-radius: 50%;
+    border: transparent solid;
+    background-color: #9a9797;
+    color: white;
+}
+.move:hover{
+    background-color: burlywood;
+}
+.text-cart{
+    width: 76%;
+}
+.img-cart{
+    height: 110px;
+    width: 70px;
+}
+.text-cart input{
+    width: 31px;
+    height: 31px;
+    margin-left: -3.5px;
+    margin-right: -3.5px;
+    border-radius: 0px;
+    text-align: center;
+    border-left:none ;
+    border-right: none;
+
+}
+.text-cart button{
+    border-radius: 0px ;
+    border: solid 1px;
+    width: 35px;
+    height: 35px;
+}
+.text-cart span{
+    margin-left: 150px;
+    font-size: 17px;
+}
+.info-pay span{
+    margin-left: 300px;
+}
+.info-pay{
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+.pay-price{
+    font-size: 18px;
+    font-weight: bold;
+}
+.fa-xmark{
+    font-size: 10px;
+}
