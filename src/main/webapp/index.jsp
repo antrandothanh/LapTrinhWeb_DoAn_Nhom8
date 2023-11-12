@@ -204,7 +204,7 @@
         <section  id="gender-for">
             <div class="container-gender-for">
                 <div class="box1-container-gender-for">
-                    <a href="#">
+                    <a href="men.jsp">
                         <div class="picture-box1-container-gender-for">
 
                         </div>
@@ -216,7 +216,7 @@
                     </div>
                 </div>
                 <div class="box2-container-gender-for">
-                    <a href="#">
+                    <a href="women.jsp">
                         <div class="picture-box2-container-gender-for">
 
                         </div>
