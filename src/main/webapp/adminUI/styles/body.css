@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.content-container {
+    background-color: #E8C287;
+    margin-left: 270px;
+    margin-right: 16px;
+    margin-top: 80px;
+    padding: 1px 16px;
+    width: 100%;
+}
+
+.content-title {
+    font-family: Arial;
+    font-size: 30px;
+    padding-top: 20px;
+    text-align: center;
+}

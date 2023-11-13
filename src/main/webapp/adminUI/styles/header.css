@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    background-color: white;
+}
+
+.logo-luxury-shopping {
+    width: 200px;
+}
+
+.logo-luxury-shopping img {
+    width: 80px;
+    padding-left: 50px;
+}
+
+.name-of-section-and-admin {
+    width: 100%;
+}
+
+#title-section {
+    float: left;
+    font-family: Arial;
+    font-size: 20px;
+    padding-top: 22px;
+    padding-left: 120px;
+}
+
+#admin-name {
+    float: right;
+    font-family: Arial;
+    font-size: 20px;
+    padding-top: 22px;
+    padding-right: 30px;
+}
