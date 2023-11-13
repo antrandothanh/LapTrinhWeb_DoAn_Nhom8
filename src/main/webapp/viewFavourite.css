@@ -1,0 +1,84 @@
+body{
+    margin-left: 129px;
+    margin-right: 129px;
+}
+.all-favourite{
+    border: 1px solid ;
+    border-color: #c7c5c5;
+    border-radius: 4px;
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.container-favourite{
+
+    margin-bottom: 20px;
+    height: 130px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid ;
+    border-color: #c7c5c5;
+    border-radius: 4px;
+}
+input{
+    width: 25px;
+}
+.tick-fproduct{
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+.image-fproduct{
+}
+.image-fproduct img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.name-fproduct{
+    width: 500px;
+    justify-content: center;
+    justify-items: center;
+}
+.price-fproduct{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+.add-fcart{
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+button{
+    max-height: 100%;
+    object-fit: contain;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.add-fcart img{
+
+    max-width: 50px;
+    object-fit: contain;
+}
+.delete-fproduct{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.delete-fproduct img{
+    max-width: 40px;
+    object-fit: contain;
+}
