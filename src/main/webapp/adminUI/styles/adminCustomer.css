@@ -1,0 +1,49 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial;
+}
+
+.list-of-customer-container {
+    margin: 50px 50px 0px 50px;
+    background-color: #ffff;
+    border-radius: 10px;
+    display: flex;
+    height: 300px;
+    padding-top: 50px;
+}
+
+.edit-customer-container {
+    margin: 30px 200px 0px 200px;
+    background-color: #ffff;
+    border-radius: 10px;
+    height: 300px;
+}
+
+.label-of-customer {
+    width: 50%;
+}
+
+.label-of-customer label {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 250px;
+}
+
+.input-of-customer {
+    width: 50%;
+}
+
+.input-of-customer input[type="text"] {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    margin-left: 300px;
+    margin-top: 20px
+}
+
+.button-container input {
+    width: 50px;
+}

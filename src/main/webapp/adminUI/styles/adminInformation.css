@@ -1,0 +1,39 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial;
+}
+
+.admin-information-container {
+    margin: 50px 200px 80px 200px;
+    background-color: #ffff;
+    border-radius: 10px;
+    display: flex;
+    height: 300px;
+    padding-top: 50px;
+}
+
+.label-of-information {
+    width: 50%;
+    float: left;
+    padding-top: 10px;
+    margin-left: 200px;
+}
+
+.label-of-information label {
+    display: block;
+    padding-bottom: 10px;
+}
+
+.values-of-information {
+    width: 50%;
+    float: right;
+    padding: 10px;
+    text-align: right;
+    margin-right: 200px;
+}
+
+.values-of-information span {
+    display: block;
+    padding-bottom: 10px;
+}
