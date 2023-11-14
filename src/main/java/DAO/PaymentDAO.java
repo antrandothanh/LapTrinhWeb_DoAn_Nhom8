@@ -1,9 +1,11 @@
-package data;
+package DAO;
 
 import Entity.Invoice;
 import java.util.List;
 import javax.persistence.*;
 import Entity.Payment;
+import data.DBUtil;
+
 public class PaymentDAO {
 
     public static void insert(Payment payment) {

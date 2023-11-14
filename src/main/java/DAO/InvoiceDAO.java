@@ -1,6 +1,8 @@
-package data;
+package DAO;
 import Entity.Invoice;
 import Entity.User;
+import data.DBUtil;
+
 import java.util.List;
 import javax.persistence.*;
 public class InvoiceDAO {
