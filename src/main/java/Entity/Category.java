@@ -6,12 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
-public class Categories implements Serializable {
+public class Category implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String code;
     private String name;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     public String getCode()
     {
         return code;
