@@ -1,0 +1,162 @@
+#brand-elements-page{
+    width: 98vw;
+    height: auto;
+    margin: 0 auto;
+}
+#banner-brand{
+    width: 100%;
+    height: 600px;
+}
+/* .picture-brand{
+    width: 100%;
+    height: 82%;
+    background-image: url(images/brand-elements/christian/christian-banner.png);
+    background-size: cover;
+    margin: 0 auto;
+} */
+.navbar-brand{
+    width: 100%;
+    height: 13%;
+    background-color: #efecea;
+    margin: 0 auto;
+
+}
+.navbar-content-brand{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0;
+    padding-left: 80px;
+}
+.navbar-content-brand a{
+    text-decoration: none;
+    color: black;
+}
+.navbar-content-brand a.home-link,
+.navbar-content-brand a.brand-link{
+    color: #b29c6e;
+}
+#banner-brand::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #393939;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+/* ========================================= */
+#intro-brand{
+    width: 1260px;
+    height: 200px;
+    margin: 50px auto 0;
+    display: flex;
+    justify-content: center; /* Canh giữa theo chiều ngang */
+
+}
+.intro-brand-content{
+    width: 1000px;
+    height: 190px;
+    text-align: center;
+}
+.text-center{
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-weight: 100;
+    font-size: 30px;
+}
+/* ================================================= */
+#brand-products{
+    width: 1400px;
+    height: auto;
+    margin: 0 auto;
+}
+.box-brand-products{
+    width: 100%;
+    height: 580px;
+    display: flex;
+    margin: 0 auto;
+    overflow: hidden;
+    margin: 0 auto; /* Căn giữa chiều ngang */
+    padding-top: 20px;
+    overflow: auto;
+}
+.box-brand-product-element {
+    background-color: #efecea;
+    width: 300px; /* Set a fixed width for each item */
+    height: 90%;
+    padding: 20px;
+    flex-shrink: 0; /*giữ nguyên kích thước của nó và không thu nhỏ để vừa với không gian còn lại*/
+    margin: 1px;
+    margin: 0 auto;
+}
+.box-brand-product-element a{
+    text-decoration: none;
+    color: #000;
+}
+.box-brand-product-element p{
+    font-family: 'SVN-Humanst 521 BT', Arial, sans-serif;
+    margin: 10px 0; /*khoảng cách 5px ở trên và dưới mỗi dòng */
+}
+
+.box-brand-product-element .price{
+    color: #a60101;
+    font-weight: 700;
+}
+.img-product{
+    overflow: hidden;
+}
+.box-brand-product-element img{
+    transition: transform 0.9s;
+    width: 100%;
+    height: 100%;
+}
+.box-brand-product-element img:hover {
+    transform: scale(1.1);
+}
+/* ========================================= */
+.img-product {
+    position: relative;
+}
+.icon-brand-products {
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+.icon{
+    display: flex;
+}
+.icon.heart-icon{
+    background: url('../images/tim-trang.png') no-repeat center center;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    border: none;
+}
+.icon.heart-icon.active{
+    background: url("../images/tim-den.png");
+    background-size: contain;
+}
+.icon.cart-icon{
+    background: url("../images/cart-trang.png") no-repeat center center;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    border: none;
+    visibility: hidden;
+    transition: visibility 0.1s ease;
+}
+.box-brand-product-element:hover .icon.cart-icon{
+    visibility: visible;
+}
+.icon.cart-icon.active {
+    background-image: url("../images/cart-den.png");
+    background-size: contain;
+    visibility: visible;
+}

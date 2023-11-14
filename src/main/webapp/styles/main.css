@@ -1,0 +1,295 @@
+#home-section{
+    width: 99vw;
+    height: auto;
+    left: 0;
+    right: 0;
+}
+#home-section img{
+    width: 100%;
+}
+/* =================================================== */
+#slide-brand{
+    height: 210px;
+    width: 98vw;
+    padding: 50px;
+
+}
+.name-section {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #393939;
+    top: -15px;
+}
+.name-section::before, .name-section::after {
+    content: "";
+    border-top: 1px solid #000;
+    width: 100px; /* Độ rộng của dấu gạch ngang ảo */
+    position: absolute;
+    top: 45%; /* Điều chỉnh vị trí của dấu gạch ngang */
+    transform: translateY(-50%);    /*dịch lên trên 50% (trục y)*/
+}
+.name-section::before {
+    left: 860px; /* Điều chỉnh khoảng cách giữa dấu gạch ngang và chữ */
+}
+.name-section::after {
+    right: 860px;
+}
+.slider-container {
+    width: 1000px; /* Chiều rộng của slide */
+    overflow: hidden;
+    margin: 0 auto; /* Căn giữa chiều ngang */
+}
+.slider {
+    display: flex;
+    padding: 30px;
+}
+.brand-slide-items{
+    max-width: 200px;
+    max-height: auto;
+    padding: 20px;
+    animation: slide 25s linear infinite;
+    flex-shrink: 0; /*giữ nguyên kích thước của nó và không thu nhỏ để vừa với không gian còn lại*/
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-100%); }
+    25% { transform: translateX(-100%); }
+    45% { transform: translateX(-200%); }
+    50% { transform: translateX(-200%); }
+    70% { transform: translateX(-300%); }
+    75% { transform: translateX(-300%); }
+    95% { transform: translateX(-400%); }
+    100% { transform: translateX(-400%); }
+}
+/* =================================================== */
+#top-brand {
+    height: 550px;
+    width: 98vw;
+    padding: 50px;
+    margin: 0 auto; /* Căn giữa chiều ngang */
+}
+
+.top-brand-box {
+    width: 1300px;
+    height: 400px;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin: 0 auto; /* Căn giữa chiều ngang */
+    text-align: center; /* Căn giữa the nội dung theo chiều ngang */
+    position: relative;
+}
+.sub-box{
+    width: 612px;
+    height: 337px;
+    overflow: hidden; /* Ngăn chặn hình ảnh vượt ra ngoài box */
+    position: relative; /* Đặt cho .sub-box là relative để .brand-name căn giữa theo nó */ /* ====== */
+    bottom: -10px;
+}
+.sub-box img{
+    transition: transform 0.9s;
+    width: 100%;
+    height: 100%;
+}
+.sub-box img:hover {
+    transform: scale(1.1);
+}
+.brand-name{
+    position: absolute; /* ====== */
+    bottom: 5px;
+    width: 160px;
+    height: 60px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.9);
+    background-color: transparent;
+    z-index: 1;     /* cái nào lớn thì đè lên cái  nhỏ hơn */
+    left: 50%;                      /*cách lề trái bằng 50% chiều rộng của phần tử cha*/
+    transform: translateX(-50%);    /*di chuyển ngược lại 50% của chiều rộng của chính nó*/
+}
+
+/* Thêm hình ảnh cho từng thương hiệu */
+#brand-chorpard {
+    background-image: url("../images/home/chorpard.png");
+    background-size: cover; /* Đảm bảo hình ảnh phủ kín ô brand-name */
+}
+#brand-rolex {
+    background-image: url("../images/home/rolex.png");
+    background-size: cover; /* Đảm bảo hình ảnh phủ kín ô brand-name */
+}
+/* ======================================= */
+#new-arrival{
+    width: 98vw;
+    height: 720px;
+    padding: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.new-arrival-box{
+    width: 1324px;
+    height: 600px;
+    display: flex;
+    margin: 0 auto;
+    overflow: hidden;
+    margin: 0 auto; /* Căn giữa chiều ngang */
+    padding-top: 20px;
+    overflow: auto;
+}
+.product-new-arrival-box {
+    background-color: #efecea;
+    width: 330px; /* Set a fixed width for each item */
+    height: 98%;
+    padding: 20px;
+    animation: slide-new-arrival 35s linear infinite;
+    flex-shrink: 0; /*giữ nguyên kích thước của nó và không thu nhỏ để vừa với không gian còn lại*/
+    margin: 1px;
+    transition: transform;
+}
+@keyframes slide-new-arrival {
+    0% { transform: translateX(0%); }
+    8.33% { transform: translateX(0%); }
+    16.67% { transform: translateX(-100%); }
+    25% { transform: translateX(-100%); }
+    33.33% { transform: translateX(-200%); }
+    41.67% { transform: translateX(-200%); }
+    50% { transform: translateX(0%); }
+}
+.product-new-arrival-box a{
+    text-decoration: none;
+    color: #000;
+}
+.product-new-arrival-box p{
+    font-family: 'SVN-Humanst 521 BT', Arial, sans-serif;
+    margin: 5px 0; /*khoảng cách 5px ở trên và dưới mỗi dòng */
+}
+
+.product-new-arrival-box .price{
+    color: #a60101;
+    font-weight: 700;
+}
+.img-product{
+    overflow: hidden;
+}
+.product-new-arrival-box img{
+    transition: transform 0.9s;
+    width: 100%;
+    height: 100%;
+}
+.product-new-arrival-box img:hover {
+    transform: scale(1.1);
+}
+.scrollable-container {
+    margin: 0 auto;
+    width: 1324px;
+    height: 615px;
+    overflow: hidden;
+}
+.icon-product-new-arrival {
+    display: inline-block;
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+}
+
+.icon-product-new-arrival .icon{
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+}
+.icon-product-new-arrival .icon:hover{
+    transform: scale(1.0);
+}
+.icon-product-new-arrival .icon.heart-icon {
+    background: url("../images/tim-trang.png") no-repeat center center;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    border: none;
+}
+
+.icon-product-new-arrival .icon.heart-icon.active {
+    background: url("../images/tim-den.png") no-repeat center center;
+    background-size: contain;
+}
+.icon-product-new-arrival .icon.cart-icon {
+    background-image: url("../images/cart-trang.png");
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    border: none;
+    visibility: hidden;
+    transition: visibility 0.1s ease;
+}
+.icon-product-new-arrival .icon.cart-icon.active {
+    background-image: url("../images/cart-den.png");
+    background-size: contain;
+    visibility: visible;
+}
+.product-new-arrival-box:hover .icon.cart-icon {
+    visibility: visible;
+}
+
+/* ======================================= */
+#gender-for{
+    width: 1450px;
+    height: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    /* background-color: rebeccapurple; */
+}
+.container-gender-for{
+    width: 1340px;
+    height: 560px;
+    margin: 0 auto;
+    display: flex;
+    /* background-color: green; */
+}
+.box1-container-gender-for{
+    width: 600px;
+    height: 510px;
+    /* background-color: yellow; */
+    margin: 0 auto;
+}
+.box2-container-gender-for{
+    width: 600px;
+    height: 510px;
+    margin: 0 auto;
+    /* background-color: yellow; */
+}
+.picture-box1-container-gender-for{
+    width: 100%;
+    height: 390px;
+    /* background-color: red; */
+    background-image: url("../images/home/men-group.png");
+    background-size: cover;
+}
+.picture-box2-container-gender-for{
+    width: 100%;
+    height: 390px;
+    /* background-color: red; */
+    background-image: url("../images/home/women-group.png");
+    background-size: cover;
+}
+.text-box-container-gender-for h4{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    line-height: 24px;
+    color: #393939;
+}
+.text-box-container-gender-for p{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    letter-spacing: 1.7px;
+    line-height: 20px;
+}
