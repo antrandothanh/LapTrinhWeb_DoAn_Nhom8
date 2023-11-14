@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
 public class Product implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String code;
     private String name;
     private long price;
@@ -15,13 +17,12 @@ public class Product implements Serializable{
     private Brand brand;
     private String collection;
     @ManyToOne
-    private Categories type;
+    private Category type;
     private String color;
     private String imgURL;
     private String description;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     public String getCode()
     {
         return code;
@@ -55,11 +56,11 @@ public class Product implements Serializable{
         this.brand = brand;
     }
 
-    public Categories getType() {
+    public Category getType() {
         return type;
     }
 
-    public void setType(Categories type) {
+    public void setType(Category type) {
         this.type = type;
     }
 

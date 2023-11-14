@@ -7,10 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
 public class Brand implements Serializable{
-    private String code;
-    private String name;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private String code;
+    private String name;
+
     public String getCode()
     {
         return code;
