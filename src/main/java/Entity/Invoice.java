@@ -1,11 +1,9 @@
-package business;
+package Entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
-import business.User;
 
 @Entity
 public class Invoice implements Serializable{
