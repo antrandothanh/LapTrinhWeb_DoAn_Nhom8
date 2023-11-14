@@ -1,4 +1,4 @@
-package business;
+package Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

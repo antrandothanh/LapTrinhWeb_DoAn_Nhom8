@@ -1,4 +1,4 @@
-package business;
+package Entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
