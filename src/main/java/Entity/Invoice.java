@@ -19,6 +19,7 @@ public class Invoice implements Serializable{
     @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private List<LineItem> lineItems;
     private Date createdDate;
+
     public User getUser() {
         return user;
     }
