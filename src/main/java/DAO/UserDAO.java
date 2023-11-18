@@ -57,11 +57,11 @@ public class UserDAO {
             em.close();
         }
     }
-    public static User selectUser(String userId){
+    public static User selectUser(String username){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT u FROM User u WHERE u.id = :userId";
+        String qString = "SELECT u FROM User u WHERE u.username = :username";
         TypedQuery<User> q = em.createQuery(qString, User.class);
-        q.setParameter("userId", userId);
+        q.setParameter("username", username);
         try {
             User user = q.getSingleResult();
             return user;
@@ -88,5 +88,27 @@ public class UserDAO {
             em.close();
         }
         return users;
+    }
+
+    //kiem tra user co ton tai trong database
+    public static boolean userExisted(String username) {
+        User temp = selectUser(username);
+        if (temp == null) {
+            return false;
+        }
+        return true;
+    }
+
+    //kiem tra ten tai khoan va mat khau
+    public static boolean checkValidAccount(String username, String password) {
+        User temp = selectUser(username);
+        if (temp == null) {
+            return false; //ten tai khoan khong hop le
+        } else {
+            //kiem tra mat khau hop le
+            if (temp.getPassword().equals(password)) {
+                return true;
+            } return false;
+        }
     }
 }

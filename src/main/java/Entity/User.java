@@ -10,17 +10,17 @@ import java.io.Serializable;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id; //nên để long để nó tự tạo được
+    private long id; //nên để long để nó tự tạo được
     private String username;
     private String password;
     private String name;
     private String email;
     private String phone;
     private String address;
-    public String getId() {
+    public long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
     public String getUsername() {
