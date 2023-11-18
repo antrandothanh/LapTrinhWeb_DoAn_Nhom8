@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Quản lí cửa hàng</title>
-    <link rel="stylesheet" type="text/css" href="styles/body.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/body-admin.css"/>
     <link rel="stylesheet" type="text/css" href="styles/adminInformation.css"/>
 </head>
 <body>

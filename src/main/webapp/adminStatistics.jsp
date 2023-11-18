@@ -3,7 +3,7 @@
 <head>
     <meta name="viewpoint" content="width=device-width, initial-scale=1.0"/>
     <title>Quản lí cửa hàng</title>
-    <link rel="stylesheet" href="styles/body.css">
+    <link rel="stylesheet" href="styles/body-admin.css">
 </head>
 <body>
 <section>

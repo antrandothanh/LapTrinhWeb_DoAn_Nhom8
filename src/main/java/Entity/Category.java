@@ -11,8 +11,6 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String code;
     private String name;
-
-
     public String getCode()
     {
         return code;
@@ -29,4 +27,5 @@ public class Category implements Serializable {
     {
         this.name=name;
     }
+    public Category(){}
 }

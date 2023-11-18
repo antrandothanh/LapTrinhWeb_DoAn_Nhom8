@@ -28,5 +28,10 @@ public class Brand implements Serializable{
     {
         this.name=name;
     }
+    public Brand(){}
+    public Brand(String code, String name){
+        this.code = code;
+        this.name = name;
+    }
 }
 

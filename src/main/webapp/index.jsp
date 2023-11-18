@@ -16,7 +16,7 @@
     <%@include file="header.jsp"%>
     <section id="home-section">
         <section id="big-banner">
-            <a href="#"><img src="images/home/banner2.png" alt="big-banner"></a>
+            <a href="adminCustomer.jsp"><img src="images/home/banner2.png" alt="big-banner"></a>
         </section>
         <section id="slide-brand">
             <h2 class="name-section">ĐỒNG HỒ HIỆU</h2>

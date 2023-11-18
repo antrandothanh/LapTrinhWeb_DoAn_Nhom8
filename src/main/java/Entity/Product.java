@@ -9,20 +9,29 @@ import javax.persistence.Id;
 @Entity
 public class Product implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String code;
     private String name;
     private long price;
-    @ManyToOne
-    private Brand brand;
+    private String brandCode;
     private String collection;
-    @ManyToOne
-    private Category type;
+    private String type;
     private String color;
     private String imgURL;
     private String description;
+    public String getBrandCode() {
+        return brandCode;
+    }
 
+    public void setBrandCode(String brandCode) {
+        this.brandCode = brandCode;
+    }
+    public String getType() {
+        return type;
+    }
 
+    public void setType(String type) {
+        this.type = type;
+    }
     public String getCode()
     {
         return code;
@@ -46,22 +55,6 @@ public class Product implements Serializable{
 
     public void setPrice(long price) {
         this.price = price;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-
-    public Category getType() {
-        return type;
-    }
-
-    public void setType(Category type) {
-        this.type = type;
     }
 
     public String getCollection() {
@@ -94,5 +87,18 @@ public class Product implements Serializable{
 
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
+    }
+    public Product(){}
+    public Product(String code, String name, long price, String brandCode, String collection,
+                   String type, String color, String imgURL, String description){
+        this.code = code;
+        this.name = name;
+        this.price = price;
+        this.brandCode = brandCode;
+        this.collection = collection;
+        this.type = type;
+        this.color = color;
+        this.imgURL = imgURL;
+        this.description = description;
     }
 }
