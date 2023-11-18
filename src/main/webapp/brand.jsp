@@ -27,6 +27,7 @@
       <div class="brands">
         <a href="christian.jsp"><img src="images/brand/christian-bg.png" alt=""></a>
         <a href="cartier.jsp"><img src="images/brand/cartier-bg.png" alt=""></a>
+        <a href="chorpard.jsp"><img src="images/brand/chorpad-bg.png" alt=""></a>
       </div>
     </div>
     <div class="brand-container">
