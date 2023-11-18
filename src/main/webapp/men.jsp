@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,293 +38,47 @@
                 </div>
             </div>
         </section>
+
         <section id="brand-products">
 
-            <!-- hàng sản phẩm thứ 1 -->
-            <div class="box-brand-products">
-                <div class="box-brand-product-element">     <!-- 1 sản phẩm trong hàng 1 -->
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/rolex/dh2.png" alt="dongho1">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
+            <c:set var="count" value="0" scope="page" />
+            <c:forEach var="product" items="${sessionScope.products}" varStatus="loop">
+                <c:if test="${product.type == 'men'}">
+                    <c:set var="count" value="${count + 1}" scope="page" />
+                    <!--1 hàng 4 cái-->
+                    <c:if test="${count % 4 == 1}">
+                        <div class="box-brand-products">
+                    </c:if>
+    
+                    <!-- Hiển thị sản phẩm -->
+                    <div class="box-brand-product-element">     <!-- 1 sản phẩm trong hàng 1 -->
+                        <a href="viewProduct.jsp?productCode=${product.code}">
+                            <div class="img-product">
+                                <img src="${product.imgURL}" alt="dongho${product.code}">
+                                <div class="icon-brand-products">
+                                    <button class="icon heart-icon" alt="tim"></button>
+                                    <button class="icon cart-icon" alt="cart"></button>
+                                </div>
                             </div>
+                            <p><strong>${product.name}</strong></p>
+                            <p>${product.brandCode}</p>
+                            <p>Mã sản phẩm: ${product.code}</p>
+                            <p>Descripton: ${product.description}</p>
+                            <p>Type: ${product.type}</p>
+                            <p class="price">${product.price}₫</p>
+                        </a>
+                    </div>
 
+                    <!--dùng thư viện JSTL Functions
+                    fn:length(sessionScope.products) sẽ trả về số lượng sản phẩm có type == 'men'
+                    hiện tại sessionScope.products là ds sp được lưu trong session nhưng
+                    được lọc qua điều kiện product.type == 'men'-->
+                    <c:if test="${count % 4 == 0 or count == fn:length(sessionScope.products)}">
                         </div>
-                        <p><strong>Rolex Submariner 124060</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">469.000.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/rolex/dh3.png" alt="dongho2">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
+                    </c:if>
 
-                        </div>
-                        <p><strong>Rolex Lady-Datejust 28 Chocolate 279171 (Fluted/Jubilee)</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">469.000.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/rolex/dh4.png" alt="dongho3">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Oyster Perpetual 41 Green 124300</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">403.000.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/rolex/dh5.png" alt="dongho4">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Datejust 36 Slate Roman 126234 (Fluted/Jubilee)</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">431.500.000₫</p>
-                    </a>
-                </div>
-            </div>
-
-            <!-- hàng sản phẩm thứ 2 -->
-            <div class="box-brand-products">
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/hublot/dh5.png" alt="dongho5">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Oyster Perpetual 36 Bright Blue 126000</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">269.000.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/hublot/dh6.png" alt="dongho6">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Datejust 36 Slate Roman 126234 (Fluted/Jubilee)</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">465.500.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/hublot/dh7.png" alt="dongho7">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Submariner Date 126613LB</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">680.000.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/hublot/dh8.png" alt="dongho8">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Datejust 36 Bright Black 126234 (Fluted/Jubilee)</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">465.500.000₫</p>
-                    </a>
-                </div>
-            </div>
-            <!-- hàng sản phẩm thứ 3 -->
-            <div class="box-brand-products">
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/hublot/dh1.png" alt="dongho5">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Oyster Perpetual 36 Bright Blue 126000</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">269.000.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/hublot/dh2.png" alt="dongho6">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Datejust 36 Slate Roman 126234 (Fluted/Jubilee)</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">465.500.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/hublot/dh4.png" alt="dongho7">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Submariner Date 126613LB</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">680.000.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/omega/dh1.png" alt="dongho8">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Datejust 36 Bright Black 126234 (Fluted/Jubilee)</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">465.500.000₫</p>
-                    </a>
-                </div>
-            </div>
-            <!-- hàng sản phẩm thứ 4 -->
-            <div class="box-brand-products">
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/omega/dh2.png" alt="dongho5">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Oyster Perpetual 36 Bright Blue 126000</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">269.000.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/omega/dh3.png" alt="dongho6">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Datejust 36 Slate Roman 126234 (Fluted/Jubilee)</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">465.500.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/patek/dh4.png" alt="dongho7">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Submariner Date 126613LB</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">680.000.000₫</p>
-                    </a>
-                </div>
-                <div class="box-brand-product-element">
-                    <a href="#">
-                        <div class="img-product">
-                            <img src="images/brand-elements/patek/dh1.png" alt="dongho8">
-                            <div class="icon-brand-products">
-                                <button class="icon heart-icon" alt="tim"></button>
-                                <button class="icon cart-icon" alt="cart"></button>
-                            </div>
-
-                        </div>
-                        <p><strong>Rolex Datejust 36 Bright Black 126234 (Fluted/Jubilee)</strong></p>
-                        <p>Thương hiệu: Hublot</p>
-                        <p>Mã sản phẩm: </p>
-                        <p> Xuất xứ: Thụy Sĩ</p>
-                        <p class="price">465.500.000₫</p>
-                    </a>
-                </div>
-            </div>
+                </c:if>
+            </c:forEach>
         </section>
     </section>
 
