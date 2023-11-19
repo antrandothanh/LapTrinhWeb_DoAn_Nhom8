@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="Entity.User, DAO.UserDAO"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+
 <html>
 <head>
     <meta name="viewpoint" content="width=device-width, initial-scale=1.0"/>
@@ -7,6 +12,16 @@
     <link rel="stylesheet" type="text/css" href="styles/adminCustomer.css"/>
 </head>
 <body>
+    <%
+        List<User> customers = new ArrayList<>();
+        List<User> users = UserDAO.selectUsers();
+        for (User user : users) {
+            if (user.getUsername().contains("CUSTOMER")) {
+                customers.add(user);
+            }
+        }
+        request.setAttribute("customers", customers);
+    %>
     <section>
         <jsp:include page="adminHeader.jsp"/>
     </section>
@@ -19,13 +34,31 @@
                 Quản lí tài khoản khách hàng
             </div>
             <div class="list-of-customer-container">
-                Danh sách các tài khoản của khách
+                <table id="customers-table">
+                    <tr>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Password</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                    <c:forEach var="customer" items="${customers}">
+                        <tr>
+                            <td><c:out value='${customer.getUsername()}'/></td>
+                            <td><c:out value='${customer.getName()}'/></td>
+                            <td><c:out value='${customer.getPassword()}'/></td>
+                            <td><c:out value='${customer.getAddress()}'/></td>
+                            <td><c:out value='${customer.getEmail()}'/></td>
+                            <td><c:out value='${customer.getPhone()}'/></td>
+                        </tr>
+                    </c:forEach>
+                </table>
             </div>
-            <form action="" method="">
+            <form action="manageCustomer" method="post">
                 <div class="edit-customer-container">
                     <div style="display: flex; padding-top: 20px">
                         <div class="label-of-customer">
-                            <label>Mã khách hàng:</label>
                             <label>Tên tài khoản:</label>
                             <label>Mật khẩu:</label>
                             <label>Tên khách hàng:</label>
@@ -34,7 +67,6 @@
                             <label>Địa chỉ:</label>
                         </div>
                         <div class="input-of-customer">
-                            <input type="text" name="customerID">
                             <input type="text" name="customerUsername">
                             <input type="text" name="customerPassword">
                             <input type="text" name="customerName">
@@ -44,10 +76,11 @@
                         </div>
                     </div>
                     <div class="button-container">
-                        <input type="submit" name="addCustomer" value="Thêm">
-                        <input type="submit" name="editCustomer" value="Sửa">
-                        <input type="submit" name="removeCustomer" value="Xoá">
+                        <button type="submit" name="action" value="addCustomer">Thêm</button>
+                        <button type="submit" name="action" value="updateCustomer">Sửa</button>
+                        <button type="submit" name="action" value="removeCustomer">Xoá</button>
                     </div>
+                    <p>${message}</p>
                 </div>
             </form>
             </div>

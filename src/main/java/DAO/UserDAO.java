@@ -37,12 +37,12 @@ public class UserDAO {
             em.close();
         }
     }
-    public static void delete(String userId){
+    public static void delete(User user){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         try {
             trans.begin();
-            User u = em.find(User.class, userId);
+            User u = em.find(User.class, user.getId());
             System.out.println(u.toString());
             if (u != null)
             {

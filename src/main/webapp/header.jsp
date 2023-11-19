@@ -53,7 +53,13 @@
             <a href="brand.jsp">THƯƠNG HIỆU</a>
             <a href="men.jsp">ĐỒNG HỒ NAM</a>
             <a href="women.jsp">ĐỒNG HỒ NỮ</a>
-            <a href="#">ĐỒNG HỒ CẶP ĐÔI</a>
+            <%
+                if (user != null && user.getUsername().contains("ADMIN")) {
+                    %>
+                    <a href="adminInformation.jsp">QUẢN LÍ</a>
+                    <%
+                }
+            %>
         </div>
     </section>
 </body>
