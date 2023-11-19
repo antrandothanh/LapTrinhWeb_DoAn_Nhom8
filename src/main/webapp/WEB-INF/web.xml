@@ -17,10 +17,12 @@
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>Servlet.UserServlet</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/register</url-pattern>
         <url-pattern>/login</url-pattern>
+        <url-pattern>/manageCustomer</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -35,6 +37,7 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+
     <welcome-file-list>
         <welcome-file>loadProducts</welcome-file>
     </welcome-file-list>
