@@ -11,7 +11,7 @@
     <%@include file="header.jsp"%>
     <section id="cart-main-container">
         <div id="cart-header" class="border-after">
-            <h1>GIỎ HÀNG</h1>
+            <h1>GIỎ HÀNG ${sessionScope.cart.items[0].quantity}</h1>
         </div>
         <div id="title-column" class="border-after">
             <div class="column-elements" style="width: 30px;"><input type="checkbox"></div>
@@ -43,7 +43,13 @@
                 <!--giá-->
                 <div class="column-elements price price-value" style="width: 220px;">4,380,000₫</div>
                 <!--xoá-->
-                <div class="column-elements delete" style="width: 65px;"><button onclick="deleteProduct(this)">DELETE</button></div>
+                <div class="column-elements delete" style="width: 65px;">
+                    <form action="cart" method="post">
+                        <input type="hidden" name="productCode" value="PRO003">
+                        <input type="hidden" name="quantity" value="0">
+                        <button onclick="deleteProduct(this)">DELETE</button>
+                    </form>
+                </div>
             </div>
             <div class="cart-product-elements border-after">
                 <div class="column-elements" style="width: 30px;"><input type="checkbox"></div>

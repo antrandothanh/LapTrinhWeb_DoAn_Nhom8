@@ -1,6 +1,7 @@
 package Entity;
 
 import javax.persistence.*;
+import javax.sound.sampled.Line;
 import java.io.Serializable;
 
 @Entity
@@ -19,6 +20,13 @@ public class LineItem implements Serializable {
         return quantity;
     }
     public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    public LineItem(){
+
+    }
+    public LineItem(Product p, int quantity){
+        this.item = p;
         this.quantity = quantity;
     }
 

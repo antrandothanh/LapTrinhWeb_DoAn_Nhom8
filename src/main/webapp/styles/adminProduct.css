@@ -5,12 +5,12 @@
 }
 
 .list-of-product-container {
-    margin: 50px 50px 0px 50px;
     background-color: #ffff;
     border-radius: 10px;
     display: flex;
     height: 300px;
     padding-top: 50px;
+    margin: 0 auto;
 }
 
 .edit-product-container {
@@ -51,5 +51,26 @@
     width: 50px;
 
 }
+#products-table {
+    width: 100%;
+    height: 90%;
+    border-collapse: collapse;  /*viền k có khoảng trống mà nối liền vs nhau*/
+    overflow-y: auto;           /*thanh cuộn*/
+    display: block;
+    max-height: 400px; /* Thay đổi chiều cao tối đa cho phù hợp */
+}
+#products-table th, #products-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+#products-table th {
+    background-color: #f2f2f2;
+    position: sticky; /*vị trí cố định khi cuộn trang (khi cuộn thì cái hàng tiêu đề vẫn đứng đó)*/
+    top: 0;
+}
 
+.list-of-product-container {
+    width: 100%;
+    overflow-x: auto;
+}
 

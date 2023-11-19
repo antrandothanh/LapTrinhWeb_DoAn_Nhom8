@@ -1,9 +1,6 @@
 package DAO;
 
-import Entity.Cart;
-import Entity.LineItem;
-import Entity.Product;
-import Entity.User;
+import Entity.*;
 import data.DBUtil;
 
 import javax.persistence.EntityManager;
@@ -36,6 +33,20 @@ public class LineItemDAO {
             em.merge(lineItem);
             trans.commit();
         } catch (Exception e){
+            System.out.println(e);
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+    }
+    public static void deleteItem(LineItem lineItem) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();
+        try {
+            em.remove(em.merge(lineItem));
+            trans.commit();
+        } catch (Exception e) {
             System.out.println(e);
             trans.rollback();
         } finally {
