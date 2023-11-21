@@ -32,29 +32,21 @@ public class CartServlet extends HttpServlet {
         if (action.equals("home")){
             url = "/index.jsp";
         } else if (action.equals("cart")) {
-            String productCode = request.getParameter("productCode");
+            Product product = productDAO.selectProduct(request.getParameter("productCode"));
             HttpSession session = request.getSession();
             Cart cart = (Cart)session.getAttribute("cart");
-
-            //tim san pham da ton tai trong gio hang chua
-            for (int i = 0; i < cart.getItems().size(); i++) {
-                LineItem lineItem = cart.getItems().get(i);
-                if (lineItem.getItem().getCode().equals(productCode)) {
-                    lineItem.setQuantity(lineItem.getQuantity() + 1);
-                    LineItemDAO.update(lineItem); //chi can cap nhat database cua LineItem
-                    CartDAO.update(cart);
-                }
+            User user = (User)session.getAttribute("user");
+            cart = CartDAO.selectCart(user.getId());
+            if (indexProductIsFound(product, cart) != -1) {
+                int i = indexProductIsFound(product, cart);
+                cart.getItems().get(i).setQuantity(cart.getItems().get(i).getQuantity() + 1);
+                CartDAO.update(cart);
+            } else {
+                LineItem lineItem = new LineItem(product, 1);
+                cart.getItems().add(lineItem);
+                CartDAO.update(cart);
             }
-
-            //neu san pham do khong co trong gio hang
-            Product product = productDAO.selectProduct(productCode);
-            LineItem lineItem = new LineItem();
-            lineItem.setItem(product);
-            lineItem.setQuantity(1);
-            LineItemDAO.insert(lineItem);
-            cart.getItems().add(lineItem);
-            CartDAO.update(cart);
-
+            session.setAttribute("cart", cart); //cap nhat gio hang trong session
             url = "/cart.jsp";
         }
         getServletContext().getRequestDispatcher(url).forward(request,response);
@@ -63,5 +55,14 @@ public class CartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         doGet(request, response);
+    }
+
+    public int indexProductIsFound(Product product, Cart cart) {
+        for (int i = 0; i < cart.getItems().size(); i++) {
+            if (cart.getItems().get(i).getItem().getCode().equals(product.getCode())) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

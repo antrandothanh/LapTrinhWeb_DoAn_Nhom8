@@ -54,10 +54,7 @@ public class UserServlet extends HttpServlet {
                 Cart cart;
                 cart = CartDAO.selectCart(user.getId());
                 if (cart == null) {
-                    cart = new Cart();
-                    cart.setUser(user);
-                    List<LineItem> lineItems = new ArrayList<>();
-                    cart.setItems(lineItems);
+                    cart = new Cart(user);
                     CartDAO.insert(cart);
                 }
                 session.setAttribute("cart", cart);

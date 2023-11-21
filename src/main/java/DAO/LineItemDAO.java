@@ -74,11 +74,11 @@ public class LineItemDAO {
             em.close();
         }
     }
-    public static LineItem selectLineItem(String productCode){
+    public static LineItem selectLineItem(long id){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT l FROM LineItem l WHERE l.item.code = :productCode";
+        String qString = "SELECT l FROM LineItem l WHERE l.id = :id";
         TypedQuery<LineItem> q = em.createQuery(qString, LineItem.class);
-        q.setParameter("productCode", productCode);
+        q.setParameter("id", id);
         try {
             LineItem lineItem = q.getSingleResult();
             return lineItem;
