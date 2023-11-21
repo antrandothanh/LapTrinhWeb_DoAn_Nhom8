@@ -54,15 +54,13 @@ public class CartDAO {
     public static void update(Cart cart) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        trans.begin();
         try {
-            trans.begin();
             em.merge(cart);
             trans.commit();
         } catch (Exception e) {
-            if (trans != null && trans.isActive()) {
-                trans.rollback();
-            }
-            e.printStackTrace(); // In lỗi ra console hoặc log
+            System.out.println(e);
+            trans.rollback();
         } finally {
             em.close();
         }

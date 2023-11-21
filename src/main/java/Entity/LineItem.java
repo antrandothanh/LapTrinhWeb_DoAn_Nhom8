@@ -7,7 +7,9 @@ import java.io.Serializable;
 @Entity
 public class LineItem implements Serializable {
     @Id
-    @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private Product item;
     private int quantity;
     public Product getItem() {

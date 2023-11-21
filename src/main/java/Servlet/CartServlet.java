@@ -1,6 +1,7 @@
 package Servlet;
 
 import DAO.CartDAO;
+import DAO.LineItemDAO;
 import DAO.UserDAO;
 import DAO.productDAO;
 import Entity.Cart;
@@ -21,7 +22,8 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-        String action = request.getParameter("action");
+        //String action = request.getParameter("action");
+        String action = null;
 
         if (action == null){
             action = "cart";
@@ -31,38 +33,28 @@ public class CartServlet extends HttpServlet {
             url = "/index.jsp";
         } else if (action.equals("cart")) {
             String productCode = request.getParameter("productCode");
-            String quantityString = request.getParameter("quantity");
             HttpSession session = request.getSession();
+            Cart cart = (Cart)session.getAttribute("cart");
 
-            Cart cart = (Cart) session.getAttribute("cart");
-            User u = new User();
-            u.setId(123);
-
-            cart = CartDAO.selectCart(u.getId());
-            if (cart == null){
-                cart = new Cart();
-                cart.setUser(u);
-            }
-            Product p = productDAO.selectProduct(productCode);
-            int quantity;
-            try{
-                quantity = Integer.parseInt(quantityString);
-                if (quantity < 0){
-                    quantity = 1;
+            //tim san pham da ton tai trong gio hang chua
+            for (int i = 0; i < cart.getItems().size(); i++) {
+                LineItem lineItem = cart.getItems().get(i);
+                if (lineItem.getItem().getCode().equals(productCode)) {
+                    lineItem.setQuantity(lineItem.getQuantity() + 1);
+                    LineItemDAO.update(lineItem); //chi can cap nhat database cua LineItem
+                    CartDAO.update(cart);
                 }
-                LineItem lineItem = new LineItem(p, quantity);
-                if (quantity > 0){
-                    CartDAO.updateLineItem(cart, lineItem);
-                } else if (quantity == 0) {
-                    CartDAO.removeItem(cart, lineItem);
-                }
-
-            } catch (NumberFormatException nfe){
-                LineItem lineItem = new LineItem(p, 1);
-                CartDAO.addItem(cart,lineItem);
             }
 
-            session.setAttribute("cart", cart);
+            //neu san pham do khong co trong gio hang
+            Product product = productDAO.selectProduct(productCode);
+            LineItem lineItem = new LineItem();
+            lineItem.setItem(product);
+            lineItem.setQuantity(1);
+            LineItemDAO.insert(lineItem);
+            cart.getItems().add(lineItem);
+            CartDAO.update(cart);
+
             url = "/cart.jsp";
         }
         getServletContext().getRequestDispatcher(url).forward(request,response);

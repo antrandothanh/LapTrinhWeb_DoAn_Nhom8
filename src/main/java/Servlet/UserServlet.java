@@ -1,11 +1,17 @@
 package Servlet;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 import Entity.User;
+import Entity.Cart;
+import Entity.LineItem;
 import DAO.UserDAO;
+import DAO.CartDAO;
+import DAO.LineItemDAO;
 
 
 public class UserServlet extends HttpServlet {
@@ -45,6 +51,16 @@ public class UserServlet extends HttpServlet {
                 User user;
                 user = UserDAO.selectUser(username);
                 session.setAttribute("user", user);
+                Cart cart;
+                cart = CartDAO.selectCart(user.getId());
+                if (cart == null) {
+                    cart = new Cart();
+                    cart.setUser(user);
+                    List<LineItem> lineItems = new ArrayList<>();
+                    cart.setItems(lineItems);
+                    CartDAO.insert(cart);
+                }
+                session.setAttribute("cart", cart);
             }
             else {
                 url = "/login.jsp";
