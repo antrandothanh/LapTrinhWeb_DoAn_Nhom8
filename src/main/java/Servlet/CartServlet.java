@@ -34,9 +34,8 @@ public class CartServlet extends HttpServlet {
         } else if (action.equals("cart")) {
             Product product = productDAO.selectProduct(request.getParameter("productCode"));
             HttpSession session = request.getSession();
-            Cart cart = (Cart)session.getAttribute("cart");
             User user = (User)session.getAttribute("user");
-            cart = CartDAO.selectCart(user.getId());
+            Cart cart = CartDAO.selectCart(user.getId());
             if (indexProductIsFound(product, cart) != -1) {
                 int i = indexProductIsFound(product, cart);
                 cart.getItems().get(i).setQuantity(cart.getItems().get(i).getQuantity() + 1);
@@ -46,7 +45,6 @@ public class CartServlet extends HttpServlet {
                 cart.getItems().add(lineItem);
                 CartDAO.update(cart);
             }
-            session.setAttribute("cart", cart); //cap nhat gio hang trong session
             url = "/cart.jsp";
         }
         getServletContext().getRequestDispatcher(url).forward(request,response);

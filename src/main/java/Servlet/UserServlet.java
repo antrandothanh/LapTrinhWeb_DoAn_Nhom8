@@ -57,7 +57,6 @@ public class UserServlet extends HttpServlet {
                     cart = new Cart(user);
                     CartDAO.insert(cart);
                 }
-                session.setAttribute("cart", cart);
             }
             else {
                 url = "/login.jsp";

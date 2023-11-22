@@ -12,6 +12,7 @@ import DAO.*;
 @Entity
 public class LineItem implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private Product item;
@@ -36,24 +37,5 @@ public class LineItem implements Serializable {
     public LineItem(Product p, int quantity){
         this.item = p;
         this.quantity = quantity;
-        this.id = AutoGenerateId();
     }
-
-    public long AutoGenerateId() {
-        SecureRandom random = new SecureRandom();
-        long idTemp = random.nextLong();
-        List<LineItem> lineItems = LineItemDAO.selectLineItems();
-        if (lineItems == null) {
-            return idTemp;
-        } else {
-            for (int i = 0; i < lineItems.size(); i++) {
-                if (idTemp == lineItems.get(i).getId()) {
-                    idTemp = random.nextLong();
-                    i = 0;
-                }
-            }
-            return idTemp;
-        }
-    }
-
 }
