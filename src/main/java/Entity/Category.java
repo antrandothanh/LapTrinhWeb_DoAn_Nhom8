@@ -6,12 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
-public class Categories implements Serializable {
-    private String code;
-    private String name;
-
+public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private String code;
+    private String name;
     public String getCode()
     {
         return code;
@@ -28,4 +27,5 @@ public class Categories implements Serializable {
     {
         this.name=name;
     }
+    public Category(){}
 }

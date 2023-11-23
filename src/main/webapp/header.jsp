@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="Entity.User"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +31,21 @@
                 <span><a href="#"><img src="picture/Search_32px.png" alt="search" width="104px"></a>   <!-- logo tìm kiếm--> </span>
                 <span><a href="#"><img src="picture/Heart_32px.png" alt="favorite" width="104px"></a>   <!-- logo yêu thích--> </span>
                 <span><a href="cart.jsp"><img src="picture/ShoppingBag_32px.png" alt="cart" width="104px"></a>   <!-- logo giỏ hàng--></span>
+                <%
+                    User user = (User)session.getAttribute("user");
+                    if (user != null) {
+                        %>
+                        <span><%=user.getName()%></span>
+                        <span><a href="login?action=logout">Đăng xuất</a></span>
+                        <%
+                    } else {
+                        %>
+                        <span><a href="login.jsp">Đăng nhập</a></span>
+                        <span><a href="register.jsp">Đăng kí</a></span>
+                        <%
+                    }
+                %>
+
             </div>
         </div>
         <hr>
@@ -37,7 +53,13 @@
             <a href="brand.jsp">THƯƠNG HIỆU</a>
             <a href="men.jsp">ĐỒNG HỒ NAM</a>
             <a href="women.jsp">ĐỒNG HỒ NỮ</a>
-            <a href="#">ĐỒNG HỒ CẶP ĐÔI</a>
+            <%
+                if (user != null && user.getUsername().contains("ADMIN")) {
+                    %>
+                    <a href="adminInformation.jsp">QUẢN LÍ</a>
+                    <%
+                }
+            %>
         </div>
     </section>
 </body>

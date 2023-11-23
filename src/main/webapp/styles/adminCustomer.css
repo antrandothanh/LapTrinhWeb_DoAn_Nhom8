@@ -4,7 +4,7 @@
     font-family: Arial;
 }
 
-.list-of-product-container {
+.list-of-customer-container {
     margin: 50px 50px 0px 50px;
     background-color: #ffff;
     border-radius: 10px;
@@ -13,43 +13,37 @@
     padding-top: 50px;
 }
 
-.edit-product-container {
+.edit-customer-container {
     margin: 30px 200px 0px 200px;
     background-color: #ffff;
     border-radius: 10px;
     height: 300px;
 }
 
-.label-of-product {
+.label-of-customer {
     width: 50%;
 }
 
-.label-of-product label {
+.label-of-customer label {
     display: block;
     margin-bottom: 10px;
     margin-left: 250px;
 }
 
-.input-of-product {
+.input-of-customer {
     width: 50%;
 }
 
-.input-of-product input[type="text"] {
+.input-of-customer input[type="text"] {
     display: block;
     margin-bottom: 10px;
 }
 
-.input-type-radio {
-    display: block;
-    margin-bottom: 10px;
-}
 .button-container {
     margin-left: 300px;
     margin-top: 20px
 }
-.button-container input {
+
+.button-container button {
     width: 50px;
-
 }
-
-

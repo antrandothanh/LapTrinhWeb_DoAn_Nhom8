@@ -1,14 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="Entity.User" %>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Quản lí cửa hàng</title>
-    <link rel="stylesheet" type="text/css" href="styles/body.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/body-admin.css"/>
     <link rel="stylesheet" type="text/css" href="styles/adminInformation.css"/>
 </head>
 <body>
+    <%
+        User user = (User)session.getAttribute("user");
+    %>
     <section>
         <jsp:include page="adminHeader.jsp"/>
     </section>
@@ -22,9 +27,9 @@
             </div>
             <div class="admin-information-container">
                 <div class="label-of-information">
-                    <label>Mã:</label>
+                    <label>Tên tài khoản:</label>
                     <br>
-                    <label>Họ tên:</label>
+                    <label>Tên:</label>
                     <br>
                     <label>Email:</label>
                     <br>
@@ -33,15 +38,15 @@
                     <label>Địa chỉ:</label>
                 </div>
                 <div class="values-of-information">
-                    <span>ADM001</span>
+                    <span><%=user.getUsername()%></span>
                     <br>
-                    <span>Trần Văn A</span>
+                    <span><%=user.getName()%></span>
                     <br>
-                    <span>tranvana@gmail.com</span>
+                    <span><%=user.getEmail()%></span>
                     <br>
-                    <span>0992871630</span>
+                    <span><%=user.getPhone()%></span>
                     <br>
-                    <span>Thành phố Hồ Chí Minh</span>
+                    <span><%=user.getAddress()%></span>
                 </div>
             </div>
         </section>
