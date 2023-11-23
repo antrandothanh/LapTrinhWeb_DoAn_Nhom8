@@ -62,7 +62,7 @@
                                         <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
                                         <input type="submit" value="Add To Favite">
                                     </form>
-                                    <form action="cart" method="get">
+                                    <form action="addCart" method="get">
                                         <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
                                         <input type="submit" value="Add To Cart">
                                     </form>
