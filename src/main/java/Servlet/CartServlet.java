@@ -1,6 +1,7 @@
 package Servlet;
 
 import DAO.CartDAO;
+import DAO.LineItemDAO;
 import DAO.UserDAO;
 import DAO.productDAO;
 import Entity.Cart;
@@ -21,7 +22,8 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-        String action = request.getParameter("action");
+        //String action = request.getParameter("action");
+        String action = null;
 
         if (action == null){
             action = "cart";
@@ -30,39 +32,19 @@ public class CartServlet extends HttpServlet {
         if (action.equals("home")){
             url = "/index.jsp";
         } else if (action.equals("cart")) {
-            String productCode = request.getParameter("productCode");
-            String quantityString = request.getParameter("quantity");
+            Product product = productDAO.selectProduct(request.getParameter("productCode"));
             HttpSession session = request.getSession();
-
-            Cart cart = (Cart) session.getAttribute("cart");
-            User u = new User();
-            u.setId(123);
-
-            cart = CartDAO.selectCart(u.getId());
-            if (cart == null){
-                cart = new Cart();
-                cart.setUser(u);
+            User user = (User)session.getAttribute("user");
+            Cart cart = CartDAO.selectCart(user.getId());
+            if (indexProductIsFound(product, cart) != -1) {
+                int i = indexProductIsFound(product, cart);
+                cart.getItems().get(i).setQuantity(cart.getItems().get(i).getQuantity() + 1);
+                CartDAO.update(cart);
+            } else {
+                LineItem lineItem = new LineItem(product, 1);
+                cart.getItems().add(lineItem);
+                CartDAO.update(cart);
             }
-            Product p = productDAO.selectProduct(productCode);
-            int quantity;
-            try{
-                quantity = Integer.parseInt(quantityString);
-                if (quantity < 0){
-                    quantity = 1;
-                }
-                LineItem lineItem = new LineItem(p, quantity);
-                if (quantity > 0){
-                    CartDAO.updateLineItem(cart, lineItem);
-                } else if (quantity == 0) {
-                    CartDAO.removeItem(cart, lineItem);
-                }
-
-            } catch (NumberFormatException nfe){
-                LineItem lineItem = new LineItem(p, 1);
-                CartDAO.addItem(cart,lineItem);
-            }
-
-            session.setAttribute("cart", cart);
             url = "/cart.jsp";
         }
         getServletContext().getRequestDispatcher(url).forward(request,response);
@@ -71,5 +53,14 @@ public class CartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         doGet(request, response);
+    }
+
+    public int indexProductIsFound(Product product, Cart cart) {
+        for (int i = 0; i < cart.getItems().size(); i++) {
+            if (cart.getItems().get(i).getItem().getCode().equals(product.getCode())) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

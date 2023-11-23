@@ -4,10 +4,17 @@ import javax.persistence.*;
 import javax.sound.sampled.Line;
 import java.io.Serializable;
 
+import java.security.SecureRandom;
+import java.util.List;
+
+import DAO.*;
+
 @Entity
 public class LineItem implements Serializable {
     @Id
-    @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private Product item;
     private int quantity;
     public Product getItem() {
@@ -22,6 +29,8 @@ public class LineItem implements Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    public long getId () { return id; }
+    public void setId(long id) { this.id = id; }
     public LineItem(){
 
     }
@@ -29,5 +38,4 @@ public class LineItem implements Serializable {
         this.item = p;
         this.quantity = quantity;
     }
-
 }

@@ -2,6 +2,7 @@ package Entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,5 +26,14 @@ public class Cart implements Serializable{
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Cart() {
+
+    }
+
+    public Cart(User user) {
+        this.user = user;
+        items = new ArrayList<>();
     }
 }
