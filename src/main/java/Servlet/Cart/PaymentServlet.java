@@ -15,28 +15,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class AddCartServlet extends HttpServlet {
+public class PaymentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/doAnWeb_war/cart";
-        ServletContext sc =getServletContext();
         HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         Cart cart = CartDAO.selectCart(user.getId());
-        Product product = productDAO.selectProduct(request.getParameter("productCode"));
-        if (CartDAO.indexProductIsFound(product, cart) != -1) {
-            int i = CartDAO.indexProductIsFound(product, cart);
-            cart.getItems().get(i).setQuantity(cart.getItems().get(i).getQuantity() + 1);
-            CartDAO.update(cart);
-        } else {
-            LineItem lineItem = new LineItem(product, 1, "False");
-            cart.getItems().add(lineItem);
-            CartDAO.update(cart);
+        for (int i=0; i<cart.getItems().size(); i++){
+            if (cart.getItems().get(i).getStatus().equals("True")){
+                LineItem lineItem = cart.getItems().get(i);
+                System.out.println("------------san pham duoc chon---------\n");
+                System.out.println(lineItem.getItem().getCode());
+            }
         }
-        request.setAttribute("cart", cart);
-        response.sendRedirect(url);
     }
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -51,4 +51,10 @@ public class Invoice implements Serializable{
         return 0;
         //
     }
+    public Invoice(){}
+    public Invoice(User user, List<LineItem> lineItems, Date createdDate){
+        this.user = user;
+        this.lineItems = lineItems;
+        this.createdDate = createdDate;
+    }
 }
