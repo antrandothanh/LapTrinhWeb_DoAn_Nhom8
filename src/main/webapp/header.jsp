@@ -30,7 +30,12 @@
             <div class="nav-1-children-2">
                 <span><a href="#"><img src="picture/Search_32px.png" alt="search" width="104px"></a>   <!-- logo tìm kiếm--> </span>
                 <span><a href="#"><img src="picture/Heart_32px.png" alt="favorite" width="104px"></a>   <!-- logo yêu thích--> </span>
-                <span><a href="cart.jsp"><img src="picture/ShoppingBag_32px.png" alt="cart" width="104px"></a>   <!-- logo giỏ hàng--></span>
+                <span>
+                    <form action="cart" method="post">
+                        <!--<a href="cart.jsp"><img src="picture/ShoppingBag_32px.png" alt="cart" width="104px"></a>-->
+                        <input type="submit" value="a" >
+                    </form>
+                    <!-- logo giỏ hàng--></span>
                 <%
                     User user = (User)session.getAttribute("user");
                     if (user != null) {
