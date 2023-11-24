@@ -16,7 +16,16 @@
     <%@include file="header.jsp"%>
     <section id="home-section">
         <section id="big-banner">
-            <a href="adminCustomer.jsp"><img src="images/home/banner2.png" alt="big-banner"></a>
+<%--            nếu có user thì mới vào trang admin--%>
+            <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+            <c:choose>
+                <c:when test="${sessionScope.user != null}">
+                    <a href="adminCustomer.jsp"><img src="images/home/banner2.png" alt="big-banner"></a>
+                </c:when>
+                <c:otherwise>
+                    <a href="#"><img src="images/home/banner2.png" alt="big-banner"></a>
+                </c:otherwise>
+            </c:choose>
         </section>
         <section id="slide-brand">
             <h2 class="name-section">ĐỒNG HỒ HIỆU</h2>

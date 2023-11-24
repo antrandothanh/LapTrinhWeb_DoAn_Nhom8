@@ -1,5 +1,6 @@
 package Servlet;
 
+import DAO.UserDAO;
 import DAO.productDAO;
 import Entity.Brand;
 import Entity.Category;
@@ -39,7 +40,6 @@ public class ProductServlet extends HttpServlet {
             url = updateProduct(request, response);
         } else if (action.equals("deleteProduct")) {
             url = deleteProduct(request, response);
-            System.out.println(action + "de te te ne");
         }
 
 
@@ -51,10 +51,8 @@ public class ProductServlet extends HttpServlet {
                               HttpServletResponse response){
         String productCode =request.getParameter("productCode");
         String productName = request.getParameter("productName");
-
         String productPriceString = request.getParameter("productPrice");
         long productPrice = Long.parseLong(productPriceString);
-
         String productBrandCode = request.getParameter("productBrand");
         String productCollection = request.getParameter("productCollection");
         String productType = request.getParameter("productType");
@@ -64,9 +62,17 @@ public class ProductServlet extends HttpServlet {
 
         Product p = new Product(productCode, productName, productPrice, productBrandCode, productCollection, productType,
                 productColor, productURL_IMG, productDescription);
-        productDAO.insert(p);
 
-        // Cập nhật danh sách sản phẩm trong session
+        String message;
+        if (!productDAO.productExisted(p.getCode())) {
+            productDAO.insert(p);
+            message = "Successfully added";
+        } else {
+            message = "ProductCode is existing, please change other productCode!";
+        }
+        request.setAttribute("message", message);
+
+        // Cập nhật lại danh sách sản phẩm trong session
         HttpSession session = request.getSession();
         List<Product> products = productDAO.selectProducts();
         session.setAttribute("products", products);
@@ -90,8 +96,17 @@ public class ProductServlet extends HttpServlet {
         String productURL_IMG = request.getParameter("productURL_IMG");
         String productDescription = request.getParameter("productDescription");
 
-        productDAO.update(productCode, productCode, productName, productPrice, productBrandCode, productCollection, productType,
-                productColor, productURL_IMG, productDescription);
+        Product p = new Product(productCode, productName, productPrice, productBrandCode, productCollection, productType,
+                                productColor, productURL_IMG, productDescription);
+        String message;
+        if (productDAO.productExisted(p.getCode())){
+            productDAO.update(p);
+            message = "Successfully updated";
+        }
+        else {
+            message = "ProductCode is not exist! Please enter right product code!";
+        }
+        request.setAttribute("message", message);
 
         // Cập nhật danh sách sản phẩm trong session
         HttpSession session = request.getSession();
@@ -105,7 +120,15 @@ public class ProductServlet extends HttpServlet {
     private String deleteProduct(HttpServletRequest request,
                                  HttpServletResponse response){
         String productCode =request.getParameter("productCode");
-        productDAO.delete(productCode);
+        String message;
+        if (productDAO.productExisted(productCode)){
+            productDAO.delete(productCode);
+            message = "Successfully deleted";
+        }
+        else {
+            message = "ProductCode is not exist! Please enter right product code!";
+        }
+        request.setAttribute("message", message);
 
         // Cập nhật danh sách sản phẩm trong session
         HttpSession session = request.getSession();
