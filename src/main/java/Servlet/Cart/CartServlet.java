@@ -16,17 +16,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sound.sampled.Line;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-
         String url = "/cart.jsp";
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         Cart cart = CartDAO.selectCart(user.getId());
         request.setAttribute("cart", cart);
+
         getServletContext().getRequestDispatcher(url).forward(request,response);
     }
     @Override

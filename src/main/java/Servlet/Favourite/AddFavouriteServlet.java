@@ -16,7 +16,7 @@ import java.io.IOException;
 public class AddFavouriteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/doAnWeb_war_exploded/favourite";
+        String url = "/doAnWeb_war/favourite";
         ServletContext sc =getServletContext();
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");

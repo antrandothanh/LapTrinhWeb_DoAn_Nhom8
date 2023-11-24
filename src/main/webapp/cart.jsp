@@ -16,61 +16,69 @@
         <h1>GIỎ HÀNG</h1>
     </div>
     <div id="title-column" class="border-after">
-        <div class="column-elements" style="width: 30px;"><input type="checkbox"></div>
+        <div class="column-elements" style="width: 30px;"></div>
         <div class="column-elements" style="width: 160px;"></div>
         <div class="column-elements" style="width: 740px; font-weight: 700; margin: 0 auto;">Tên sản phẩm</div>
         <div class="column-elements" style="width: 100px; font-weight: 700;">Số lượng</div>
         <div class="column-elements" style="width: 220px; font-weight: 700">Giá tiền</div>
-        <div class="column-elements delete" style="width: 65px;">
-            <form action="cart" method="post">
-                <button onclick="deleteProduct(this)">DELETE</button>
-            </form>
-        </div>
+        <div class="column-elements delete" style="width: 65px;"></div>
     </div>
 
-    <c:set var="totalPrice" value="0" />
-    <c:forEach var="lineItem" items="${cart.items}">
+
+
     <div id="cart-product">
-        <div class="cart-product-elements border-after">
-            <!-- check -->
-            <div class="column-elements" style="width: 30px;"><input type="checkbox"></div>
-            <!-- ảnh -->
-            <div class="column-elements image">
-                <a href="#"><img src="${lineItem.item.imgURL}" alt=""></a>
-            </div>
-            <!-- tên -->
-            <div class="column-elements name" style="width: 740px;">
-                <p><strong>${lineItem.item.name}</strong></p>
-                <p style="font-size: 15px;">MSP: ${lineItem.item.code}</p>
-            </div>
-            <!--số lượng-->
-            <div class="column-elements quantity" style="width: 100px;">
-                <form action="updateCart" method="post">
-                    <button type="submit">a</button>
-                    <button class="quantity-btn minus"></button>
-                    <input type="hidden" name="productCode" value="${lineItem.item.code}">
-                    <input type="number" class="quantity" name="quantity" value="<c:out value='${lineItem.quantity}'/>" min="1">
-                    <button class="quantity-btn plus"></button>
-                </form>
-            </div>
-            <!--giá-->
-            <div class="column-elements price price-value" style="width: 220px;">
-                <fmt:formatNumber value="${lineItem.item.price}" pattern="#,###"/>₫
-            </div>
-            <!--xoá-->
-            <div class="column-elements delete" style="width: 65px;">
-                <form action="removeCart" method="post">
-                    <input type="hidden" name="productCode" value="${lineItem.item.code}">
-                    <input type="hidden" name="quantity" value="0">
-                    <button onclick="deleteProduct(this)">DELETE</button>
-                </form>
-            </div>
-        </div>
+        <!-- check -->
+        <form action="updateCart" method="post">
+            <c:forEach var="lineItem" items="${cart.items}" varStatus="loop">
+                <input type="hidden" name="productCode_${loop.index}" value="${lineItem.item.code}">
+                <input type="hidden" name="quantity_${loop.index}" value="${lineItem.quantity}">
+                <div class="column-elements" style="width: 30px;">
+                    <input type="checkbox" name="statusCheckbox_${loop.index}">
+                </div>
+            </c:forEach>
+            <input type="submit" value="${lineItem.status}">
+        </form>
 
-        <c:set var="productPrice" value="${lineItem.item.price * lineItem.quantity}"/>
-        <c:set var="totalPrice" value="${totalPrice + productPrice}"/>
+        <c:set var="totalPrice" value="0" />
+        <c:forEach var="lineItem" items="${cart.items}">
+            <div class="cart-product-elements border-after">
+
+                <!-- ảnh -->
+                <div class="column-elements image">
+                    <a href="#"><img src="${lineItem.item.imgURL}" alt=""></a>
+                </div>
+                <!-- tên -->
+                <div class="column-elements name" style="width: 740px;">
+                    <p><strong>${lineItem.item.name}</strong></p>
+                    <p style="font-size: 15px;">MSP: ${lineItem.item.code}</p>
+                </div>
+                <!--số lượng-->
+                <div class="column-elements quantity" style="width: 100px;">
+                    <form action="updateQuantityCart" method="post">
+                        <button type="submit">a</button>
+                        <button class="quantity-btn minus"></button>
+                        <input type="hidden" name="productCode" value="${lineItem.item.code}">
+                        <input type="number" class="quantity" name="quantity" value="<c:out value='${lineItem.quantity}'/>" min="1">
+                        <button class="quantity-btn plus"></button>
+                    </form>
+                </div>
+                <!--giá-->
+                <div class="column-elements price price-value" style="width: 220px;">
+                    <fmt:formatNumber value="${lineItem.item.price}" pattern="#,###"/>₫
+                </div>
+                <!--xoá-->
+                <div class="column-elements delete" style="width: 65px;">
+                    <form action="removeCart" method="post">
+                        <input type="hidden" name="productCode" value="${lineItem.item.code}">
+                        <input type="hidden" name="quantity" value="0">
+                        <button>DELETE</button>
+                    </form>
+                </div>
+            </div>
+
+            <c:set var="productPrice" value="${lineItem.item.price * lineItem.quantity}"/>
+            <c:set var="totalPrice" value="${totalPrice + productPrice}"/>
         </c:forEach>
-
 
         <div id="total-price">
             <div class="column-elements" style="width: 160px;"></div>
@@ -86,14 +94,14 @@
     <div id="continue-shopping">
         <a href="#"><p><strong>Tiếp tục mua hàng</strong></p></a>
     </div>
-    <div id="checkout-buttons">
-        <form action="updateCart" method="post">
-            <button type="submit" id="btn-update"><strong>CẬP NHẬT</strong></button>
-        </form>
-        <button id="btn-payment" onclick="window.location.href = 'cartProduct.jsp'"><strong>THANH TOÁN</strong></button>
-    </div>
+    <form action="payment" method="post">
+        <div id="checkout-buttons">
+            <button type="submit" id="btn-payment">
+                <strong>THANH TOÁN</strong>
+            </button>
+        </div>
+    </form>
 </section>
-<script src="styles/cart.js"></script>
 <%@include file="footer.jsp"%>
 </body>
 </html>

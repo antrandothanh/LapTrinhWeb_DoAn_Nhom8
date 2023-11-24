@@ -15,31 +15,28 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class AddCartServlet extends HttpServlet {
+public class UpdateQuantityCartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/doAnWeb_war/cart";
-        ServletContext sc =getServletContext();
+
+        String url = "/cart.jsp";
+        ServletContext sc = getServletContext();
+        String quantity = request.getParameter("quantity");
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         Cart cart = CartDAO.selectCart(user.getId());
         Product product = productDAO.selectProduct(request.getParameter("productCode"));
         if (CartDAO.indexProductIsFound(product, cart) != -1) {
             int i = CartDAO.indexProductIsFound(product, cart);
-            cart.getItems().get(i).setQuantity(cart.getItems().get(i).getQuantity() + 1);
-            CartDAO.update(cart);
-        } else {
-            LineItem lineItem = new LineItem(product, 1, "False");
-            cart.getItems().add(lineItem);
+            cart.getItems().get(i).setQuantity(Integer.parseInt(quantity));
             CartDAO.update(cart);
         }
         request.setAttribute("cart", cart);
-        response.sendRedirect(url);
+        sc.getRequestDispatcher(url).forward(request, response);
     }
 
-
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req,resp);
     }
 }

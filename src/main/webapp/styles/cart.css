@@ -142,7 +142,6 @@
     color: rgb(59, 59, 59);
 }
 /* ========================== */
-#btn-update,
 #btn-payment {
     padding: 10px 20px;
     margin-right: 10px;
@@ -152,14 +151,13 @@
     border: 1px solid rgb(59,59,59);
     color: #fff;
 }
-#btn-update:active,
 #btn-payment:active{
     background-color: rgb(239,236,234);
     color: rgb(59,59,59);
 }
-#btn-update:hover,
 #btn-payment:hover{
     background-color: rgb(239,236,234);
     color: rgb(59,59,59);
 }
+
 

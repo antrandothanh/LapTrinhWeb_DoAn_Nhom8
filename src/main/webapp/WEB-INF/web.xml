@@ -51,11 +51,27 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>UpdateCartServlet</servlet-name>
-        <servlet-class>Servlet.Cart.UpdateCartServlet</servlet-class>
+        <servlet-class>Servlet.Cart.UpdateStatusCartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UpdateCartServlet</servlet-name>
         <url-pattern>/updateCart</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>Servlet.Cart.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateQuantityCartServlet</servlet-name>
+        <servlet-class>Servlet.Cart.UpdateQuantityCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateQuantityCartServlet</servlet-name>
+        <url-pattern>/updateQuantityCart</url-pattern>
     </servlet-mapping>
 
     <servlet>

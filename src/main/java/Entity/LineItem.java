@@ -17,6 +17,10 @@ public class LineItem implements Serializable {
     @ManyToOne
     private Product item;
     private int quantity;
+
+
+    //    để kiểm tra có được checked không
+    private String status;
     public Product getItem() {
         return item;
     }
@@ -32,11 +36,19 @@ public class LineItem implements Serializable {
     }
     public long getId () { return id; }
     public void setId(long id) { this.id = id; }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     public LineItem(){
 
     }
-    public LineItem(Product p, int quantity){
+    public LineItem(Product p, int quantity, String status){
         this.item = p;
         this.quantity = quantity;
+        this.status = status;
     }
 }
