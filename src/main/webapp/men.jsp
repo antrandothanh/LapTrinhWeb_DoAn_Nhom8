@@ -58,7 +58,7 @@
                                 <div class="icon-brand-products">
 <%--                                    <button class="icon heart-icon" alt="tim"></button>--%>
 <%--                                    <button class="icon cart-icon" alt="cart"></button>--%>
-                                    <form action="cart" method="post">
+                                    <form action="addFavourite" method="post">
                                         <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
                                         <input type="submit" value="Add To Favite">
                                     </form>

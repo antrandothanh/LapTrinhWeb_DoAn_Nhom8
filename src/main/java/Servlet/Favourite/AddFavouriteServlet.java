@@ -1,11 +1,9 @@
-package Servlet.Cart;
+package Servlet.Favourite;
 
 import DAO.CartDAO;
+import DAO.FavouriteDAO;
 import DAO.productDAO;
-import Entity.Cart;
-import Entity.LineItem;
-import Entity.Product;
-import Entity.User;
+import Entity.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,25 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class AddCartServlet extends HttpServlet {
+public class AddFavouriteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/doAnWeb_war_exploded/cart";
+        String url = "/doAnWeb_war_exploded/favourite";
         ServletContext sc =getServletContext();
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
-        Cart cart = CartDAO.selectCart(user.getId());
+        Favourite favourite = FavouriteDAO.selectFavourite(user.getId());
         Product product = productDAO.selectProduct(request.getParameter("productCode"));
-        if (CartDAO.indexProductIsFound(product, cart) != -1) {
-            int i = CartDAO.indexProductIsFound(product, cart);
-            cart.getItems().get(i).setQuantity(cart.getItems().get(i).getQuantity() + 1);
-            CartDAO.update(cart);
+        if (FavouriteDAO.indexProductIsFound(product, favourite) == -1) {
+            favourite.getProducts().add(product);
+            FavouriteDAO.update(favourite);
         } else {
-            LineItem lineItem = new LineItem(product, 1);
-            cart.getItems().add(lineItem);
-            CartDAO.update(cart);
+            System.out.println("co r");
         }
-        request.setAttribute("cart", cart);
+        request.setAttribute("favourite", favourite);
         response.sendRedirect(url);
     }
 
