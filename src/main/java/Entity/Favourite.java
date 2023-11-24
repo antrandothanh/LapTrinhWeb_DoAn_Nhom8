@@ -2,9 +2,10 @@ package Entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 @Entity
-public class FavouriteProduct implements Serializable{
+public class Favourite implements Serializable{
     @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private List<Product> products;
 
@@ -25,5 +26,13 @@ public class FavouriteProduct implements Serializable{
 
     public void setUser(User user) {
         this.user = user;
+    }
+    public Favourite(User user) {
+        this.user = user;
+        products = new ArrayList<>();
+    }
+    public Favourite()
+    {
+
     }
 }

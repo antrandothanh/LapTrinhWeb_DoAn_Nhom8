@@ -29,7 +29,7 @@
     </div>
 
     <c:set var="totalPrice" value="0" />
-    <c:forEach var="lineItem" items="${sessionScope.cart.items}">
+    <c:forEach var="lineItem" items="${cart.items}">
     <div id="cart-product">
         <div class="cart-product-elements border-after">
             <!-- check -->
@@ -45,9 +45,13 @@
             </div>
             <!--số lượng-->
             <div class="column-elements quantity" style="width: 100px;">
-                <button class="quantity-btn minus"></button>
-                <input type="number" class="quantity" value="${lineItem.quantity}" min="1">
-                <button class="quantity-btn plus"></button>
+                <form action="updateCart" method="post">
+                    <button type="submit">a</button>
+                    <button class="quantity-btn minus"></button>
+                    <input type="hidden" name="productCode" value="${lineItem.item.code}">
+                    <input type="number" class="quantity" name="quantity" value="<c:out value='${lineItem.quantity}'/>" min="1">
+                    <button class="quantity-btn plus"></button>
+                </form>
             </div>
             <!--giá-->
             <div class="column-elements price price-value" style="width: 220px;">
@@ -55,8 +59,8 @@
             </div>
             <!--xoá-->
             <div class="column-elements delete" style="width: 65px;">
-                <form action="cart" method="post">
-                    <input type="hidden" name="productCode" value="PRO003">
+                <form action="removeCart" method="post">
+                    <input type="hidden" name="productCode" value="${lineItem.item.code}">
                     <input type="hidden" name="quantity" value="0">
                     <button onclick="deleteProduct(this)">DELETE</button>
                 </form>
@@ -83,7 +87,9 @@
         <a href="#"><p><strong>Tiếp tục mua hàng</strong></p></a>
     </div>
     <div id="checkout-buttons">
-        <button id="btn-update"><strong>CẬP NHẬT</strong></button>
+        <form action="updateCart" method="post">
+            <button type="submit" id="btn-update"><strong>CẬP NHẬT</strong></button>
+        </form>
         <button id="btn-payment" onclick="window.location.href = 'cartProduct.jsp'"><strong>THANH TOÁN</strong></button>
     </div>
 </section>

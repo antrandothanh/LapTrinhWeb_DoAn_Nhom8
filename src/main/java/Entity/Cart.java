@@ -10,7 +10,7 @@ public class Cart implements Serializable{
     @Id
     @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private User user;
-    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LineItem> items;
     public List<LineItem> getItems() {
         return items;

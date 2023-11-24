@@ -14,7 +14,7 @@ public class LineItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    @ManyToOne
     private Product item;
     private int quantity;
     public Product getItem() {
@@ -26,6 +26,7 @@ public class LineItem implements Serializable {
     public int getQuantity() {
         return quantity;
     }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
