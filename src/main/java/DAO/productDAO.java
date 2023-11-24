@@ -25,22 +25,11 @@ public class productDAO {
             em.close();
         }
     }
-    public static void update(String productCode, String newCode, String newName, long newPrice, String newBrand, String newCollection,
-                              String newType, String newColor, String newIMG, String newDes) {
+    public static void update(Product p) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
         try {
-            Product p = em.find(Product.class, productCode);
-            p.setCode(newCode);
-            p.setName(newName);
-            p.setPrice(newPrice);
-            p.setBrandCode(newBrand);
-            p.setCollection(newCollection);
-            p.setType(newType);
-            p.setColor(newColor);
-            p.setImgURL(newIMG);
-            p.setDescription(newDes);
             em.merge(p);
             trans.commit();
         } catch (Exception e) {
@@ -50,6 +39,31 @@ public class productDAO {
             em.close();
         }
     }
+//    public static void update(String productCode, String newCode, String newName, long newPrice, String newBrand, String newCollection,
+//                              String newType, String newColor, String newIMG, String newDes) {
+//        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+//        EntityTransaction trans = em.getTransaction();
+//        trans.begin();
+//        try {
+//            Product p = em.find(Product.class, productCode);
+//            p.setCode(newCode);
+//            p.setName(newName);
+//            p.setPrice(newPrice);
+//            p.setBrandCode(newBrand);
+//            p.setCollection(newCollection);
+//            p.setType(newType);
+//            p.setColor(newColor);
+//            p.setImgURL(newIMG);
+//            p.setDescription(newDes);
+//            em.merge(p);
+//            trans.commit();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//            trans.rollback();
+//        } finally {
+//            em.close();
+//        }
+//    }
     public static void delete(String productCode) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -97,5 +111,12 @@ public class productDAO {
             em.close();
         }
         return products;
+    }
+    public static boolean productExisted(String productCode) {
+        Product temp = selectProduct( productCode);
+        if (temp == null) {
+            return false;
+        }
+        return true;
     }
 }

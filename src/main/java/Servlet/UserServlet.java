@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import DAO.productDAO;
+import Entity.Product;
 import DAO.FavouriteDAO;
 import Entity.Favourite;
 import Entity.User;
@@ -91,7 +93,7 @@ public class UserServlet extends HttpServlet {
                 message = "Username is existing, please change other username";
                 req.setAttribute("message", message);
             }
-            url = "/adminCustomer.jsp";
+            url = refreshPageForCustomize(req,resp);
         } else if (action.equals("updateCustomer")) {
             String username = req.getParameter("customerUsername");
             if (!UserDAO.userExisted(username)) {
@@ -108,7 +110,7 @@ public class UserServlet extends HttpServlet {
                 message = "Successfully updated";
                 req.setAttribute("message", message);
             }
-            url = "/adminCustomer.jsp";
+            url = refreshPageForCustomize(req,resp);
         } else if (action.equals("removeCustomer")) {
             String username = req.getParameter("customerUsername");
             if (UserDAO.userExisted(username)) {
@@ -119,10 +121,19 @@ public class UserServlet extends HttpServlet {
                 message = "Customer is not found";
             }
             req.setAttribute("message", message);
-            url = "/adminCustomer.jsp";
+            url = refreshPageForCustomize(req,resp);
         }
 
         getServletContext().getRequestDispatcher(url).forward(req, resp);
+    }
+    protected String refreshPageForCustomize(HttpServletRequest request, HttpServletResponse response){
+        // Cập nhật danh sách user trong session
+        HttpSession session = request.getSession();
+        List<User> users = UserDAO.selectUsers();
+        session.setAttribute("users", users);
+
+        String url = "/adminCustomer.jsp";
+        return url;
     }
 
     @Override
