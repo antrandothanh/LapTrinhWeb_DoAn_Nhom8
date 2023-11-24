@@ -25,22 +25,15 @@ public class RemoveCartServlet extends HttpServlet {
         Cart cart = CartDAO.selectCart(user.getId());
         String code =request.getParameter("productCode");
         Product product = productDAO.selectProduct(code);
-        if (indexProductIsFound(product, cart) != -1) {
-            int i = indexProductIsFound(product, cart);
+        if (CartDAO.indexProductIsFound(product, cart) != -1) {
+            int i = CartDAO.indexProductIsFound(product, cart);
             cart.getItems().remove(i);
             CartDAO.update(cart);
         }
         request.setAttribute("cart",cart);
         sc.getRequestDispatcher(url).forward(request, response);
     }
-    public int indexProductIsFound(Product product, Cart cart) {
-        for (int i = 0; i < cart.getItems().size(); i++) {
-            if (cart.getItems().get(i).getItem().getCode().equals(product.getCode())) {
-                return i;
-            }
-        }
-        return -1;
-    }
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

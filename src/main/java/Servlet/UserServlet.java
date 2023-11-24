@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import DAO.FavouriteDAO;
+import Entity.Favourite;
 import Entity.User;
 import Entity.Cart;
 import Entity.LineItem;
@@ -56,6 +58,12 @@ public class UserServlet extends HttpServlet {
                 if (cart == null) {
                     cart = new Cart(user);
                     CartDAO.insert(cart);
+                }
+                Favourite favourite;
+                favourite= FavouriteDAO.selectFavourite(user.getId());
+                if (favourite == null) {
+                    favourite = new Favourite(user);
+                    FavouriteDAO.insert(favourite);
                 }
             }
             else {

@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>CartServlet</servlet-name>
-        <servlet-class>Servlet.CartServlet</servlet-class>
+        <servlet-class>Servlet.Cart.CartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
@@ -56,6 +56,31 @@
     <servlet-mapping>
         <servlet-name>UpdateCartServlet</servlet-name>
         <url-pattern>/updateCart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FavouriteServlet</servlet-name>
+        <servlet-class>Servlet.Favourite.FavouriteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FavouriteServlet</servlet-name>
+        <url-pattern>/favourite</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddFavouriteServlet</servlet-name>
+        <servlet-class>Servlet.Favourite.AddFavouriteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddFavouriteServlet</servlet-name>
+        <url-pattern>/addFavourite</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RemoveFavouriteServlet</servlet-name>
+        <servlet-class>Servlet.Favourite.RemoveFavouriteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveFavouriteServlet</servlet-name>
+        <url-pattern>/removeFavourite</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
