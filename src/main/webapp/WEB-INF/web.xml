@@ -50,14 +50,6 @@
         <url-pattern>/addCart</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>UpdateCartServlet</servlet-name>
-        <servlet-class>Servlet.Cart.UpdateStatusCartServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UpdateCartServlet</servlet-name>
-        <url-pattern>/updateCart</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>Servlet.Cart.PaymentServlet</servlet-class>
     </servlet>
@@ -72,6 +64,14 @@
     <servlet-mapping>
         <servlet-name>UpdateQuantityCartServlet</servlet-name>
         <url-pattern>/updateQuantityCart</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>InvoiceServlet</servlet-name>
+        <servlet-class>Servlet.InvoiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InvoiceServlet</servlet-name>
+        <url-pattern>/invoice</url-pattern>
     </servlet-mapping>
 
     <servlet>

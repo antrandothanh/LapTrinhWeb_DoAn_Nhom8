@@ -24,11 +24,9 @@
         <div class="column-elements delete" style="width: 65px;"></div>
     </div>
 
-
-
     <div id="cart-product">
         <!-- check -->
-        <form action="updateCart" method="post">
+        <form action="payment" method="post">
             <c:forEach var="lineItem" items="${cart.items}" varStatus="loop">
                 <input type="hidden" name="productCode_${loop.index}" value="${lineItem.item.code}">
                 <input type="hidden" name="quantity_${loop.index}" value="${lineItem.quantity}">
@@ -36,7 +34,11 @@
                     <input type="checkbox" name="statusCheckbox_${loop.index}">
                 </div>
             </c:forEach>
-            <input type="submit" value="${lineItem.status}">
+            <div id="checkout-buttons">
+                <button type="submit" id="btn-payment">
+                    <strong>THANH TOÁN</strong>
+                </button>
+            </div>
         </form>
 
         <c:set var="totalPrice" value="0" />
@@ -94,13 +96,6 @@
     <div id="continue-shopping">
         <a href="#"><p><strong>Tiếp tục mua hàng</strong></p></a>
     </div>
-    <form action="payment" method="post">
-        <div id="checkout-buttons">
-            <button type="submit" id="btn-payment">
-                <strong>THANH TOÁN</strong>
-            </button>
-        </div>
-    </form>
 </section>
 <%@include file="footer.jsp"%>
 </body>
