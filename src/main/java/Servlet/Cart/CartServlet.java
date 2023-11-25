@@ -27,8 +27,12 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         Cart cart = CartDAO.selectCart(user.getId());
+        for(int i=0;i<cart.getItems().size();i++)
+        {
+            cart.getItems().get(i).setStatus("False");
+        }
+        CartDAO.update(cart);
         request.setAttribute("cart", cart);
-
         getServletContext().getRequestDispatcher(url).forward(request,response);
     }
     @Override
