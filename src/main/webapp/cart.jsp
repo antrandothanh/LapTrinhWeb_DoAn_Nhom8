@@ -18,7 +18,7 @@
     <div id="title-column" class="border-after">
         <div class="column-elements" style="width: 30px;"></div>
         <div class="column-elements" style="width: 160px;"></div>
-        <div class="column-elements" style="width: 740px; font-weight: 700; margin: 0 auto;">Tên sản phẩm</div>
+        <div class="column-elements" style="width: 445px; font-weight: 700; margin: 0 auto;">Tên sản phẩm</div>
         <div class="column-elements" style="width: 100px; font-weight: 700;">Số lượng</div>
         <div class="column-elements" style="width: 220px; font-weight: 700">Giá tiền</div>
         <div class="column-elements delete" style="width: 65px;"></div>
@@ -26,20 +26,25 @@
 
 
 
-    <div id="cart-product">
+    <div id="cart-product" style="display: flex;flex-direction: row">
         <!-- check -->
-        <form action="updateCart" method="post">
-            <c:forEach var="lineItem" items="${cart.items}" varStatus="loop">
-                <input type="hidden" name="productCode_${loop.index}" value="${lineItem.item.code}">
-                <input type="hidden" name="quantity_${loop.index}" value="${lineItem.quantity}">
-                <div class="column-elements" style="width: 30px;">
-                    <input type="checkbox" name="statusCheckbox_${loop.index}">
-                </div>
-            </c:forEach>
-            <input type="submit" value="${lineItem.status}">
-        </form>
+        <div class="check-box">
+            <form action="updateCart" method="post">
+                <c:forEach var="lineItem" items="${cart.items}" varStatus="loop">
+                    <div class="heii" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                        <input type="hidden" name="productCode_${loop.index}" value="${lineItem.item.code}">
+                        <input type="hidden" name="quantity_${loop.index}" value="${lineItem.quantity}">
+                        <div class="column-elements" style="width: 30px; display: flex; justify-content: center;">
+                            <input type="checkbox" name="statusCheckbox_${loop.index}" style="margin: 0;">
+                        </div>
+                    </div>
+                </c:forEach>
+                <input type="submit" value="xacnhan">
+            </form>
+        </div>
 
         <c:set var="totalPrice" value="0" />
+        <div>
         <c:forEach var="lineItem" items="${cart.items}">
             <div class="cart-product-elements border-after">
 
@@ -48,7 +53,7 @@
                     <a href="#"><img src="${lineItem.item.imgURL}" alt=""></a>
                 </div>
                 <!-- tên -->
-                <div class="column-elements name" style="width: 740px;">
+                <div class="column-elements name" style="width: 445px;">
                     <p><strong>${lineItem.item.name}</strong></p>
                     <p style="font-size: 15px;">MSP: ${lineItem.item.code}</p>
                 </div>
@@ -75,19 +80,18 @@
                     </form>
                 </div>
             </div>
-
             <c:set var="productPrice" value="${lineItem.item.price * lineItem.quantity}"/>
             <c:set var="totalPrice" value="${totalPrice + productPrice}"/>
         </c:forEach>
-
-        <div id="total-price">
-            <div class="column-elements" style="width: 160px;"></div>
-            <div class="column-elements" style="width: 740px; font-weight: 700"></div>
-            <div class="column-elements" style="width: 100px; font-weight: 700"></div>
-            <div class="column-elements" style="width: 220px; font-weight: 700">
-                <fmt:formatNumber value="${totalPrice}" pattern="#,###"/>đ</div>
-            <div class="column-elements" style="width: 65px;"></div>
         </div>
+    </div>
+    <div id="total-price">
+        <div class="column-elements" style="width: 160px;"></div>
+        <div class="column-elements" style="width: 740px; font-weight: 700"></div>
+        <div class="column-elements" style="width: 100px; font-weight: 700"></div>
+        <div class="column-elements" style="width: 220px; font-weight: 700">
+            <fmt:formatNumber value="${totalPrice}" pattern="#,###"/>đ</div>
+        <div class="column-elements" style="width: 65px;"></div>
     </div>
 </section>
 <section id="check-out">

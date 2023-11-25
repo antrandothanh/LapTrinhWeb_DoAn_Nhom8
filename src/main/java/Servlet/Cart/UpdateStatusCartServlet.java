@@ -21,7 +21,6 @@ public class UpdateStatusCartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String url = "/cart.jsp";
         ServletContext sc = getServletContext();
-
         User user = (User)session.getAttribute("user");
         Cart cart = CartDAO.selectCart(user.getId());
 
@@ -39,7 +38,6 @@ public class UpdateStatusCartServlet extends HttpServlet {
                 CartDAO.update(cart);
             }
         }
-
         request.setAttribute("cart", cart);
         sc.getRequestDispatcher(url).forward(request, response);
     }
