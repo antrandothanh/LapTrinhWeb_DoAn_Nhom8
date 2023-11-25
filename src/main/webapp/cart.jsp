@@ -25,11 +25,10 @@
     </div>
 
 
-
     <div id="cart-product" style="display: flex;flex-direction: row">
         <!-- check -->
         <div class="check-box">
-            <form action="updateCart" method="post">
+            <form action="payment" method="post">
                 <c:forEach var="lineItem" items="${cart.items}" varStatus="loop">
                     <div class="heii" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                         <input type="hidden" name="productCode_${loop.index}" value="${lineItem.item.code}">
@@ -39,7 +38,11 @@
                         </div>
                     </div>
                 </c:forEach>
-                <input type="submit" value="xacnhan">
+                <div id="checkout-buttons">
+                    <button type="submit" id="btn-payment">
+                        <strong>THANH TOÁN</strong>
+                    </button>
+                </div>
             </form>
         </div>
 
@@ -98,13 +101,6 @@
     <div id="continue-shopping">
         <a href="#"><p><strong>Tiếp tục mua hàng</strong></p></a>
     </div>
-    <form action="payment" method="post">
-        <div id="checkout-buttons">
-            <button type="submit" id="btn-payment">
-                <strong>THANH TOÁN</strong>
-            </button>
-        </div>
-    </form>
 </section>
 <%@include file="footer.jsp"%>
 </body>

@@ -16,7 +16,7 @@
     margin-top: 100px;
     display: flex;
     flex-direction: row;
-    height: 900px;
+    height: auto;
     margin-left: 129px;
     margin-right: 129px;
 }
@@ -150,8 +150,9 @@ input, select, textarea{
     height: 35px;
 }
 .text-cart span{
-    margin-left: 150px;
+    /*margin-left: 150px;*/
     font-size: 17px;
+    float: right;
 }
 .info-pay span{
     margin-left: 300px;
@@ -164,6 +165,7 @@ input, select, textarea{
 .pay-price{
     font-size: 18px;
     font-weight: bold;
+    float: right;
 }
 .fa-xmark{
     font-size: 10px;

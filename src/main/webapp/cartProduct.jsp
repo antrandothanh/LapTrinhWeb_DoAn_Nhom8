@@ -1,4 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,85 +17,61 @@
 <body>
     <%@include file="header.jsp"%>
     <h2>Thông tin giao hàng</h2>
-    <div class="container-cart">
-        <div class="cart-left">
-            <p>Bạn có Voucher ưu đãi? <a href="#">Áp dụng ngay</a></p>
-            <input class="input-long" type="text" value=" Tên khách hàng">
-            <input class="input-short"  type="text" value=" Địa chỉ email">
-            <input class="input-short"  type="text" value=" Số điện thoại">
-            <input class="input-short"  type="text" value=" Địa chỉ nhận hàng">
-            <select class="input-select" >
-                <option value="0"> Vui lòng chọn</option>
-                <option value="1"> Hà Nội</option>
-                <option value="2"> Vinh</option>
-                <option value="3"> Đà Nẵng</option>
-                <option value="4"> Tp. Hồ Chí Minh</option>
-
-            </select>
-            <textarea class="input-very-long" rows="3" cols="40" > Ghi chú</textarea>
-            <div class="check-method-pay">
-                <div class="member-method-pay"> <input name="method" type="radio"> Chuyển khoản ngân hàng </div>
-                <div class="member-method-pay">
-                    <input name="method" type="radio"> Thanh toán khi giao hàng (C.O.D)
-                    <div>
-                        <p>Giao hàng trên phạm vi toàn quốc.</p>
-                        <p>Quý khách nhận hàng, kiểm tra và thanh toán thông qua các đối tác vận chuyển của Luxury Shopping.</p>
-                    </div>
+    <form action="invoice" method="post">
+        <div class="container-cart">
+            <div class="cart-left">
+                <p>Bạn có Voucher ưu đãi? <a href="#">Áp dụng ngay</a></p>
+                <input class="input-long" type="text" value="${sessionScope.user.name}">
+                <input class="input-short"  type="text" value="${sessionScope.user.email}">
+                <input class="input-short"  type="text" value="${sessionScope.user.phone}">
+                <input class="input-short"  type="text" name="address" value=" Địa chỉ nhận hàng">
+                <select class="input-select" name="province">
+                    <option value=""> Vui lòng chọn</option>
+                    <option value="Hà Nội"> Hà Nội</option>
+                    <option value="Vinh"> Vinh</option>
+                    <option value="Đà Nẵng"> Đà Nẵng</option>
+                    <option value="Tp. Hồ Chí Minh"> Tp. Hồ Chí Minh</option>
+                </select>
+                <textarea class="input-very-long" rows="3" cols="40" name="note"> Ghi chú</textarea>
+                <div class="check-method-pay">
+                    <div class="member-method-pay"> <input name="method" type="radio" checked> Chuyển khoản ngân hàng </div>
+                    <div class="member-method-pay"> <input name="method" type="radio"> Thanh toán bằng tiền mặt </div>
 
                 </div>
-                <div class="member-method-pay"> <input name="method" type="radio"> Thanh toán trước 10% </div>
-                <div class="member-method-pay"> <input name="method" type="radio"> Thanh toán đầy đủ 100% </div>
-                <div class="member-method-pay"> <input name="method" type="radio"> Đăng ký trả góp </div>
-                <div class="member-method-pay"> <input name="method" type="radio"> Trả góp </div>
-
+                <button type="submit">ĐẶT HÀNG</button>
+                <div><input type="checkbox"> Đồng ý với điều khoản & chính sách đặt hàng</div>
             </div>
-            <button>ĐẶT HÀNG</button>
-            <div><input type="checkbox"> Đồng ý với điều khoản & chính sách đặt hàng</div>
-        </div>
-        <div class="cart-right">
-            <div class="info-cart">
-                <div class="info-cart-right">
-                    <div class="product-cart">
-                        <img class="img-cart" src="anh/mini4.webp">
-                        <button class="quantity">1</button>
-                        <button class="move"><i class="fa-solid fa-xmark"></i></button>
-                    </div>
-                    <div class="text-cart">
-                        <p>Frederique Constant Highlife FC-391WN4NH6 Watch 41mm </p>
-                        <p>MSP: 68728</p>
-                        <div>
-                            <button>-</button>
-                            <input type="text" value="1">
-                            <button>+</button>
-                            <span>92,120,900</span>
+            <div class="cart-right">
+                <c:set var="totalPrice" value="0" />
+                <c:forEach var="lineItem" items="${requestScope.listBuy}">
+                    <div class="info-cart">
+                        <div class="info-cart-right">
+                            <div class="product-cart">
+                                <img class="img-cart" src="${lineItem.item.imgURL}" alt="anhDongHo">
+                                <button class="quantity">${lineItem.quantity}</button>
+                                <button class="move"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <div class="text-cart">
+                                <p>${lineItem.item.name}</p>
+                                <p>MSP: ${lineItem.item.code}</p>
+                                <div>
+                                    <span><fmt:formatNumber value="${lineItem.item.price}" pattern="#,###"/>₫</span>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
-                </div>
-                <div class="info-cart-right">
-                    <div class="product-cart">
-                        <img class="img-cart" src="anh/mini1.webp">
-                        <button class="quantity">1</button>
-                        <button class="move"><i class="fa-solid fa-xmark"></i></button>
-                    </div>
-                    <div class="text-cart">
-                        <p>Frederique Constant Highlife FC-391WN4NH6 Watch 41mm </p>
-                        <p>MSP: 68728</p>
-                        <div>
-                            <button>-</button>
-                            <input type="text" value="1">
-                            <button>+</button>
-                            <span>92,120,900</span>
-                        </div>
-                    </div>
-                </div>
+                    <c:set var="productPrice" value="${lineItem.item.price * lineItem.quantity}"/>
+                    <c:set var="totalPrice" value="${totalPrice + productPrice}"/>
+                </c:forEach>
                 <div class="info-pay">
                     <p>Vận chuyển <span> Miễn phí</span></p>
-                    <p >Tổng cộng <span class="pay-price"> 32,995,470</span></p>
+                    <p>Tổng cộng <span class="pay-price"><fmt:formatNumber value="${totalPrice}" pattern="#,###"/>đ</span></p>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
+    </form>
     </body>
     <%@include file="footer.jsp"%>
 </html>
