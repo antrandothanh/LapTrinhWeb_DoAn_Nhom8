@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,6 @@
     <section id="home-section">
         <section id="big-banner">
 <%--            nếu có user thì mới vào trang admin--%>
-            <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <c:choose>
                 <c:when test="${sessionScope.user != null}">
                     <a href="adminCustomer.jsp"><img src="images/home/banner2.png" alt="big-banner"></a>
@@ -29,61 +29,19 @@
         </section>
         <section id="slide-brand">
             <h2 class="name-section">ĐỒNG HỒ HIỆU</h2>
-            <div class="slider-container">
-                <div class="slider">
-                    <div class="brand-slide-items">
-                        <a href="cartier.jsp">
-                            <img src="images/home/cartier.png" alt="cartier">
-                        </a>
-                    </div>
-                    <div class="brand-slide-items">
-                        <a href="chorpard.jsp">
-                            <img src="images/home/chorpard.png" alt="omega">
-                        </a>
-                    </div>
-                    <div class="brand-slide-items">
-                        <a href="rolex.jsp">
-                            <img src="images/home/rolex.png" alt="rolex">
-                        </a>
-                    </div>
-                    <div class="brand-slide-items">
-                        <a href="vacheron.jsp">
-                            <img src="images/home/vacheron.png" alt="vacheron">
-                        </a>
-                    </div>
-                    <div class="brand-slide-items">
-                        <a href="christian.jsp">
-                            <img src="images/home/christian.png" alt="christian">
-                        </a>
-                    </div>
-                    <div class="brand-slide-items">
-                        <a href="patek.jsp">
-                            <img src="images/home/patek.png" alt="patek">
-                        </a>
-                    </div>
-                    <div class="brand-slide-items">
-                        <a href="hublot.jsp">
-                            <img src="images/home/hublot.png" alt="patek">
-                        </a>
-                    </div>
-                    <div class="brand-slide-items">
-                        <a href="omega.jsp">
-                            <img src="images/home/omega.png" alt="cartier">
-                        </a>
-                    </div>
-                    <div class="brand-slide-items">
-                        <a href="cartier.jsp">
-                            <img src="images/home/cartier.png" alt="omega">
-                        </a>
-                    </div>
-                    <div class="brand-slide-items">
-                        <a href="chorpard.jsp">
-                            <img src="images/home/chorpard.png" alt="omega">
-                        </a>
+                <div class="slider-container">
+                    <div class="slider">
+                        <c:forEach var="brand" items="${sessionScope.brands}">
+                            <div class="brand-slide-items">
+                                <a href="${brand.name}.jsp">
+                                    <img src="images/home/${brand.name}.png" alt="cartier">
+                                </a>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
-            </div>
         </section>
+
         <section id="top-brand">
             <h2 class="name-section">TOP THƯƠNG HIỆU</h2>
             <div class="top-brand-box">
@@ -101,114 +59,47 @@
                 </div>
             </div>
         </section>
+
         <section id="new-arrival">
             <h2 class="name-section">NEW ARRIVAL</h2>
             <div class="scrollable-container">
                 <div class="new-arrival-box">
-                    <div class="product-new-arrival-box">
-                        <a href="viewProduct.jsp">
-                            <div class="img-product">
-                                <img src="images/brand-elements/vacheron/dh4.png" alt="dongho1">
-                                <div class="icon-product-new-arrival">
-                                    <button class="icon heart-icon" alt="icon"></button>
-                                    <button class="icon cart-icon" alt="giohang"></button>
+                    <c:forEach var="product" items="${sessionScope.products}" varStatus="loop">
+                        <%
+                            // Đảo ngược danh sách products để lấy 10 sp cuối trong danh sach
+                            java.util.Collections.reverse((java.util.List) session.getAttribute("products"));
+                        %>
+                        <c:if test="${loop.index < 10}">
+                        <div class="product-new-arrival-box">
+                            <a href="viewProduct.jsp">
+                                <div class="img-product">
+                                    <img src="${product.imgURL}" alt="dongho1">
+                                    <div class="icon-product-new-arrival">
+                                        <form action="addFavourite" method="post">
+                                            <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
+                                            <input type="submit" value="Add To Favite">
+                                        </form>
+                                        <form action="addCart" method="get">
+                                            <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
+                                            <input type="submit" value="Add To Cart">
+                                        </form>
+                                    </div>
                                 </div>
-
-                            </div>
-                            <p><strong>Rolex Submariner 124060</strong></p>
-                            <p>Thương hiệu: Vacheron</p>
-                            <p>Mã sản phẩm: </p>
-                            <p> Xuất xứ: Thụy Sĩ</p>
-                            <p class="price">469.000.000₫</p>
-                        </a>
-                    </div>
-                    <div class="product-new-arrival-box">
-                        <a href="#">
-                            <div class="img-product">
-                                <img src="images/brand-elements/omega/dh1.png" alt="dongho2">
-                                <div class="icon-product-new-arrival">
-                                    <button class="icon heart-icon" alt="icon"></button>
-                                    <button class="icon cart-icon" alt="giohang"></button>
+                                <div class="product-info">
+                                    <p><strong>${product.name}</strong></p>
+                                    <p>Thương hiệu: ${product.brand.name}</p>
+                                    <p>Mã sản phẩm: ${product.code}</p>
+                                    <p>Description: Thụy Sĩ</p>
+                                    <p class="price">${product.price}₫</p>
                                 </div>
-
-                            </div>
-                            <p><strong>Rolex Lady-Datejust 28 Chocolate 279171 (Fluted/Jubilee)</strong></p>
-                            <p>Thương hiệu: Omega</p>
-                            <p>Mã sản phẩm: </p>
-                            <p> Xuất xứ: Thụy Sĩ</p>
-                            <p class="price">469.000.000₫</p>
-                        </a>
-                    </div>
-                    <div class="product-new-arrival-box">
-                        <a href="#">
-                            <div class="img-product">
-                                <img src="images/brand-elements/cartier/dh1.png" alt="dongho3">
-                                <div class="icon-product-new-arrival">
-                                    <button class="icon heart-icon" alt="icon"></button>
-                                    <button class="icon cart-icon" alt="giohang"></button>
-                                </div>
-
-                            </div>
-                            <p><strong>Rolex Oyster Perpetual 41 Green 124300</strong></p>
-                            <p>Thương hiệu: Cartier</p>
-                            <p>Mã sản phẩm: </p>
-                            <p> Xuất xứ: Thụy Sĩ</p>
-                            <p class="price">403.000.000₫</p>
-                        </a>
-                    </div>
-                    <div class="product-new-arrival-box">
-                        <a href="#">
-                            <div class="img-product">
-                                <img src="images/brand-elements/hublot/dh1.png" alt="dongho4">
-                                <div class="icon-product-new-arrival">
-                                    <button class="icon heart-icon" alt="icon"></button>
-                                    <button class="icon cart-icon" alt="giohang"></button>
-                                </div>
-
-                            </div>
-                            <p><strong>Rolex Datejust 36 Slate Roman 126234 (Fluted/Jubilee)</strong></p>
-                            <p>Thương hiệu: Hublot</p>
-                            <p>Mã sản phẩm: </p>
-                            <p> Xuất xứ: Thụy Sĩ</p>
-                            <p class="price">431.500.000₫</p>
-                        </a>
-                    </div>
-                    <div class="product-new-arrival-box">
-                        <a href="#">
-                            <div class="img-product">
-                                <img src="images/brand-elements/christian/dh1.png" alt="dongho5">
-                                <div class="icon-product-new-arrival">
-                                    <button class="icon heart-icon" alt="icon"></button>
-                                    <button class="icon cart-icon" alt="giohang"></button>
-                                </div>
-
-                            </div>
-                            <p><strong>Rolex Oyster Perpetual 36 Bright Blue 126000</strong></p>
-                            <p>Thương hiệu: Christian Dior</p>
-                            <p>Mã sản phẩm: </p>
-                            <p> Xuất xứ: Thụy Sĩ</p>
-                            <p class="price">269.000.000₫</p>
-                        </a>
-                    </div>
-                    <div class="product-new-arrival-box">
-                        <a href="#">
-                            <div class="img-product">
-                                <img src="images/brand-elements/patek/dh1.png" alt="dongho6">
-                                <div class="icon-product-new-arrival">
-                                    <button class="icon heart-icon" alt="icon"></button>
-                                    <button class="icon cart-icon" alt="giohang"></button>
-                                </div>
-
-                            </div>
-                            <p><strong>Rolex Datejust 36 Slate Roman 126234 (Fluted/Jubilee)</strong></p>
-                            <p>Thương hiệu: Patek</p>
-                            <p>Mã sản phẩm: </p>
-                            <p> Xuất xứ: Thụy Sĩ</p>
-                            <p class="price">465.500.000₫</p>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                        </c:if>
+                    </c:forEach>
                 </div>
+
             </div>
+
         </section>
         <section  id="gender-for">
             <div class="container-gender-for">
@@ -241,34 +132,6 @@
 
     </section>
 
-    <!-- xử lí khi click vào icon giỏ hàng hoặc yêu thích -->
-    <script>
-        var heartIcons = document.querySelectorAll('.heart-icon');
-        for (var i = 0; i < heartIcons.length; i++)
-        {
-            heartIcons[i].addEventListener('click', function(event) {
-                event.preventDefault();
-                if (this.classList.contains('active')) {
-                    this.classList.remove('active');
-                } else {
-                    this.classList.add('active');
-                }
-            });
-        }
-        var cartIcons = document.querySelectorAll('.cart-icon');
-        for (var j = 0; j < cartIcons.length; j++)
-        {
-            cartIcons[j].addEventListener('click', function(event) {
-                event.preventDefault();
-                if (this.classList.contains('active')) {
-                    this.classList.remove('active');
-                } else {
-                    this.classList.add('active');
-                }
-            });
-        }
-
-    </script>
     <%@include file="footer.jsp"%>
 </body>
 </html>

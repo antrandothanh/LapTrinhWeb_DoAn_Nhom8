@@ -49,8 +49,8 @@ public class PaymentServlet extends HttpServlet {
             if (cart.getItems().get(i).getStatus().equals("True")){
                 LineItem lineItem = cart.getItems().get(i);
                 listBuy.add(lineItem);
-                System.out.println("------------san pham duoc chon---------\n");
-                System.out.println(lineItem.getItem().getCode());
+//                System.out.println("------------san pham duoc chon---------\n");
+//                System.out.println(lineItem.getItem().getCode());
             }
         }
         request.setAttribute("listBuy", listBuy);

@@ -8,15 +8,15 @@ import javax.persistence.Id;
 @Entity
 public class Brand implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String code;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long code;
     private String name;
 
-    public String getCode()
+    public long getCode()
     {
         return code;
     }
-    public void setCode(String code)
+    public void setCode(long code)
     {
         this.code=code;
     }
@@ -29,8 +29,7 @@ public class Brand implements Serializable{
         this.name=name;
     }
     public Brand(){}
-    public Brand(String code, String name){
-        this.code = code;
+    public Brand(String name){
         this.name = name;
     }
 }

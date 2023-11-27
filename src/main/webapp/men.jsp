@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <p><strong>${product.name}</strong></p>
-                            <p>${product.brandCode}</p>
+                            <p>${product.brand.name}</p>
                             <p>Mã sản phẩm: ${product.code}</p>
                             <p>Descripton: ${product.description}</p>
                             <p>Type: ${product.type}</p>
