@@ -48,44 +48,44 @@
 
         <c:set var="totalPrice" value="0" />
         <div>
-        <c:forEach var="lineItem" items="${cart.items}">
-            <div class="cart-product-elements border-after">
+            <c:forEach var="lineItem" items="${cart.items}">
+                <div class="cart-product-elements border-after">
 
-                <!-- ảnh -->
-                <div class="column-elements image">
-                    <a href="#"><img src="${lineItem.item.imgURL}" alt=""></a>
+                    <!-- ảnh -->
+                    <div class="column-elements image">
+                        <a href="#"><img src="${lineItem.item.imgURL}" alt=""></a>
+                    </div>
+                    <!-- tên -->
+                    <div class="column-elements name" style="width: 445px;">
+                        <p><strong>${lineItem.item.name}</strong></p>
+                        <p style="font-size: 15px;">MSP: ${lineItem.item.code}</p>
+                    </div>
+                    <!--số lượng-->
+                    <div class="column-elements quantity" style="width: 100px;">
+                        <form action="updateQuantityCart" method="post">
+                            <button type="submit">a</button>
+                            <button class="quantity-btn minus"></button>
+                            <input type="hidden" name="productCode" value="${lineItem.item.code}">
+                            <input type="number" class="quantity" name="quantity" value="<c:out value='${lineItem.quantity}'/>" min="1">
+                            <button class="quantity-btn plus"></button>
+                        </form>
+                    </div>
+                    <!--giá-->
+                    <div class="column-elements price price-value" style="width: 220px;">
+                        <fmt:formatNumber value="${lineItem.item.price}" pattern="#,###"/>₫
+                    </div>
+                    <!--xoá-->
+                    <div class="column-elements delete" style="width: 65px;">
+                        <form action="removeCart" method="post">
+                            <input type="hidden" name="productCode" value="${lineItem.item.code}">
+                            <input type="hidden" name="quantity" value="0">
+                            <button>DELETE</button>
+                        </form>
+                    </div>
                 </div>
-                <!-- tên -->
-                <div class="column-elements name" style="width: 445px;">
-                    <p><strong>${lineItem.item.name}</strong></p>
-                    <p style="font-size: 15px;">MSP: ${lineItem.item.code}</p>
-                </div>
-                <!--số lượng-->
-                <div class="column-elements quantity" style="width: 100px;">
-                    <form action="updateQuantityCart" method="post">
-                        <button type="submit">a</button>
-                        <button class="quantity-btn minus"></button>
-                        <input type="hidden" name="productCode" value="${lineItem.item.code}">
-                        <input type="number" class="quantity" name="quantity" value="<c:out value='${lineItem.quantity}'/>" min="1">
-                        <button class="quantity-btn plus"></button>
-                    </form>
-                </div>
-                <!--giá-->
-                <div class="column-elements price price-value" style="width: 220px;">
-                    <fmt:formatNumber value="${lineItem.item.price}" pattern="#,###"/>₫
-                </div>
-                <!--xoá-->
-                <div class="column-elements delete" style="width: 65px;">
-                    <form action="removeCart" method="post">
-                        <input type="hidden" name="productCode" value="${lineItem.item.code}">
-                        <input type="hidden" name="quantity" value="0">
-                        <button>DELETE</button>
-                    </form>
-                </div>
-            </div>
-            <c:set var="productPrice" value="${lineItem.item.price * lineItem.quantity}"/>
-            <c:set var="totalPrice" value="${totalPrice + productPrice}"/>
-        </c:forEach>
+                <c:set var="productPrice" value="${lineItem.item.price * lineItem.quantity}"/>
+                <c:set var="totalPrice" value="${totalPrice + productPrice}"/>
+            </c:forEach>
         </div>
     </div>
     <div id="total-price">

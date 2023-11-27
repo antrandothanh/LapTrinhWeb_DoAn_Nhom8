@@ -40,8 +40,9 @@ public class ProductServlet extends HttpServlet {
             url = updateProduct(request, response);
         } else if (action.equals("deleteProduct")) {
             url = deleteProduct(request, response);
+        } else if (action.equals("search")) {
+            url = searchProduct(request, response);
         }
-
 
         getServletContext()
                 .getRequestDispatcher(url)
@@ -139,6 +140,14 @@ public class ProductServlet extends HttpServlet {
         String url = "/adminProduct.jsp";
         return url;
     }
+
+    private String searchProduct(HttpServletRequest request, HttpServletResponse response) {
+        String url = "";
+        List<Product> foundProduct = productDAO.searchProducts(request.getParameter("searchInput"));
+        request.setAttribute("foundProduct", foundProduct);
+        return "/search.jsp";
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
