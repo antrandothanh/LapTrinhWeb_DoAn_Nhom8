@@ -119,4 +119,20 @@ public class productDAO {
         }
         return true;
     }
+
+    public static List<Product> searchProducts(String searchInput) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String query = "SELECT p from Product p WHERE p.name LIKE CONCAT('%',:searchInput,'%')";
+        TypedQuery<Product> q = em.createQuery(query, Product.class);
+        q.setParameter("searchInput", searchInput);
+        List<Product> foundProducts;
+        try {
+            foundProducts = q.getResultList();
+            if (foundProducts == null || foundProducts.isEmpty())
+                foundProducts = null;
+        } finally {
+            em.close();
+        }
+        return foundProducts;
+    }
 }
