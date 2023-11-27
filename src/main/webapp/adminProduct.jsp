@@ -37,7 +37,7 @@
                         <td><c:out value='${product.getCode()}'/></td>
                         <td><c:out value='${product.getName()}'/></td>
                         <td><c:out value='${product.getPrice()}'/></td>
-                        <td><c:out value='${product.getBrandCode()}'/></td>
+                        <td><c:out value='${product.getBrand().getName()}'/></td>
                         <td><c:out value='${product.getCollection()}'/></td>
                         <td><c:out value='${product.getType()}'/></td>
                         <td><c:out value='${product.getColor()}'/></td>
@@ -66,7 +66,7 @@
                         <input type="text" name="productCode" required>
                         <input type="text" name="productName">
                         <input type="text" name="productPrice" value=0>
-                        <input type="text" name="productBrand">
+                        <input type="text" name="productBrandName">
                         <input type="text" name="productCollection">
                         <div class="input-type-radio">
                             <input type="radio" name="productType" value="men">

@@ -48,7 +48,6 @@
 }
 .brand-slide-items{
     max-width: 200px;
-    max-height: auto;
     padding: 20px;
     animation: slide 25s linear infinite;
     flex-shrink: 0; /*giữ nguyên kích thước của nó và không thu nhỏ để vừa với không gian còn lại*/
@@ -64,6 +63,9 @@
     75% { transform: translateX(-300%); }
     95% { transform: translateX(-400%); }
     100% { transform: translateX(-400%); }
+}
+.product-info{
+    bottom: 0;
 }
 /* =================================================== */
 #top-brand {

@@ -129,36 +129,6 @@
 .icon{
     display: flex;
 }
-.icon.heart-icon{
-    background: url('../images/tim-trang.png') no-repeat center center;
-    background-size: contain;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    border: none;
-}
-.icon.heart-icon.active{
-    background: url("../images/tim-den.png");
-    background-size: contain;
-}
-.icon.cart-icon{
-    background: url("../images/cart-trang.png") no-repeat center center;
-    background-size: contain;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    border: none;
-    visibility: hidden;
-    transition: visibility 0.1s ease;
-}
-.box-brand-product-element:hover .icon.cart-icon{
-    visibility: visible;
-}
-.icon.cart-icon.active {
-    background-image: url("../images/cart-den.png");
-    background-size: contain;
-    visibility: visible;
-}
 
 .icon-brand-products input[type="submit"]{
     margin-top: 5px;

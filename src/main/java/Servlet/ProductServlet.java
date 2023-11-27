@@ -1,6 +1,7 @@
 package Servlet;
 
 import DAO.UserDAO;
+import DAO.brandDAO;
 import DAO.productDAO;
 import Entity.Brand;
 import Entity.Category;
@@ -26,6 +27,9 @@ public class ProductServlet extends HttpServlet {
 
         List<Product> products = productDAO.selectProducts();
         session.setAttribute("products", products);
+
+        List<Brand> brands = brandDAO.selectBrands();
+        session.setAttribute("brands", brands);
 
         String action = request.getParameter("action");
         if (action == null) {
@@ -53,16 +57,26 @@ public class ProductServlet extends HttpServlet {
         String productName = request.getParameter("productName");
         String productPriceString = request.getParameter("productPrice");
         long productPrice = Long.parseLong(productPriceString);
-        String productBrandCode = request.getParameter("productBrand");
+        String productBrandName = request.getParameter("productBrandName");
         String productCollection = request.getParameter("productCollection");
         String productType = request.getParameter("productType");
         String productColor = request.getParameter("productColor");
         String productURL_IMG = request.getParameter("productURL_IMG");
         String productDescription = request.getParameter("productDescription");
 
-        Product p = new Product(productCode, productName, productPrice, productBrandCode, productCollection, productType,
-                productColor, productURL_IMG, productDescription);
-
+        Brand brand = brandDAO.selectBrand(productBrandName);
+        Product p = new Product();
+        if (brand == null){
+            Brand b = new Brand();
+            b.setName(productBrandName);
+            brandDAO.insert(b);
+            p = new Product(productCode, productName, productPrice, b, productCollection, productType,
+                    productColor, productURL_IMG, productDescription);
+        }
+        else {
+            p = new Product(productCode, productName, productPrice, brand, productCollection, productType,
+                    productColor, productURL_IMG, productDescription);
+        }
         String message;
         if (!productDAO.productExisted(p.getCode())) {
             productDAO.insert(p);
@@ -89,15 +103,26 @@ public class ProductServlet extends HttpServlet {
         String productPriceString = request.getParameter("productPrice");
         long productPrice = Long.parseLong(productPriceString);
 
-        String productBrandCode = request.getParameter("productBrand");
+        String productBrandName = request.getParameter("productBrandName");
         String productCollection = request.getParameter("productCollection");
         String productType = request.getParameter("productType");
         String productColor = request.getParameter("productColor");
         String productURL_IMG = request.getParameter("productURL_IMG");
         String productDescription = request.getParameter("productDescription");
 
-        Product p = new Product(productCode, productName, productPrice, productBrandCode, productCollection, productType,
-                                productColor, productURL_IMG, productDescription);
+        Brand brand = brandDAO.selectBrand(productBrandName);
+        Product p = new Product();
+        if (brand == null){
+            Brand b = new Brand();
+            b.setName(productBrandName);
+            brandDAO.insert(b);
+            p = new Product(productCode, productName, productPrice, b, productCollection, productType,
+                    productColor, productURL_IMG, productDescription);
+        }
+        else {
+            p = new Product(productCode, productName, productPrice, brand, productCollection, productType,
+                    productColor, productURL_IMG, productDescription);
+        }
         String message;
         if (productDAO.productExisted(p.getCode())){
             productDAO.update(p);

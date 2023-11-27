@@ -99,7 +99,7 @@
 </section>
 <section id="check-out">
     <div id="continue-shopping">
-        <a href="#"><p><strong>Tiếp tục mua hàng</strong></p></a>
+        <a href="index.jsp"><p><strong>Tiếp tục mua hàng</strong></p></a>
     </div>
 </section>
 <%@include file="footer.jsp"%>

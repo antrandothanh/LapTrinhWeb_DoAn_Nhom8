@@ -30,12 +30,11 @@
             <div class="nav-1-children-2">
                 <span><a href="#"><img src="picture/Search_32px.png" alt="search" width="104px"></a>   <!-- logo tìm kiếm--> </span>
                     <form  action="favourite" method="post">
-                        <input type="submit" value="yeuthich" >
-
+                        <input type="submit" value="" class="custom-favorite-button">
                     </form>
                     <form action="cart" method="post">
                         <!--<a href="cart.jsp"><img src="picture/ShoppingBag_32px.png" alt="cart" width="104px"></a>-->
-                        <input type="submit" value="giohang" >
+                        <input type="submit" value="" class="custom-cart-button">
                     </form>
                     <!-- logo giỏ hàng--></span>
                 <%

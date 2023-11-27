@@ -94,7 +94,7 @@
                     <hr/>
                     <div>
                         <span class="text-secondary-d1 text-105">Thank you for your business</span>
-                        <a href="/index.jsp" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0">Countinue Shopping</a>
+                        <a href="index.jsp" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0">Countinue Shopping</a>
                     </div>
                 </div>
 

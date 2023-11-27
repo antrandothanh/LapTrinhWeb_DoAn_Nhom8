@@ -19,7 +19,10 @@ public class AddCartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String url = "/doAnWeb_war_exploded/cart";
+        String contextPath = request.getServletContext().getContextPath();
+
+        // Kết hợp đường dẫn cơ bản với phần còn lại của đường dẫn cụ thể
+        String url = contextPath + "/cart";
 
         ServletContext sc =getServletContext();
         HttpSession session = request.getSession();

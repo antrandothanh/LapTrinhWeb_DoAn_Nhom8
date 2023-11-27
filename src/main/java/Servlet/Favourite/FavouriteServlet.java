@@ -15,9 +15,13 @@ public class FavouriteServlet extends HttpServlet {
         String url="/favourite.jsp";
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
-        Favourite favourite = FavouriteDAO.selectFavourite(user.getId());
-        request.setAttribute("favourite", favourite);
-        getServletContext().getRequestDispatcher(url).forward(request,response);
+        if (user != null) {
+            Favourite favourite = FavouriteDAO.selectFavourite(user.getId());
+            request.setAttribute("favourite", favourite);
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+        } else {
+            response.getWriter().write("Please Login!");
+        }
     }
 
     public int indexProductIsFound(Product product, Favourite favourite) {
