@@ -28,7 +28,7 @@
     <div id="cart-product" style="display: flex;flex-direction: row">
         <!-- check -->
         <div class="check-box">
-            <form action="payment" method="post">
+            <form action="payment" method="post" style="width: 80px">
                 <c:forEach var="lineItem" items="${cart.items}" varStatus="loop">
                     <div class="heii" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                         <input type="hidden" name="productCode_${loop.index}" value="${lineItem.item.code}">
@@ -38,7 +38,10 @@
                         </div>
                     </div>
                 </c:forEach>
-                <div id="checkout-buttons">
+                <div style="height: 85px">
+
+                </div>
+                <div id="checkout-buttons" style="  position: relative;left: 1025px">
                     <button type="submit" id="btn-payment">
                         <strong>THANH TOÁN</strong>
                     </button>
@@ -62,12 +65,12 @@
                     </div>
                     <!--số lượng-->
                     <div class="column-elements quantity" style="width: 100px;">
-                        <form action="updateQuantityCart" method="post">
-                            <button type="submit">a</button>
+                        <form action="updateQuantityCart" method="post" style="display:flex;flex-direction: row">
                             <button class="quantity-btn minus"></button>
                             <input type="hidden" name="productCode" value="${lineItem.item.code}">
                             <input type="number" class="quantity" name="quantity" value="<c:out value='${lineItem.quantity}'/>" min="1">
                             <button class="quantity-btn plus"></button>
+                            <button type="submit">Update</button>
                         </form>
                     </div>
                     <!--giá-->
@@ -86,16 +89,21 @@
                 <c:set var="productPrice" value="${lineItem.item.price * lineItem.quantity}"/>
                 <c:set var="totalPrice" value="${totalPrice + productPrice}"/>
             </c:forEach>
+            <div id="total-price">
+
+                <div class="column-elements" style="width: 160px;"></div>
+                <div class="column-elements" style="width: 445px; font-weight: 700; margin: 0 auto;"></div>
+                <div class="column-elements" style="width: 100px; font-weight: 700;"></div>
+                <div class="column-elements" style="width: 220px; font-weight: 700">
+                    <fmt:formatNumber value="${totalPrice}" pattern="#,###"/>đ
+                </div>
+                <div class="column-elements delete" style="width: 65px;"></div>
+
+            </div>
         </div>
     </div>
-    <div id="total-price">
-        <div class="column-elements" style="width: 160px;"></div>
-        <div class="column-elements" style="width: 740px; font-weight: 700"></div>
-        <div class="column-elements" style="width: 100px; font-weight: 700"></div>
-        <div class="column-elements" style="width: 220px; font-weight: 700">
-            <fmt:formatNumber value="${totalPrice}" pattern="#,###"/>đ</div>
-        <div class="column-elements" style="width: 65px;"></div>
     </div>
+
 </section>
 <section id="check-out">
     <div id="continue-shopping">
