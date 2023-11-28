@@ -98,6 +98,14 @@
         <servlet-name>RemoveFavouriteServlet</servlet-name>
         <url-pattern>/removeFavourite</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SendMail</servlet-name>
+        <servlet-class>Servlet.SendMail</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SendMail</servlet-name>
+        <url-pattern>/sendMail</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
