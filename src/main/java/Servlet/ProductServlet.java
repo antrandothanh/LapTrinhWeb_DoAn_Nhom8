@@ -1,21 +1,16 @@
 package Servlet;
 
-import DAO.UserDAO;
 import DAO.brandDAO;
 import DAO.productDAO;
 import Entity.Brand;
-import Entity.Category;
 import Entity.Product;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sql.rowset.serial.SerialException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServlet extends HttpServlet {
