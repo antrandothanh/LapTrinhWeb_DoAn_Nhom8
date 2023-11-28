@@ -48,11 +48,11 @@ public class InvoiceDAO {
             em.close();
         }
     }
-    public static Invoice selectInvoice(User user) {
+    public static Invoice selectInvoice(long userId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT i FROM Invoice i WHERE i.user = :user";
+        String qString = "SELECT i FROM Invoice i WHERE i.user.id = :userId";
         TypedQuery<Invoice> q = em.createQuery(qString, Invoice.class);
-        q.setParameter("user", user);
+        q.setParameter("userId", userId);
         try {
             Invoice invoice = q.getSingleResult();
             return invoice;
@@ -62,8 +62,9 @@ public class InvoiceDAO {
             em.close();
         }
     }
-    public static boolean invoiceExists(User user) {
-        Invoice i = selectInvoice(user);
+
+    public static boolean invoiceExists(long userId) {
+        Invoice i = selectInvoice(userId);
         return i != null;
     }
     public static List<Invoice> selectInvoices() {

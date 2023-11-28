@@ -25,7 +25,7 @@ public class InvoiceServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        List<LineItem> listBuy = (List<LineItem>) session.getAttribute("listBuy");
+        List<BoughtItem> listBuy = (List<BoughtItem>) session.getAttribute("listBuy");
 
         //xoá lineItem đã mua ra khỏi cart
 
@@ -34,9 +34,11 @@ public class InvoiceServlet extends HttpServlet {
         String province = request.getParameter("province");
         String note = request.getParameter("note");
         Date createdDate = new Date();
-        Invoice invoice = new Invoice(user, listBuy, createdDate, address, note);
 
+        Invoice invoice = new Invoice(user, createdDate, address, note);
         InvoiceDAO.insert(invoice);
+        invoice.setBoughtItems(listBuy);
+        InvoiceDAO.update(invoice);
 
         session.setAttribute("invoice", invoice);
         session.setAttribute("province", province);
