@@ -39,7 +39,6 @@
 
                 </div>
                 <button type="submit">ĐẶT HÀNG</button>
-                <div><input type="checkbox"> Đồng ý với điều khoản & chính sách đặt hàng</div>
             </div>
             <div class="cart-right">
                 <c:set var="totalPrice" value="0" />

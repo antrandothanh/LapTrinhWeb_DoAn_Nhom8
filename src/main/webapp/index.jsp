@@ -17,15 +17,7 @@
     <%@include file="header.jsp"%>
     <section id="home-section">
         <section id="big-banner">
-<%--            nếu có user thì mới vào trang admin--%>
-            <c:choose>
-                <c:when test="${sessionScope.user != null}">
-                    <a href="adminCustomer.jsp"><img src="images/home/banner2.png" alt="big-banner"></a>
-                </c:when>
-                <c:otherwise>
-                    <a href="#"><img src="images/home/banner2.png" alt="big-banner"></a>
-                </c:otherwise>
-            </c:choose>
+            <a href="#"><img src="images/home/banner2.png" alt="big-banner"></a>
         </section>
         <section id="slide-brand">
             <h2 class="name-section">ĐỒNG HỒ HIỆU</h2>
@@ -49,13 +41,13 @@
                     <a href="chorpard.jsp">
                         <img src="images/home/chorpard2.png" alt="box1" style="width:100%;height:100%;">
                     </a>
-                    <div class="brand-name" id="brand-chorpard"></div> <!-- Thêm id tương ứng với hình ảnh thương hiệu -->
+                    <div class="brand-name" id="brand-chorpard"></div>
                 </div>
                 <div class="sub-box">
                     <a href="rolex.jsp">
                         <img src="images/home/rolex2.png" alt="box2" style="width:100%;height:100%;">
                     </a>
-                    <div class="brand-name" id="brand-rolex"></div> <!-- Thêm id tương ứng với hình ảnh thương hiệu -->
+                    <div class="brand-name" id="brand-rolex"></div>
                 </div>
             </div>
         </section>
@@ -71,17 +63,17 @@
                         %>
                         <c:if test="${loop.index < 10}">
                         <div class="product-new-arrival-box">
-                            <a href="viewProduct.jsp">
+                            <a href="loadProducts?action=viewProductDetail&amp;productCode=${product.code}">
                                 <div class="img-product">
                                     <img src="${product.imgURL}" alt="dongho1">
                                     <div class="icon-product-new-arrival">
                                         <form action="addFavourite" method="post">
                                             <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
-                                            <input type="submit" value="Add To Favite">
+                                            <a href="#"><input type="submit" value="" class="favorite-btn"></a>
                                         </form>
                                         <form action="addCart" method="get">
                                             <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
-                                            <input type="submit" value="Add To Cart">
+                                            <a href="#"><input type="submit" value="" class="cart-btn"></a>
                                         </form>
                                     </div>
                                 </div>
@@ -89,7 +81,7 @@
                                     <p><strong>${product.name}</strong></p>
                                     <p>Thương hiệu: ${product.brand.name}</p>
                                     <p>Mã sản phẩm: ${product.code}</p>
-                                    <p>Description: Thụy Sĩ</p>
+                                    <p>Description: ${product.description}</p>
                                     <p class="price">${product.price}₫</p>
                                 </div>
                             </a>

@@ -25,6 +25,9 @@ public class AddFavouriteServlet extends HttpServlet {
         ServletContext sc =getServletContext();
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
+        if (user == null){
+            response.getWriter().write("Please Login!");
+        }
         Favourite favourite = FavouriteDAO.selectFavourite(user.getId());
         Product product = productDAO.selectProduct(request.getParameter("productCode"));
         if (FavouriteDAO.indexProductIsFound(product, favourite) == -1) {

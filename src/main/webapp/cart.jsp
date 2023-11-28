@@ -41,7 +41,7 @@
                 <div style="height: 85px">
 
                 </div>
-                <div id="checkout-buttons" style="  position: relative;left: 1025px">
+                <div id="checkout-buttons" style="position: relative;left: 1025px; top: -50px; width: 200px">
                     <button type="submit" id="btn-payment">
                         <strong>THANH TOÁN</strong>
                     </button>
@@ -89,17 +89,6 @@
                 <c:set var="productPrice" value="${lineItem.item.price * lineItem.quantity}"/>
                 <c:set var="totalPrice" value="${totalPrice + productPrice}"/>
             </c:forEach>
-            <div id="total-price">
-
-                <div class="column-elements" style="width: 160px;"></div>
-                <div class="column-elements" style="width: 445px; font-weight: 700; margin: 0 auto;"></div>
-                <div class="column-elements" style="width: 100px; font-weight: 700;"></div>
-                <div class="column-elements" style="width: 220px; font-weight: 700">
-                    <fmt:formatNumber value="${totalPrice}" pattern="#,###"/>đ
-                </div>
-                <div class="column-elements delete" style="width: 65px;"></div>
-
-            </div>
         </div>
     </div>
     </div>

@@ -21,6 +21,16 @@
 .buy h1{
     margin-top: 0px;
 }
+.buy p{
+    font-size: 24px;
+}
+.collection{
+    color: #40E0D0;
+}
+.price{
+    color: #a60101;
+    font-weight: 700;
+}
 .img-max img{
     max-width: 100%;
     max-height: 100%;

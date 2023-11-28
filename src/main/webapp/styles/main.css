@@ -64,9 +64,7 @@
     95% { transform: translateX(-400%); }
     100% { transform: translateX(-400%); }
 }
-.product-info{
-    bottom: 0;
-}
+
 /* =================================================== */
 #top-brand {
     height: 550px;
@@ -175,7 +173,35 @@
 }
 .img-product{
     overflow: hidden;
+    position: relative;
+    height: 370px;
 }
+.product-info{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.favorite-btn{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    background-image: url("../picture/addtofavorite.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.9s;
+}
+.cart-btn{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    background-image: url("../picture/addtocart.png");
+    background-size: contain; /* Đảm bảo hình ảnh vừa với kích thước của nút */
+    background-repeat: no-repeat;
+    transition: transform 0.9s;
+}
+
 .product-new-arrival-box img{
     transition: transform 0.9s;
     width: 100%;
@@ -197,46 +223,6 @@
     top: 0;
     right: 0;
     padding: 20px;
-}
-
-.icon-product-new-arrival .icon{
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-}
-.icon-product-new-arrival .icon:hover{
-    transform: scale(1.0);
-}
-.icon-product-new-arrival .icon.heart-icon {
-    background: url("../images/tim-trang.png") no-repeat center center;
-    background-size: contain;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    border: none;
-}
-
-.icon-product-new-arrival .icon.heart-icon.active {
-    background: url("../images/tim-den.png") no-repeat center center;
-    background-size: contain;
-}
-.icon-product-new-arrival .icon.cart-icon {
-    background-image: url("../images/cart-trang.png");
-    background-size: contain;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    border: none;
-    visibility: hidden;
-    transition: visibility 0.1s ease;
-}
-.icon-product-new-arrival .icon.cart-icon.active {
-    background-image: url("../images/cart-den.png");
-    background-size: contain;
-    visibility: visible;
-}
-.product-new-arrival-box:hover .icon.cart-icon {
-    visibility: visible;
 }
 
 /* ======================================= */
