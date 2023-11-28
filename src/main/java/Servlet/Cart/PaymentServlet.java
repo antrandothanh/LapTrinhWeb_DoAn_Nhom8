@@ -1,11 +1,9 @@
 package Servlet.Cart;
 
+import DAO.BoughtItemDAO;
 import DAO.CartDAO;
 import DAO.productDAO;
-import Entity.Cart;
-import Entity.LineItem;
-import Entity.Product;
-import Entity.User;
+import Entity.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,12 +41,14 @@ public class PaymentServlet extends HttpServlet {
 
         //vao trang dat hang
         String url = "/cartProduct.jsp";
-        List<LineItem> listBuy = new ArrayList<>();
+        List<BoughtItem> listBuy = new ArrayList<>();
 
         for (int i=0; i<cart.getItems().size(); i++){
             if (cart.getItems().get(i).getStatus().equals("True")){
                 LineItem lineItem = cart.getItems().get(i);
-                listBuy.add(lineItem);
+                BoughtItem boughtItem = new BoughtItem(lineItem.getItem(), lineItem.getQuantity());
+                BoughtItemDAO.insert(boughtItem);
+                listBuy.add(boughtItem);
 //                System.out.println("------------san pham duoc chon---------\n");
 //                System.out.println(lineItem.getItem().getCode());
             }
