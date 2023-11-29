@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,16 +13,13 @@
 <body>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 <div class="card">
     <div class="card-top border-bottom text-center">
-        <a href="#"> Back to shop</a>
-        <span id="logo">BBBootstrap.com</span>
+        <a href="index.jsp"> Back to shop</a>
+        <span id="logo">PAYMENT</span>
     </div>
     <div class="card-body">
         <div class="row upper">
-            <span><i class="fa fa-check-circle-o"></i> Shopping bag</span>
-            <span><i class="fa fa-check-circle-o"></i> Order details</span>
             <span id="payment"><span id="three">3</span>Payment</span>
         </div>
         <div class="row">
@@ -47,35 +46,27 @@
                                 <input id="cvv">
                             </div>
                         </div>
-                        <input type="checkbox" id="save_card" class="align-left">
-                        <label for="save_card">Save card details to wallet</label>
                     </form>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="right border">
                     <div class="header">Order Summary</div>
-                    <p>2 items</p>
+                    <c:forEach var="lineItem" items="${sessionScope.listBuy}">
                     <div class="row item">
-                        <div class="col-4 align-self-center"><img class="img-fluid" src="https://i.imgur.com/79M6pU0.png"></div>
+                        <div class="col-4 align-self-center"><img class="img-fluid" src="${lineItem.item.imgURL}"></div>
                         <div class="col-8">
-                            <div class="row"><b>$ 26.99</b></div>
-                            <div class="row text-muted">Be Legandary Lipstick-Nude rose</div>
-                            <div class="row">Qty:1</div>
+                            <div class="row"><b><fmt:formatNumber value="${lineItem.item.price}" pattern="#,###"/>VND</b></div>
+                            <div class="row text-muted">${lineItem.item.name}</div>
+                            <div class="row">Qty: ${lineItem.quantity}</div>
                         </div>
                     </div>
-                    <div class="row item">
-                        <div class="col-4 align-self-center"><img class="img-fluid" src="https://i.imgur.com/Ew8NzKr.jpg"></div>
-                        <div class="col-8">
-                            <div class="row"><b>$ 19.99</b></div>
-                            <div class="row text-muted">Be Legandary Lipstick-Sheer Navy Cream</div>
-                            <div class="row">Qty:1</div>
-                        </div>
-                    </div>
+                    </c:forEach>
+
                     <hr>
                     <div class="row lower">
                         <div class="col text-left">Subtotal</div>
-                        <div class="col text-right">$ 46.98</div>
+                        <div class="col text-right"><fmt:formatNumber value="${requestScope.totalPrice}" pattern="#,###"/>VND</div>
                     </div>
                     <div class="row lower">
                         <div class="col text-left">Delivery</div>
@@ -83,7 +74,7 @@
                     </div>
                     <div class="row lower">
                         <div class="col text-left"><b>Total to pay</b></div>
-                        <div class="col text-right"><b>$ 46.98</b></div>
+                        <div class="col text-right"><b><fmt:formatNumber value="${requestScope.totalPrice}" pattern="#,###"/>VND</b></div>
                     </div>
                     <div class="row lower">
                         <div class="col text-left"><a href="#"><u>Add promo code</u></a></div>
