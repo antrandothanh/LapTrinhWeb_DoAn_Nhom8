@@ -41,6 +41,8 @@ public class ProductServlet extends HttpServlet {
             url = deleteProduct(request, response);
         } else if (action.equals("search")) {
             url = searchProduct(request, response);
+        } else if (action.equals("viewProductDetail")) {
+            url = viewProductDetail(request, response);
         }
 
         getServletContext()
@@ -166,6 +168,17 @@ public class ProductServlet extends HttpServlet {
         List<Product> foundProduct = productDAO.searchProducts(request.getParameter("searchInput"));
         request.setAttribute("foundProduct", foundProduct);
         return "/search.jsp";
+    }
+    private String viewProductDetail(HttpServletRequest request, HttpServletResponse response){
+        String url = "/viewProduct.jsp";
+        String productCode = request.getParameter("productCode");
+        Product product = productDAO.selectProduct(productCode);
+        Brand brand = brandDAO.selectBrandByCode(product.getBrand().getCode());
+
+        request.setAttribute("product", product);
+        request.setAttribute("brand", brand);
+
+        return url;
     }
 
     @Override

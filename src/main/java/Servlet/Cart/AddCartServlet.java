@@ -27,6 +27,9 @@ public class AddCartServlet extends HttpServlet {
         ServletContext sc =getServletContext();
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
+        if (user == null){
+            response.getWriter().write("Please Login!");
+        }
         Cart cart = CartDAO.selectCart(user.getId());
         Product product = productDAO.selectProduct(request.getParameter("productCode"));
         if (CartDAO.indexProductIsFound(product, cart) != -1) {

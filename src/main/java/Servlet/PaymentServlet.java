@@ -1,4 +1,4 @@
-package Servlet.Cart;
+package Servlet;
 
 import DAO.BoughtItemDAO;
 import DAO.CartDAO;

@@ -53,26 +53,28 @@
 
                     <!-- Hiển thị sản phẩm -->
                     <div class="box-brand-product-element">     <!-- 1 sản phẩm trong hàng 1 -->
-                        <a href="viewProduct.jsp?productCode=${product.code}">
+                        <a href="loadProducts?action=viewProductDetail&amp;productCode=${product.code}">
                             <div class="img-product">
                                 <img src="${product.imgURL}" alt="dongho${product.code}">
                                 <div class="icon-brand-products">
                                     <form action="addFavourite" method="post">
                                         <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
-                                        <input type="submit" value="Add To Favite">
+                                        <a href="#"><input type="submit" value="" class="favorite-btn"></a>
                                     </form>
                                     <form action="addCart" method="get">
                                         <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
-                                        <input type="submit" value="Add To Cart">
+                                        <a href="#"><input type="submit" value="" class="cart-btn"></a>
                                     </form>
                                 </div>
                             </div>
-                            <p><strong>${product.name}</strong></p>
-                            <p>${product.brand.name}</p>
-                            <p>Mã sản phẩm: ${product.code}</p>
-                            <p>Descripton: ${product.description}</p>
-                            <p>Type: ${product.type}</p>
-                            <p class="price">${product.price}₫</p>
+                            <div class="input-of-product">
+                                <p><strong>${product.name}</strong></p>
+                                <p>${product.brand.name}</p>
+                                <p>Mã sản phẩm: ${product.code}</p>
+                                <p>Descripton: ${product.description}</p>
+                                <p>Type: ${product.type}</p>
+                                <p class="price">${product.price}₫</p>
+                            </div>
                         </a>
                     </div>
 

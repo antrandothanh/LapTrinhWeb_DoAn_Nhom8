@@ -51,7 +51,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>PaymentServlet</servlet-name>
-        <servlet-class>Servlet.Cart.PaymentServlet</servlet-class>
+        <servlet-class>Servlet.PaymentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
