@@ -2,6 +2,10 @@
 
 /*    font-size: 14px;*/
 /*}*/
+.info-deliver{
+    margin-left: 200px;
+    margin-top: 50px;
+}
 .cart-left{
     width: 60%;
 }
@@ -11,9 +15,10 @@
 }
 .cart-right{
     width: 40%;
+    margin-left: 20px;
 }
 .container-cart{
-    margin-top: 100px;
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     height: auto;
@@ -155,7 +160,7 @@ input, select, textarea{
     float: right;
 }
 .info-pay span{
-    margin-left: 300px;
+    margin-left: 200px;
 }
 .info-pay{
     margin-left: 20px;
@@ -165,7 +170,7 @@ input, select, textarea{
 .pay-price{
     font-size: 18px;
     font-weight: bold;
-    float: right;
+    margin-left: 200px;
 }
 .fa-xmark{
     font-size: 10px;

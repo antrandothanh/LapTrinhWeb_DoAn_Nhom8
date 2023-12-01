@@ -1,4 +1,6 @@
-
+.page-content container{
+    margin-bottom: 50px;
+}
 body{
   margin-top:20px;
   color: #484b51;
@@ -115,3 +117,7 @@ hr {
 .align-bottom {
     vertical-align: bottom!important;
 }
+.thank{
+    margin-bottom: 30px;
+}
+

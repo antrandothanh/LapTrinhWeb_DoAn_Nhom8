@@ -3,7 +3,13 @@
     margin: 0;
     font-family: Arial;
 }
-
+.content-container{
+    max-width: 1200px;
+    max-height: 620px;
+    overflow: scroll;
+    border: 2px solid #0001;
+    background-color: #EFECEA;
+}
 .admin-information-container {
     margin: 50px 200px 80px 200px;
     background-color: #ffff;

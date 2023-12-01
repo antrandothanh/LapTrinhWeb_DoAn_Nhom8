@@ -6,7 +6,7 @@
 </head>
 <body>
 <section class="side-bar">
-    <a class="active" href="index.jsp">Quay lại trang chủ</a>
+    <a href="index.jsp">Quay lại trang chủ</a>
     <a href="adminInformation.jsp">Thông tin cá nhân</a>
     <a href="adminProduct.jsp">Sản phẩm</a>
     <a href="adminCustomer.jsp">Khách hàng</a>

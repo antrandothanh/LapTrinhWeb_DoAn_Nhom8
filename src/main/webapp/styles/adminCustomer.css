@@ -3,7 +3,13 @@
     margin: 0;
     font-family: Arial;
 }
-
+.content-container{
+    max-width: 1200px;
+    max-height: 620px;
+    overflow: scroll;
+    border: 2px solid #0001;
+    background-color: #EFECEA;
+}
 .list-of-customer-container {
     background-color: #ffff;
     border-radius: 10px;
@@ -12,48 +18,62 @@
     padding-top: 50px;
     margin: 0 auto;
 }
-
 .edit-customer-container {
-    margin: 30px 200px 0px 200px;
+    margin: 20px 150px 0px 150px;
     background-color: #ffff;
     border-radius: 10px;
-    height: 300px;
+    height: 260px;
 }
 
 .label-of-customer {
     width: 50%;
+    height: auto;
 }
 
 .label-of-customer label {
     display: block;
-    margin-bottom: 10px;
-    margin-left: 250px;
+    margin-bottom: 20px;
+    margin-left: 100px;
 }
 
 .input-of-customer {
     width: 50%;
+    height: auto;
 }
 
 .input-of-customer input[type="text"] {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    width: 300px;
 }
 
 .button-container {
     margin-left: 300px;
     margin-top: 20px
 }
-
 .button-container button {
-    width: 50px;
+    padding: 10px 20px;
+    background-color: #393939;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(59,59,59);
+}
+.button-container button:hover{
+    background-color: rgb(239,236,234);
+    color: rgb(59, 59, 59);
 }
 #customers-table {
-    width: 100%;
+    width: auto;
     height: 90%;
     border-collapse: collapse;  /*viền k có khoảng trống mà nối liền vs nhau*/
-    overflow-y: auto;           /*thanh cuộn*/
+    overflow-y: auto;
+    overflow-x: auto;/*thanh cuộn*/
     display: block;
     max-height: 400px; /* Thay đổi chiều cao tối đa cho phù hợp */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 #customers-table th, #customers-table td {
     padding: 8px;

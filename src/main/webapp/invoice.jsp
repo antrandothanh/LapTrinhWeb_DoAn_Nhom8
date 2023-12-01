@@ -78,7 +78,7 @@
                                     NOTE
                                 </div>
                                 <div class="col-5">
-                                    <span class="text-150 text-success-d3 opacity-2">${sessionScope.invoice.note}</span>
+                                    <span>${sessionScope.invoice.note}</span>
                                 </div>
                             </div>
                             <div class="row my-2 align-items-center bgc-primary-l3 p-2">
@@ -86,17 +86,17 @@
                                     TOTAL PRICE
                                 </div>
                                 <div class="col-5">
-                                    <span class="text-150 text-success-d3 opacity-2"><fmt:formatNumber value="${requestScope.totalPrice}" pattern="#,###"/>VND</span>
+                                    <span><fmt:formatNumber value="${requestScope.totalPrice}" pattern="#,###"/>VND</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <hr/>
-                    <div>
+                    <div class="thank">
                         <span class="text-secondary-d1 text-105">Thank you for your business</span>
-                        <a href="payment.jsp" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0">Countinue Shopping</a>
+                        <a href="payment.jsp" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0" style="margin-top: 10px">Countinue Shopping</a>
                         <form action="sendMail" method="post">
-                            <button type="submit">guimail</button>
+                            <button type="submit" style="margin-top: 10px">Send mail for me</button>
                         </form>
                     </div>
                 </div>

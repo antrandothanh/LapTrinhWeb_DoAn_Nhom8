@@ -17,7 +17,7 @@
     </section>
     <section class="content-container" style="height: 800px">
         <div class="content-title">
-            Điều chỉnh sản phẩm
+            Sản phẩm
         </div>
         <div class="list-of-product-container">
             <table id="products-table">

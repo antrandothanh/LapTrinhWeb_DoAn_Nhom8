@@ -49,8 +49,6 @@ public class PaymentServlet extends HttpServlet {
                 BoughtItem boughtItem = new BoughtItem(lineItem.getItem(), lineItem.getQuantity());
                 BoughtItemDAO.insert(boughtItem);
                 listBuy.add(boughtItem);
-//                System.out.println("------------san pham duoc chon---------\n");
-//                System.out.println(lineItem.getItem().getCode());
             }
         }
         request.setAttribute("listBuy", listBuy);
