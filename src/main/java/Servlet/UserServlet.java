@@ -16,6 +16,7 @@ import Entity.LineItem;
 import DAO.UserDAO;
 import DAO.CartDAO;
 import DAO.LineItemDAO;
+import data.CookieUtil;
 
 
 public class UserServlet extends HttpServlet {
@@ -40,6 +41,7 @@ public class UserServlet extends HttpServlet {
 
             if (!UserDAO.userExisted(user.getUsername())) {
                 UserDAO.insert(user);
+
                 url = "/login.jsp";
             } else {
                 req.setAttribute("user", user);
@@ -55,6 +57,13 @@ public class UserServlet extends HttpServlet {
                 User user;
                 user = UserDAO.selectUser(username);
                 session.setAttribute("user", user);
+
+                //cookie
+                Cookie cookie = new Cookie("usernameCookie", user.getUsername());
+                cookie.setMaxAge(60*60*24); //đặt 1 ngày
+                cookie.setPath("/"); //cho phép tất cả các page có thể lấy thông tin từ cookie này
+                resp.addCookie(cookie);
+
                 Cart cart;
                 cart = CartDAO.selectCart(user.getId());
                 if (cart == null) {
@@ -75,6 +84,14 @@ public class UserServlet extends HttpServlet {
             }
         } else if (action.equals("logout")) {
             session.removeAttribute("user");
+
+            //Xoá cookie
+            Cookie[] cookies = req.getCookies();
+            for (Cookie cookie : cookies) {
+                cookie.setMaxAge(0); //delete the cookie
+                cookie.setPath("/"); //allow the download application to access it
+                resp.addCookie(cookie);
+            }
             url = "/index.jsp";
         } else if (action.equals("addCustomer")) {
             User customer = new User();
@@ -122,6 +139,23 @@ public class UserServlet extends HttpServlet {
             }
             req.setAttribute("message", message);
             url = refreshPageForCustomize(req,resp);
+        } else if (action.equals("customerEditInformation")) {
+            // Khách hàng tự thay đổi thông tin cá nhân
+
+            User user = UserDAO.selectUser(req.getParameter("username"));
+
+            user.setPassword(req.getParameter("password"));
+            String name = new String(req.getParameter("name").getBytes("iso-8859-1"), "UTF-8");
+            user.setName(name);
+            String address = new String(req.getParameter("address").getBytes("iso-8859-1"), "UTF-8");
+            user.setAddress(address);
+            user.setEmail(req.getParameter("email"));
+            user.setPhone(req.getParameter("phone"));
+
+            UserDAO.update(user);
+            session.setAttribute("user", user);
+
+            url = "/userPage.jsp";
         }
 
         getServletContext().getRequestDispatcher(url).forward(req, resp);
