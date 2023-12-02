@@ -54,7 +54,24 @@ public class brandDAO {
             em.close();
         }
     }
-    public static Brand selectBrand(String code) {
+    public static Brand selectBrand(String name) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT b FROM Brand b " +
+                "WHERE b.name = :name";
+        TypedQuery<Brand> q = em.createQuery(qString, Brand.class);
+        q.setParameter("name", name);
+        try {
+            Brand brand = q.getSingleResult();
+            return brand;
+        }
+        catch (NoResultException e) {
+            return null;
+        }
+        finally {
+            em.close();
+        }
+    }
+    public static Brand selectBrandByCode(long code) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT b FROM Brand b " +
                 "WHERE b.code = :code";

@@ -66,20 +66,36 @@
     width: auto;
 }
 
-.nav-1-children-2 {
+.nav-1-children-2{
     width: 40%;
     display: flex;
     padding-left: 300px;
 }
 
-.nav-1-children-2 span {
-    width: 25px;
+.nav-1-children-2 span ,
+.nav-1-children-2 input[type="submit"]{
+    width: 32px;
     margin-top: 4em;
     margin-left: 50px;
 }
 
 .nav-1-children-2 img {
     width: 20px;
+}
+
+.custom-favorite-button{
+    border: none;
+    background: none;
+    background-image: url("../picture/Heart_32px.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.custom-cart-button{
+    border: none;
+    background: none;
+    background-image: url("../picture/ShoppingBag_32px.png");
+    background-size: contain; /* Đảm bảo hình ảnh vừa với kích thước của nút */
+    background-repeat: no-repeat;
 }
 
 hr {

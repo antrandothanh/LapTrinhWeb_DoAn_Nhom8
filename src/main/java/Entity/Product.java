@@ -12,18 +12,18 @@ public class Product implements Serializable{
     private String code;
     private String name;
     private long price;
-    private String brandCode;
+    @OneToOne
+    private Brand brand;
     private String collection;
     private String type;
     private String color;
     private String imgURL;
     private String description;
-    public String getBrandCode() {
-        return brandCode;
+    public Brand getBrand() {
+        return brand;
     }
-
-    public void setBrandCode(String brandCode) {
-        this.brandCode = brandCode;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
     public String getType() {
         return type;
@@ -89,12 +89,12 @@ public class Product implements Serializable{
         this.imgURL = imgURL;
     }
     public Product(){}
-    public Product(String code, String name, long price, String brandCode, String collection,
+    public Product(String code, String name, long price, Brand brand, String collection,
                    String type, String color, String imgURL, String description){
         this.code = code;
         this.name = name;
         this.price = price;
-        this.brandCode = brandCode;
+        this.brand = brand;
         this.collection = collection;
         this.type = type;
         this.color = color;

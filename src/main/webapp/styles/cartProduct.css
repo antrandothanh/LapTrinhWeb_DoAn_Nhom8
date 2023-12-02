@@ -2,6 +2,10 @@
 
 /*    font-size: 14px;*/
 /*}*/
+.info-deliver{
+    margin-left: 200px;
+    margin-top: 50px;
+}
 .cart-left{
     width: 60%;
 }
@@ -11,12 +15,13 @@
 }
 .cart-right{
     width: 40%;
+    margin-left: 20px;
 }
 .container-cart{
-    margin-top: 100px;
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
-    height: 900px;
+    height: auto;
     margin-left: 129px;
     margin-right: 129px;
 }
@@ -150,11 +155,12 @@ input, select, textarea{
     height: 35px;
 }
 .text-cart span{
-    margin-left: 150px;
+    /*margin-left: 150px;*/
     font-size: 17px;
+    float: right;
 }
 .info-pay span{
-    margin-left: 300px;
+    margin-left: 200px;
 }
 .info-pay{
     margin-left: 20px;
@@ -164,6 +170,7 @@ input, select, textarea{
 .pay-price{
     font-size: 18px;
     font-weight: bold;
+    margin-left: 200px;
 }
 .fa-xmark{
     font-size: 10px;

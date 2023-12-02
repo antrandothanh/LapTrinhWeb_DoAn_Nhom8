@@ -1,11 +1,21 @@
 package Servlet;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import DAO.productDAO;
+import Entity.Product;
+import DAO.FavouriteDAO;
+import Entity.Favourite;
 import Entity.User;
+import Entity.Cart;
+import Entity.LineItem;
 import DAO.UserDAO;
+import DAO.CartDAO;
+import DAO.LineItemDAO;
 
 
 public class UserServlet extends HttpServlet {
@@ -45,6 +55,18 @@ public class UserServlet extends HttpServlet {
                 User user;
                 user = UserDAO.selectUser(username);
                 session.setAttribute("user", user);
+                Cart cart;
+                cart = CartDAO.selectCart(user.getId());
+                if (cart == null) {
+                    cart = new Cart(user);
+                    CartDAO.insert(cart);
+                }
+                Favourite favourite;
+                favourite= FavouriteDAO.selectFavourite(user.getId());
+                if (favourite == null) {
+                    favourite = new Favourite(user);
+                    FavouriteDAO.insert(favourite);
+                }
             }
             else {
                 url = "/login.jsp";
@@ -71,7 +93,7 @@ public class UserServlet extends HttpServlet {
                 message = "Username is existing, please change other username";
                 req.setAttribute("message", message);
             }
-            url = "/adminCustomer.jsp";
+            url = refreshPageForCustomize(req,resp);
         } else if (action.equals("updateCustomer")) {
             String username = req.getParameter("customerUsername");
             if (!UserDAO.userExisted(username)) {
@@ -88,7 +110,7 @@ public class UserServlet extends HttpServlet {
                 message = "Successfully updated";
                 req.setAttribute("message", message);
             }
-            url = "/adminCustomer.jsp";
+            url = refreshPageForCustomize(req,resp);
         } else if (action.equals("removeCustomer")) {
             String username = req.getParameter("customerUsername");
             if (UserDAO.userExisted(username)) {
@@ -99,10 +121,19 @@ public class UserServlet extends HttpServlet {
                 message = "Customer is not found";
             }
             req.setAttribute("message", message);
-            url = "/adminCustomer.jsp";
+            url = refreshPageForCustomize(req,resp);
         }
 
         getServletContext().getRequestDispatcher(url).forward(req, resp);
+    }
+    protected String refreshPageForCustomize(HttpServletRequest request, HttpServletResponse response){
+        // Cập nhật danh sách user trong session
+        HttpSession session = request.getSession();
+        List<User> users = UserDAO.selectUsers();
+        session.setAttribute("users", users);
+
+        String url = "/adminCustomer.jsp";
+        return url;
     }
 
     @Override

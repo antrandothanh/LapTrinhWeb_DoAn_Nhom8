@@ -8,48 +8,48 @@
     <link rel="stylesheet" type="text/css" href="styles/adminProduct.css"/>
 </head>
 <body>
+<section>
+    <jsp:include page="adminHeader.jsp"/>
+</section>
+<section style="display: flex">
     <section>
-        <jsp:include page="adminHeader.jsp"/>
+        <jsp:include page="adminSideBar.jsp"/>
     </section>
-    <section style="display: flex">
-        <section>
-            <jsp:include page="adminSideBar.jsp"/>
-        </section>
-        <section class="content-container" style="height: 800px">
-            <div class="content-title">
-                Điều chỉnh sản phẩm
-            </div>
-            <div class="list-of-product-container">
-                <table id="products-table">
+    <section class="content-container" style="height: 800px">
+        <div class="content-title">
+            Sản phẩm
+        </div>
+        <div class="list-of-product-container">
+            <table id="products-table">
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Brand</th>
+                    <th>Collection</th>
+                    <th>Type</th>
+                    <th>Color</th>
+                    <th>IMG</th>
+                    <th>Description</th>
+                </tr>
+                <c:forEach var="product" items="${sessionScope.products}">
                     <tr>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Brand</th>
-                        <th>Collection</th>
-                        <th>Type</th>
-                        <th>Color</th>
-                        <th>IMG</th>
-                        <th>Description</th>
+                        <td><c:out value='${product.getCode()}'/></td>
+                        <td><c:out value='${product.getName()}'/></td>
+                        <td><c:out value='${product.getPrice()}'/></td>
+                        <td><c:out value='${product.getBrand().getName()}'/></td>
+                        <td><c:out value='${product.getCollection()}'/></td>
+                        <td><c:out value='${product.getType()}'/></td>
+                        <td><c:out value='${product.getColor()}'/></td>
+                        <td><c:out value='${product.getImgURL()}'/></td>
+                        <td><c:out value='${product.getDescription()}'/></td>
                     </tr>
-                    <c:forEach var="product" items="${sessionScope.products}">
-                        <tr>
-                            <td><c:out value='${product.getCode()}'/></td>
-                            <td><c:out value='${product.getName()}'/></td>
-                            <td><c:out value='${product.getPrice()}'/></td>
-                            <td><c:out value='${product.getBrandCode()}'/></td>
-                            <td><c:out value='${product.getCollection()}'/></td>
-                            <td><c:out value='${product.getType()}'/></td>
-                            <td><c:out value='${product.getColor()}'/></td>
-                            <td><c:out value='${product.getImgURL()}'/></td>
-                            <td><c:out value='${product.getDescription()}'/></td>
-                        </tr>
-                    </c:forEach>
+                </c:forEach>
 
-                </table>
-            </div>
-            <div class="edit-product-container">
-                <form action="loadProducts" method="get" id="productForm">
+            </table>
+        </div>
+        <div class="edit-product-container">
+            <form action="loadProducts" method="get" id="productForm">
                 <div style="display: flex; padding-top: 20px">
                     <div class="label-of-product">
                         <label>Mã sản phẩm:</label>
@@ -63,10 +63,10 @@
                         <label>Mô tả:</label>
                     </div>
                     <div class="input-of-product">
-                        <input type="text" name="productCode">
+                        <input type="text" name="productCode" required>
                         <input type="text" name="productName">
-                        <input type="text" name="productPrice">
-                        <input type="text" name="productBrand">
+                        <input type="text" name="productPrice" value=0>
+                        <input type="text" name="productBrandName">
                         <input type="text" name="productCollection">
                         <div class="input-type-radio">
                             <input type="radio" name="productType" value="men">
@@ -80,24 +80,16 @@
 
                     </div>
                 </div>
-                    <div class="button-container">
-                        <input type="hidden" name="action" id="actionField" value="">
-                        <input id="add-product" type="button" value="Thêm" onclick="submitForm('addProduct')">
-                        <input id="update-product" type="button" value="Sửa" onclick="submitForm('updateProduct')">
-                        <input id="delete-product" type="button" value="Xoá" onclick="submitForm('deleteProduct')">
-                    </div>
-                </form>
-            </div>
-            </div>
-        </section>
+                <div class="button-container">
+                    <p id="message" style="color: red; font-weight: 700">${message}</p>
+                    <button type="submit" name="action" value="addProduct">Thêm</button>
+                    <button type="submit" name="action" value="updateProduct">Sửa</button>
+                    <button type="submit" name="action" value="deleteProduct">Xoá</button>
+                </div>
+            </form>
+        </div>
+        </div>
     </section>
-
-<%--    sự kiện cho button thêm, xoá, sửa--%>
-    <script>
-        function submitForm(action) {
-            document.getElementById("actionField").value = action;
-            document.getElementById("productForm").submit();
-        }
-    </script>
+</section>
 </body>
 </html>

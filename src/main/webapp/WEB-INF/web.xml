@@ -27,17 +27,96 @@
 
     <servlet>
         <servlet-name>CartServlet</servlet-name>
-        <servlet-class>Servlet.CartServlet</servlet-class>
+        <servlet-class>Servlet.Cart.CartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/cart</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RemoveCartServlet</servlet-name>
+        <servlet-class>Servlet.Cart.RemoveCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveCartServlet</servlet-name>
+        <url-pattern>/removeCart</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddCartServlet</servlet-name>
+        <servlet-class>Servlet.Cart.AddCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCartServlet</servlet-name>
+        <url-pattern>/addCart</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>Servlet.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateQuantityCartServlet</servlet-name>
+        <servlet-class>Servlet.Cart.UpdateQuantityCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateQuantityCartServlet</servlet-name>
+        <url-pattern>/updateQuantityCart</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>InvoiceServlet</servlet-name>
+        <servlet-class>Servlet.InvoiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InvoiceServlet</servlet-name>
+        <url-pattern>/invoice</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>FavouriteServlet</servlet-name>
+        <servlet-class>Servlet.Favourite.FavouriteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FavouriteServlet</servlet-name>
+        <url-pattern>/favourite</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddFavouriteServlet</servlet-name>
+        <servlet-class>Servlet.Favourite.AddFavouriteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddFavouriteServlet</servlet-name>
+        <url-pattern>/addFavourite</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RemoveFavouriteServlet</servlet-name>
+        <servlet-class>Servlet.Favourite.RemoveFavouriteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveFavouriteServlet</servlet-name>
+        <url-pattern>/removeFavourite</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SendMail</servlet-name>
+        <servlet-class>Servlet.SendMail</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SendMail</servlet-name>
+        <url-pattern>/sendMail</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddMoney</servlet-name>
+        <servlet-class>Servlet.MoneyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddMoney</servlet-name>
+        <url-pattern>/addMoney</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-
     <welcome-file-list>
         <welcome-file>loadProducts</welcome-file>
     </welcome-file-list>

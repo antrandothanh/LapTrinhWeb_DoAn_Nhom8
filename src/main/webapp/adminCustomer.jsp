@@ -31,7 +31,7 @@
         </section>
         <section class="content-container" style="height: 800px">
             <div class="content-title">
-                Quản lí tài khoản khách hàng
+                Khách hàng
             </div>
             <div class="list-of-customer-container">
                 <table id="customers-table">
@@ -55,6 +55,7 @@
                     </c:forEach>
                 </table>
             </div>
+            <jsp:useBean id="user" scope="session" class="Entity.User"></jsp:useBean>
             <form action="manageCustomer" method="post">
                 <div class="edit-customer-container">
                     <div style="display: flex; padding-top: 20px">
@@ -67,20 +68,20 @@
                             <label>Địa chỉ:</label>
                         </div>
                         <div class="input-of-customer">
-                            <input type="text" name="customerUsername">
-                            <input type="text" name="customerPassword">
-                            <input type="text" name="customerName">
-                            <input type="text" name="customerEmail">
-                            <input type="text" name="customerPhone">
-                            <input type="text" name="customerAddress">
+                            <input type="text" name="customerUsername" value="<jsp:getProperty name="user" property="username"/>" required>
+                            <input type="text" name="customerPassword" value="<jsp:getProperty name="user" property="password"/>" required>
+                            <input type="text" name="customerName" value="<jsp:getProperty name="user" property="name"/>" required>
+                            <input type="text" name="customerEmail" value="<jsp:getProperty name="user" property="email"/>" required>
+                            <input type="text" name="customerPhone" value="<jsp:getProperty name="user" property="phone"/>" required>
+                            <input type="text" name="customerAddress" value="<jsp:getProperty name="user" property="address"/>" required>
                         </div>
                     </div>
                     <div class="button-container">
+                        <p id="message" style="color: red; font-weight: 700">${message}</p>
                         <button type="submit" name="action" value="addCustomer">Thêm</button>
                         <button type="submit" name="action" value="updateCustomer">Sửa</button>
                         <button type="submit" name="action" value="removeCustomer">Xoá</button>
                     </div>
-                    <p>${message}</p>
                 </div>
             </form>
             </div>

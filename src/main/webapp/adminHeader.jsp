@@ -17,7 +17,7 @@
         </div>
         <div class="name-of-section-and-admin">
             <span id="title-section">TRANG QUẢN TRỊ VIÊN</span>
-            <span id="admin-name">Xin chào <%=user.getName()%></span>
+            <span id="admin-name">Xin chào <strong><%=user.getName()%></strong></span>
         </div>
     </section>
 </html>
