@@ -17,6 +17,10 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String address;
+
+
+
+    private Long money;
     public long getId() {
         return id;
     }
@@ -69,5 +73,12 @@ public class User implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+    public Long getMoney() {
+        return money;
+    }
+
+    public void setMoney(Long money) {
+        this.money = money;
     }
 }

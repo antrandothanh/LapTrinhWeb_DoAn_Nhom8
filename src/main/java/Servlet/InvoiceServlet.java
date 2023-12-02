@@ -28,24 +28,34 @@ public class InvoiceServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         List<BoughtItem> listBuy = (List<BoughtItem>) session.getAttribute("listBuy");
-
-        //xoá lineItem đã mua ra khỏi cart
+        String url = "/invoice.jsp";
 
         //tạo hoá đơn, chuyển về trang hoá đơn
         String address = request.getParameter("address");
         String province = request.getParameter("province");
         String note = request.getParameter("note");
         Date createdDate = new Date();
-
         Invoice invoice = new Invoice(user, createdDate, address, note);
-        InvoiceDAO.insert(invoice);
         invoice.setBoughtItems(listBuy);
+        long totalPrice = invoice.getTotalPrice();
+        long updateMoney = user.getMoney() - totalPrice;
+        if (updateMoney < 0){
+            url = "/addMoney.jsp";
+            getServletContext()
+                    .getRequestDispatcher(url)
+                    .forward(request, response);
+            return;
+        }
+
+        InvoiceDAO.insert(invoice);
         InvoiceDAO.update(invoice);
 
         session.setAttribute("invoice", invoice);
         session.setAttribute("province", province);
-        long totalPrice = invoice.getTotalPrice();
         request.setAttribute("totalPrice", totalPrice);
+
+        user.setMoney(updateMoney);
+        UserDAO.update(user);
 
         //gui mail
         // Construct HTML body
@@ -62,7 +72,6 @@ public class InvoiceServlet extends HttpServlet {
         String toEmail = user.getEmail();
         emailService.sendHtmlContent(toEmail, "Order confirmation", htmlBody);
 
-        String url = "/invoice.jsp";
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);

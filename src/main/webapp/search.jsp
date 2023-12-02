@@ -8,11 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
     <link rel="stylesheet" href="styles/brand-elements.css">
+    <link rel="stylesheet" href="styles/searchmenu.css">
+
 </head>
 <body>
     <%@include file="header.jsp"%>
-    <div>
-        <form method="post" action="loadProducts">
+    <div style="margin-top: 30px;margin-bottom: 30px">
+        <form method="post" action="loadProducts" style="display: flex;justify-content: center;text-align: center;justify-items: center;">
+                <div class="dropdown">
+                    <button class="dropbtn">Tùy Chọn</button>
+                    <div class="dropdown-content">
+                        <button style="border-color:white;background-color: #3e8e41;width: 200px;color: white;" name="action" value="minToMax" type="submit">Sắp Xếp Tăng Dần</button>
+                        <button  style="border-color:white;background-color: #3e8e41;width: 200px;color: white;" name="action" value="maxToMin" type="submit">Sắp Xếp Giảm Dần</button>
+                        <button  style="border-color:white;background-color: #3e8e41;width: 200px;color: white;"  name="action" value="more500" type="submit">Trên 500 Triệu</button>
+                        <button  style="border-color:white;background-color: #3e8e41;width: 200px;color: white;"  name="action" value="less500" type="submit">Dưới 500 Triệu</button>
+                    </div>
+                </div>
             <input type="text" name="searchInput">
             <input type="submit" value="Search">
             <input type="hidden" name="action" value="search">

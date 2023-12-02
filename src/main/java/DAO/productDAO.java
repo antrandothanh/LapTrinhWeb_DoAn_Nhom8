@@ -135,4 +135,64 @@ public class productDAO {
         }
         return foundProducts;
     }
+    public static List<Product> getProductsMore500M() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String query = "SELECT p FROM Product p WHERE p.price > 5000000";
+        TypedQuery<Product> q = em.createQuery(query, Product.class);
+        List<Product> highPriceProducts;
+        try {
+            highPriceProducts = q.getResultList();
+            if (highPriceProducts == null || highPriceProducts.isEmpty()) {
+                highPriceProducts = null;
+            }
+        } finally {
+            em.close();
+        }
+        return highPriceProducts;
+    }
+    public static List<Product> getProductsLess500M() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String query = "SELECT p FROM Product p WHERE p.price < 5000000";
+        TypedQuery<Product> q = em.createQuery(query, Product.class);
+        List<Product> highPriceProducts;
+        try {
+            highPriceProducts = q.getResultList();
+            if (highPriceProducts == null || highPriceProducts.isEmpty()) {
+                highPriceProducts = null;
+            }
+        } finally {
+            em.close();
+        }
+        return highPriceProducts;
+    }
+    public static List<Product> getProductsMinToMax() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String query = "SELECT p FROM Product p ORDER BY p.price ASC";
+        TypedQuery<Product> q = em.createQuery(query, Product.class);
+        List<Product> sortedProducts;
+        try {
+            sortedProducts = q.getResultList();
+            if (sortedProducts == null || sortedProducts.isEmpty()) {
+                sortedProducts = null;
+            }
+        } finally {
+            em.close();
+        }
+        return sortedProducts;
+    }
+    public static List<Product> getProductsMaxToMin() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String query = "SELECT p FROM Product p ORDER BY p.price DESC";
+        TypedQuery<Product> q = em.createQuery(query, Product.class);
+        List<Product> sortedProducts;
+        try {
+            sortedProducts = q.getResultList();
+            if (sortedProducts == null || sortedProducts.isEmpty()) {
+                sortedProducts = null;
+            }
+        } finally {
+            em.close();
+        }
+        return sortedProducts;
+    }
 }

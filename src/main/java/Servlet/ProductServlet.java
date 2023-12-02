@@ -41,6 +41,14 @@ public class ProductServlet extends HttpServlet {
             url = deleteProduct(request, response);
         } else if (action.equals("search")) {
             url = searchProduct(request, response);
+        } else if (action.equals("minToMax")) {
+            url = searchProductMinToMax(request, response);
+        } else if (action.equals("maxToMin")) {
+            url = searchProductMaxToMin(request, response);
+        } else if (action.equals("less500")) {
+            url = searchProductLess500M(request, response);
+        } else if (action.equals("more500")) {
+            url = searchProductMore500M(request, response);
         } else if (action.equals("viewProductDetail")) {
             url = viewProductDetail(request, response);
         }
@@ -166,6 +174,30 @@ public class ProductServlet extends HttpServlet {
     private String searchProduct(HttpServletRequest request, HttpServletResponse response) {
         String url = "";
         List<Product> foundProduct = productDAO.searchProducts(request.getParameter("searchInput"));
+        request.setAttribute("foundProduct", foundProduct);
+        return "/search.jsp";
+    }
+    private String searchProductMore500M(HttpServletRequest request, HttpServletResponse response) {
+        String url = "";
+        List<Product> foundProduct = productDAO.getProductsMore500M();
+        request.setAttribute("foundProduct", foundProduct);
+        return "/search.jsp";
+    }
+    private String searchProductLess500M(HttpServletRequest request, HttpServletResponse response) {
+        String url = "";
+        List<Product> foundProduct = productDAO.getProductsLess500M();
+        request.setAttribute("foundProduct", foundProduct);
+        return "/search.jsp";
+    }
+    private String searchProductMinToMax(HttpServletRequest request, HttpServletResponse response) {
+        String url = "";
+        List<Product> foundProduct = productDAO.getProductsMinToMax();
+        request.setAttribute("foundProduct", foundProduct);
+        return "/search.jsp";
+    }
+    private String searchProductMaxToMin(HttpServletRequest request, HttpServletResponse response) {
+        String url = "";
+        List<Product> foundProduct = productDAO.getProductsMaxToMin();
         request.setAttribute("foundProduct", foundProduct);
         return "/search.jsp";
     }
