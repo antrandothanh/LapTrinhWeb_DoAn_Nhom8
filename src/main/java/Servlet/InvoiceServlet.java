@@ -2,6 +2,8 @@ package Servlet;
 
 import DAO.*;
 import Entity.*;
+import Service.EmailService;
+import Service.EmailServiceImpl;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -44,6 +46,21 @@ public class InvoiceServlet extends HttpServlet {
         session.setAttribute("province", province);
         long totalPrice = invoice.getTotalPrice();
         request.setAttribute("totalPrice", totalPrice);
+
+        //gui mail
+        // Construct HTML body
+        String htmlBody = "<html><head><meta charset=\"UTF-8\"></head><body>";
+        htmlBody += "<p>Invoice id: " + invoice.getCode() + "</p>";
+        htmlBody += "<p>User name: " + invoice.getUser().getName() + "</p>";
+        htmlBody += "<p>Address: " + invoice.getAddress() + "</p>";
+        htmlBody += "<p>Created date: " + invoice.getCreatedDate() + "</p>";
+        htmlBody += "<p>Total Price: " + totalPrice + "VND</p>";
+        htmlBody += "</body></html>";
+
+        // Send email with HTML body
+        EmailService emailService = new EmailServiceImpl();
+        String toEmail = user.getEmail();
+        emailService.sendHtmlContent(toEmail, "Order confirmation", htmlBody);
 
         String url = "/invoice.jsp";
         getServletContext()

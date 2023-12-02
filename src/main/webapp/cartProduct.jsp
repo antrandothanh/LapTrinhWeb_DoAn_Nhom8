@@ -23,15 +23,15 @@
                 <input class="input-long" type="text" value="${sessionScope.user.name}" readonly>
                 <input class="input-short"  type="text" value="${sessionScope.user.email}" readonly>
                 <input class="input-short"  type="text" value="${sessionScope.user.phone}" readonly>
-                <input class="input-short"  type="text" name="address" value=" Địa chỉ nhận hàng">
-                <select class="input-select" name="province">
+                <input class="input-short"  type="text" name="address" placeholder="Địa chỉ nhận hàng" required>
+                <select class="input-select" name="province" required>
                     <option value=""> Vui lòng chọn</option>
                     <option value="Hà Nội"> Hà Nội</option>
                     <option value="Vinh"> Vinh</option>
                     <option value="Đà Nẵng"> Đà Nẵng</option>
                     <option value="Tp. Hồ Chí Minh"> Tp. Hồ Chí Minh</option>
                 </select>
-                <textarea class="input-very-long" rows="3" cols="40" name="note"> Ghi chú</textarea>
+                <textarea class="input-very-long" rows="3" cols="40" name="note" placeholder="Ghi chú"></textarea>
 
                 <button type="submit">ĐẶT HÀNG</button>
             </div>

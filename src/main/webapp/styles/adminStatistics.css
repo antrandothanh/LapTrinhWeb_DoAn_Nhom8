@@ -1,0 +1,100 @@
+h2{
+    font-size: 24px;
+    font-weight: 700;
+}
+.content-container{
+    max-width: 1200px;
+    max-height: 620px;
+    overflow: scroll;
+    border: 2px solid #0001;
+    background-color: #EFECEA;
+}
+.tableList {
+    width: 600px;
+    height: 90%;
+    border-collapse: collapse;  /*viền k có khoảng trống mà nối liền vs nhau*/
+    overflow-y: auto;
+    overflow-x: auto;/*thanh cuộn*/
+    display: block;
+    max-height: 400px; /* Thay đổi chiều cao tối đa cho phù hợp */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.tableList th, .tableList td {
+    padding: 8px;
+    border: 1px solid #393939;
+}
+.tableList th {
+    background-color: #393939;
+    color: white;
+    position: sticky; /*vị trí cố định khi cuộn trang (khi cuộn thì cái hàng tiêu đề vẫn đứng đó)*/
+    top: 0;
+}
+.list-of-invoice,
+.list-of-boughts{
+    padding: 10px;
+    margin: 0 auto;
+    background-color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center; /*căn giữa chiều ngang */
+    align-items: center; /* căn giữa chiều dọc */
+    font-size: 20px;
+}
+.all-invoices{
+
+}
+.best{
+    width: 500px;
+    height: 425px;
+    background-color: #EFECEA;
+    margin-left: 20px;
+    text-align: center;
+    justify-content: center;
+    margin: 40px auto;
+}
+.best h3{
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #a60101;
+}
+.best img{
+    width: 250px;
+    height: 250px;
+}
+.best label{
+    margin-bottom: 10px;
+    display: block;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.Revenue{
+    padding: 10px;
+    margin: 0 auto;
+    background-color: white;
+    text-align: center;
+    justify-content: center; /*căn giữa chiều ngang */
+    align-items: center; /* căn giữa chiều dọc */
+    font-size: 20px;
+}
+.revenue-box{
+    width: 80%;
+    height: 200px;
+    background-color: #393939;
+    text-align: center;
+    justify-content: center;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+}
+.revenue-box label{
+    margin-top: 10px;
+    padding: 10px;
+    color: white;
+}
+.revenue-box span{
+    color: #40E0D0;
+}
+

@@ -20,12 +20,12 @@
                 <label>Address:</label>
             </div>
             <div class="input">
-                <input type="text" name="username">
-                <input type="text" name="password">
-                <input type="text" name="name">
-                <input type="text" name="email">
-                <input type="text" name="phone">
-                <input type="text" name="address">
+                <input type="text" name="username" required>
+                <input type="text" name="password" required>
+                <input type="text" name="name" required>
+                <input type="email" name="email" required>
+                <input type="text" name="phone" required>
+                <input type="text" name="address" required>
             </div>
         </div>
         <input type="submit" value="Sign up">

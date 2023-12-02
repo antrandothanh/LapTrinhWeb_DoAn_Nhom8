@@ -21,8 +21,11 @@ import DAO.LineItemDAO;
 public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+        resp.setContentType("text/html");
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
 
+        HttpSession session = req.getSession();
         String url="/index.jsp";
 
         String action=req.getParameter("action");

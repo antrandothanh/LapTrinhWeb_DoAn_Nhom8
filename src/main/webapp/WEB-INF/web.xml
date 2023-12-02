@@ -73,6 +73,14 @@
         <servlet-name>InvoiceServlet</servlet-name>
         <url-pattern>/invoice</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>StatisticServlet</servlet-name>
+        <servlet-class>Servlet.StatisticServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StatisticServlet</servlet-name>
+        <url-pattern>/statistic</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>FavouriteServlet</servlet-name>

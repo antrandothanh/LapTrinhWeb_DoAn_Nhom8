@@ -10,8 +10,8 @@ import java.util.Properties;
 
 
 public class EmailServiceImpl implements EmailService {
-    private static final String FROM = "gmailae";
-    private static final String PASS = "aenhapmk";
+    private static final String FROM = "hunggsamm@gmail.com";
+    private static final String PASS = "rdrefbgglnvojtmw";
 
     @Override
     public void sendHtmlContent(String toEmail, String subject, String htmlBody) {
@@ -34,7 +34,8 @@ public class EmailServiceImpl implements EmailService {
             emailMessage.setSubject(subject);
 
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
-            mimeBodyPart.setContent(htmlBody, "text/html");
+            // Create MimeBodyPart with UTF-8 encoding
+            mimeBodyPart.setContent(htmlBody, "text/html; charset=UTF-8");
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(mimeBodyPart);
             emailMessage.setContent(multipart);

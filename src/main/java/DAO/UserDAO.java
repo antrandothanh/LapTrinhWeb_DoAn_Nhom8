@@ -111,4 +111,9 @@ public class UserDAO {
             } return false;
         }
     }
+    public static int AmountOfCustomer(){
+        List<User> users = selectUsers();
+        int quantity = users.size();
+        return quantity;
+    }
 }
