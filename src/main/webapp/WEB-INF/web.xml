@@ -106,10 +106,17 @@
         <servlet-name>SendMail</servlet-name>
         <url-pattern>/sendMail</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AddMoney</servlet-name>
+        <servlet-class>Servlet.MoneyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddMoney</servlet-name>
+        <url-pattern>/addMoney</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-
     <welcome-file-list>
         <welcome-file>loadProducts</welcome-file>
     </welcome-file-list>
