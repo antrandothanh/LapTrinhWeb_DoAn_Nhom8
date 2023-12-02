@@ -57,6 +57,7 @@
             <a href="brand.jsp">THƯƠNG HIỆU</a>
             <a href="men.jsp">ĐỒNG HỒ NAM</a>
             <a href="women.jsp">ĐỒNG HỒ NỮ</a>
+            <a href="addMoney.jsp">NẠP TIỀN</a>
             <%
                 if (user != null && user.getUsername().contains("ADMIN")) {
                     %>
