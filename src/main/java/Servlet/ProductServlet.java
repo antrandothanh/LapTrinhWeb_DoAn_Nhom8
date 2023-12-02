@@ -1,15 +1,15 @@
 package Servlet;
 
+import DAO.UserDAO;
 import DAO.brandDAO;
 import DAO.productDAO;
 import Entity.Brand;
 import Entity.Product;
+import Entity.User;
+import data.CookieUtil;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -32,6 +32,22 @@ public class ProductServlet extends HttpServlet {
         }
         String url = "/index.jsp";
         if (action.equals("home")) {
+            //kiểm tra user có trong cookie
+            //lấy User từ trong cookie ra
+            User user = (User) session.getAttribute("user");
+
+            if (user == null || user.equals("")) {
+                Cookie[] cookies = request.getCookies();
+                String username = CookieUtil.getCookieValue(cookies, "usernameCookie");
+
+                //Cookie được tìm thấy
+                if (username != null && !username.equals("")) {
+                    user = UserDAO.selectUser(username);
+                    session.setAttribute("user", user);
+                }
+            }
+            //
+
             url = "/index.jsp";
         } else if (action.equals("addProduct")) {
             url = addProduct(request, response);
