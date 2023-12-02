@@ -31,7 +31,7 @@
         </section>
         <section class="content-container" style="height: 800px">
             <div class="content-title">
-                Quản lí tài khoản khách hàng
+                Khách hàng
             </div>
             <div class="list-of-customer-container">
                 <table id="customers-table">

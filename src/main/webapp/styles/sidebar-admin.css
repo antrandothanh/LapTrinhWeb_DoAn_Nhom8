@@ -11,6 +11,7 @@
     font-family: Arial;
     min-width: 250px;
     background-color: #F5F5F5;
+    padding-top: 20px;
 }
 
 .side-bar a {
@@ -20,12 +21,7 @@
     text-decoration: none;
 }
 
-.active {
-    background-color: #E8C287;
-    color: white;
-}
-
-.side-bar a:hover:not(.active) {
+.side-bar a:hover{
     background-color: #555;
     color: white;
 }

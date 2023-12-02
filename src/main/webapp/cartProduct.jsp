@@ -16,14 +16,13 @@
 </head>
 <body>
     <%@include file="header.jsp"%>
-    <h2>Thông tin giao hàng</h2>
+    <h2 class="info-deliver">Thông tin giao hàng</h2>
     <form action="invoice" method="post">
         <div class="container-cart">
             <div class="cart-left">
-                <p>Bạn có Voucher ưu đãi? <a href="#">Áp dụng ngay</a></p>
-                <input class="input-long" type="text" value="${sessionScope.user.name}">
-                <input class="input-short"  type="text" value="${sessionScope.user.email}">
-                <input class="input-short"  type="text" value="${sessionScope.user.phone}">
+                <input class="input-long" type="text" value="${sessionScope.user.name}" readonly>
+                <input class="input-short"  type="text" value="${sessionScope.user.email}" readonly>
+                <input class="input-short"  type="text" value="${sessionScope.user.phone}" readonly>
                 <input class="input-short"  type="text" name="address" value=" Địa chỉ nhận hàng">
                 <select class="input-select" name="province">
                     <option value=""> Vui lòng chọn</option>
@@ -33,11 +32,7 @@
                     <option value="Tp. Hồ Chí Minh"> Tp. Hồ Chí Minh</option>
                 </select>
                 <textarea class="input-very-long" rows="3" cols="40" name="note"> Ghi chú</textarea>
-                <div class="check-method-pay">
-                    <div class="member-method-pay"> <input name="method" type="radio" checked> Chuyển khoản ngân hàng </div>
-                    <div class="member-method-pay"> <input name="method" type="radio"> Thanh toán bằng tiền mặt </div>
 
-                </div>
                 <button type="submit">ĐẶT HÀNG</button>
             </div>
             <div class="cart-right">

@@ -21,14 +21,12 @@
         </div>
         <div class="nav-1">
             <div class = "nav-1-children-1">
-                <span><a href="#"><img src="picture/ThemeButton_32px.png" alt="Theme"></a></span>
-                <span><a href="#"><img src="picture/Mobile_32px.png" alt="Phone"></a></span>
+                <span><a href="search.jsp"><img src="picture/Search_32px.png" alt="search" width="104px"></a>   <!-- logo tìm kiếm--> </span>
             </div>
             <div class="logo">
                 <a href="index.jsp"><img src="picture/logo.png" alt="logo" width="104px"></a>   <!-- logo cửa hàng -->
             </div>
             <div class="nav-1-children-2">
-                <span><a href="search.jsp"><img src="picture/Search_32px.png" alt="search" width="104px"></a>   <!-- logo tìm kiếm--> </span>
                     <form  action="favourite" method="post">
                         <input type="submit" value="" class="custom-favorite-button">
                     </form>
