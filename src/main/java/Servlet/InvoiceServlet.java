@@ -39,7 +39,7 @@ public class InvoiceServlet extends HttpServlet {
         invoice.setBoughtItems(listBuy);
         long totalPrice = invoice.getTotalPrice();
         long updateMoney = user.getMoney() - totalPrice;
-        if (updateMoney < 0){
+        if (updateMoney < 0){   //k đủ tiền
             url = "/addMoney.jsp";
             getServletContext()
                     .getRequestDispatcher(url)

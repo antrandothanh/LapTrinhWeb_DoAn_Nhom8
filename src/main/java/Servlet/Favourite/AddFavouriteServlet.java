@@ -1,8 +1,7 @@
 package Servlet.Favourite;
 
-import DAO.CartDAO;
 import DAO.FavouriteDAO;
-import DAO.productDAO;
+import DAO.ProductDAO;
 import Entity.*;
 
 import javax.servlet.ServletContext;
@@ -29,7 +28,7 @@ public class AddFavouriteServlet extends HttpServlet {
             response.getWriter().write("Please Login!");
         }
         Favourite favourite = FavouriteDAO.selectFavourite(user.getId());
-        Product product = productDAO.selectProduct(request.getParameter("productCode"));
+        Product product = ProductDAO.selectProduct(request.getParameter("productCode"));
         if (FavouriteDAO.indexProductIsFound(product, favourite) == -1) {
             favourite.getProducts().add(product);
             FavouriteDAO.update(favourite);

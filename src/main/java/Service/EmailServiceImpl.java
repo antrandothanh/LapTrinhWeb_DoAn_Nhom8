@@ -17,9 +17,9 @@ public class EmailServiceImpl implements EmailService {
     public void sendHtmlContent(String toEmail, String subject, String htmlBody) {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");             //cổng kết nối an toàn
+        props.put("mail.smtp.auth", "true");            //xác thực email trước khi gửi
+        props.put("mail.smtp.starttls.enable", "true"); //thiết lập kết nối bảo mật
 
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {

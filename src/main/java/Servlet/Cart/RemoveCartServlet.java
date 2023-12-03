@@ -1,8 +1,7 @@
 package Servlet.Cart;
 
 import DAO.CartDAO;
-import DAO.LineItemDAO;
-import DAO.productDAO;
+import DAO.ProductDAO;
 import Entity.Cart;
 import Entity.Product;
 import Entity.*;
@@ -24,7 +23,7 @@ public class RemoveCartServlet extends HttpServlet {
         User user = (User)session.getAttribute("user");
         Cart cart = CartDAO.selectCart(user.getId());
         String code =request.getParameter("productCode");
-        Product product = productDAO.selectProduct(code);
+        Product product = ProductDAO.selectProduct(code);
         if (CartDAO.indexProductIsFound(product, cart) != -1) {
             int i = CartDAO.indexProductIsFound(product, cart);
             cart.getItems().remove(i);

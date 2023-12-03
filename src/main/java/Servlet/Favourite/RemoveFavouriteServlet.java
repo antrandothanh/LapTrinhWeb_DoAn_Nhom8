@@ -1,9 +1,7 @@
 package Servlet.Favourite;
 
-import DAO.CartDAO;
 import DAO.FavouriteDAO;
-import DAO.productDAO;
-import Entity.Cart;
+import DAO.ProductDAO;
 import Entity.*;
 import Entity.User;
 
@@ -24,7 +22,7 @@ public class RemoveFavouriteServlet extends HttpServlet {
         User user = (User)session.getAttribute("user");
         Favourite favourite = FavouriteDAO.selectFavourite(user.getId());
         String code =request.getParameter("productCode");
-        Product product = productDAO.selectProduct(code);
+        Product product = ProductDAO.selectProduct(code);
         if (FavouriteDAO.indexProductIsFound(product, favourite) != -1) {
             int i = FavouriteDAO.indexProductIsFound(product, favourite);
             favourite.getProducts().remove(i);
