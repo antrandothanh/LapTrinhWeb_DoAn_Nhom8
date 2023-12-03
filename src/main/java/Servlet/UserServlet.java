@@ -1,22 +1,16 @@
 package Servlet;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import DAO.productDAO;
-import Entity.Product;
 import DAO.FavouriteDAO;
 import Entity.Favourite;
 import Entity.User;
 import Entity.Cart;
-import Entity.LineItem;
 import DAO.UserDAO;
 import DAO.CartDAO;
-import DAO.LineItemDAO;
-import data.CookieUtil;
 
 
 public class UserServlet extends HttpServlet {

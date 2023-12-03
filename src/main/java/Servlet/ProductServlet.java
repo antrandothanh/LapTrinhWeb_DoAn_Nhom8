@@ -1,8 +1,8 @@
 package Servlet;
 
 import DAO.UserDAO;
-import DAO.brandDAO;
-import DAO.productDAO;
+import DAO.BrandDAO;
+import DAO.ProductDAO;
 import Entity.Brand;
 import Entity.Product;
 import Entity.User;
@@ -20,10 +20,10 @@ public class ProductServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        List<Product> products = productDAO.selectProducts();
+        List<Product> products = ProductDAO.selectProducts();
         session.setAttribute("products", products);
 
-        List<Brand> brands = brandDAO.selectBrands();
+        List<Brand> brands = BrandDAO.selectBrands();
         session.setAttribute("brands", brands);
 
         String action = request.getParameter("action");
@@ -86,12 +86,12 @@ public class ProductServlet extends HttpServlet {
         String productURL_IMG = request.getParameter("productURL_IMG");
         String productDescription = request.getParameter("productDescription");
 
-        Brand brand = brandDAO.selectBrand(productBrandName);
+        Brand brand = BrandDAO.selectBrand(productBrandName);
         Product p = new Product();
         if (brand == null){
             Brand b = new Brand();
             b.setName(productBrandName);
-            brandDAO.insert(b);
+            BrandDAO.insert(b);
             p = new Product(productCode, productName, productPrice, b, productCollection, productType,
                     productColor, productURL_IMG, productDescription);
         }
@@ -100,8 +100,8 @@ public class ProductServlet extends HttpServlet {
                     productColor, productURL_IMG, productDescription);
         }
         String message;
-        if (!productDAO.productExisted(p.getCode())) {
-            productDAO.insert(p);
+        if (!ProductDAO.productExisted(p.getCode())) {
+            ProductDAO.insert(p);
             message = "Successfully added";
         } else {
             message = "ProductCode is existing, please change other productCode!";
@@ -110,7 +110,7 @@ public class ProductServlet extends HttpServlet {
 
         // Cập nhật lại danh sách sản phẩm trong session
         HttpSession session = request.getSession();
-        List<Product> products = productDAO.selectProducts();
+        List<Product> products = ProductDAO.selectProducts();
         session.setAttribute("products", products);
 
         // Trả về trang hiện tại
@@ -132,12 +132,12 @@ public class ProductServlet extends HttpServlet {
         String productURL_IMG = request.getParameter("productURL_IMG");
         String productDescription = request.getParameter("productDescription");
 
-        Brand brand = brandDAO.selectBrand(productBrandName);
+        Brand brand = BrandDAO.selectBrand(productBrandName);
         Product p = new Product();
         if (brand == null){
             Brand b = new Brand();
             b.setName(productBrandName);
-            brandDAO.insert(b);
+            BrandDAO.insert(b);
             p = new Product(productCode, productName, productPrice, b, productCollection, productType,
                     productColor, productURL_IMG, productDescription);
         }
@@ -146,8 +146,8 @@ public class ProductServlet extends HttpServlet {
                     productColor, productURL_IMG, productDescription);
         }
         String message;
-        if (productDAO.productExisted(p.getCode())){
-            productDAO.update(p);
+        if (ProductDAO.productExisted(p.getCode())){
+            ProductDAO.update(p);
             message = "Successfully updated";
         }
         else {
@@ -157,7 +157,7 @@ public class ProductServlet extends HttpServlet {
 
         // Cập nhật danh sách sản phẩm trong session
         HttpSession session = request.getSession();
-        List<Product> products = productDAO.selectProducts();
+        List<Product> products = ProductDAO.selectProducts();
         session.setAttribute("products", products);
 
         // Trả về trang hiện tại
@@ -168,8 +168,8 @@ public class ProductServlet extends HttpServlet {
                                  HttpServletResponse response){
         String productCode =request.getParameter("productCode");
         String message;
-        if (productDAO.productExisted(productCode)){
-            productDAO.delete(productCode);
+        if (ProductDAO.productExisted(productCode)){
+            ProductDAO.delete(productCode);
             message = "Successfully deleted";
         }
         else {
@@ -179,49 +179,48 @@ public class ProductServlet extends HttpServlet {
 
         // Cập nhật danh sách sản phẩm trong session
         HttpSession session = request.getSession();
-        List<Product> products = productDAO.selectProducts();
+        List<Product> products = ProductDAO.selectProducts();
         session.setAttribute("products", products);
 
         // Trả về trang hiện tại
         String url = "/adminProduct.jsp";
         return url;
     }
-
     private String searchProduct(HttpServletRequest request, HttpServletResponse response) {
         String url = "";
-        List<Product> foundProduct = productDAO.searchProducts(request.getParameter("searchInput"));
+        List<Product> foundProduct = ProductDAO.searchProducts(request.getParameter("searchInput"));
         request.setAttribute("foundProduct", foundProduct);
         return "/search.jsp";
     }
     private String searchProductMore500M(HttpServletRequest request, HttpServletResponse response) {
         String url = "";
-        List<Product> foundProduct = productDAO.getProductsMore500M();
+        List<Product> foundProduct = ProductDAO.getProductsMore500M();
         request.setAttribute("foundProduct", foundProduct);
         return "/search.jsp";
     }
     private String searchProductLess500M(HttpServletRequest request, HttpServletResponse response) {
         String url = "";
-        List<Product> foundProduct = productDAO.getProductsLess500M();
+        List<Product> foundProduct = ProductDAO.getProductsLess500M();
         request.setAttribute("foundProduct", foundProduct);
         return "/search.jsp";
     }
     private String searchProductMinToMax(HttpServletRequest request, HttpServletResponse response) {
         String url = "";
-        List<Product> foundProduct = productDAO.getProductsMinToMax();
+        List<Product> foundProduct = ProductDAO.getProductsMinToMax();
         request.setAttribute("foundProduct", foundProduct);
         return "/search.jsp";
     }
     private String searchProductMaxToMin(HttpServletRequest request, HttpServletResponse response) {
         String url = "";
-        List<Product> foundProduct = productDAO.getProductsMaxToMin();
+        List<Product> foundProduct = ProductDAO.getProductsMaxToMin();
         request.setAttribute("foundProduct", foundProduct);
         return "/search.jsp";
     }
     private String viewProductDetail(HttpServletRequest request, HttpServletResponse response){
         String url = "/viewProduct.jsp";
         String productCode = request.getParameter("productCode");
-        Product product = productDAO.selectProduct(productCode);
-        Brand brand = brandDAO.selectBrandByCode(product.getBrand().getCode());
+        Product product = ProductDAO.selectProduct(productCode);
+        Brand brand = BrandDAO.selectBrandByCode(product.getBrand().getCode());
 
         request.setAttribute("product", product);
         request.setAttribute("brand", brand);

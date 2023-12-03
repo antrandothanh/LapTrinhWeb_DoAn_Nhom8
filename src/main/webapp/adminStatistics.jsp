@@ -82,7 +82,7 @@
                 <label><span>${requestScope.bestLineItem.item.name}</span></label>
                 <label>Product Code: <span>${requestScope.bestLineItem.item.code}</span></label>
                 <label>Brand: <span>${requestScope.bestLineItem.item.brand.name}</span></label>
-                <label>Quantity: <span>${requestScope.bestLineItem.quantity}</span></label>
+                <label>Quantity sold: <span>${requestScope.bestLineItem.quantity}</span></label>
             </div>
         </div>
         <div class="Revenue">
