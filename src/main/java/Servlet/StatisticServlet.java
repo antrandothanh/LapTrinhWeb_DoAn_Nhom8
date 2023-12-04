@@ -46,8 +46,6 @@ public class StatisticServlet extends HttpServlet {
         request.setAttribute("totalRevenue", totalRevenue);
         request.setAttribute("totalAmountOfProductsSold", totalAmountOfProductsSold);
 
-        //tổng số lượng khách hàng
-        int amountOfCustomer = 0;
         if (listBought != null) {
             //sản phẩm được mua nhiều nhất
             int[] index_value_bestProduct = BoughtItemDAO.timSanPhamXuatHienNhieuNhat(listBought);
@@ -57,10 +55,15 @@ public class StatisticServlet extends HttpServlet {
             int quantityBestProduct = index_value_bestProduct[1];
             LineItem bestLineItem = new LineItem(bestProduct, quantityBestProduct, "True");
             request.setAttribute("bestLineItem", bestLineItem);
-
-            amountOfCustomer = UserDAO.AmountOfCustomer();
         }
+        //tổng số lượng khách hàng
+        int amountOfCustomer = 0;
+        amountOfCustomer = UserDAO.AmountOfCustomer();
         request.setAttribute("amountOfCustomer", amountOfCustomer);
+
+        int amountOfProduct = 0;
+        amountOfProduct = ProductDAO.demSoLuongSanPham();
+        request.setAttribute("amountOfProduct", amountOfProduct);
 
         request.setAttribute("boughtList", listBought);
         request.setAttribute("invoiceList", invoices);
