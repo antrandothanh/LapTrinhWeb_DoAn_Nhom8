@@ -13,7 +13,7 @@ public class Invoice implements Serializable{
     private long code;
     @ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private User user;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER) //Hibernate tự động tải dữ liệu liên quan ngay lập tức khi truy vấn dữ liệu của thực thể gốc
     private List<BoughtItem> boughtItems;
     private Date createdDate;
     private String address;
@@ -57,6 +57,13 @@ public class Invoice implements Serializable{
             totalPrice += boughtItems.get(i).getItem().getPrice() * boughtItems.get(i).getQuantity();
         }
         return totalPrice;
+    }
+    public int getToTalAmountOfProduct(){
+        int quantity = 0;
+        for (int i=0; i<boughtItems.size(); i++){
+            quantity += boughtItems.get(i).getQuantity();
+        }
+        return quantity;
     }
 
     public String getAddress() {

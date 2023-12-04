@@ -10,7 +10,7 @@
     <a href="adminInformation.jsp">Thông tin cá nhân</a>
     <a href="adminProduct.jsp">Sản phẩm</a>
     <a href="adminCustomer.jsp">Khách hàng</a>
-    <a href="adminStatistics.jsp">Thống kê</a>
+    <a href="statistic">Thống kê</a>
 </section>
 </body>
 </html>

@@ -39,7 +39,7 @@
                     User user = (User)session.getAttribute("user");
                     if (user != null) {
                         %>
-                        <span><%=user.getName()%></span>
+                        <span><a href="userPage.jsp"><%=user.getName()%></a></span>
                         <span><a href="login?action=logout">Đăng xuất</a></span>
                         <%
                     } else {

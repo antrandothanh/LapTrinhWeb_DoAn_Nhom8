@@ -2,7 +2,7 @@ package Servlet;
 
 import DAO.BoughtItemDAO;
 import DAO.CartDAO;
-import DAO.productDAO;
+import DAO.ProductDAO;
 import Entity.*;
 
 import javax.servlet.ServletException;
@@ -27,7 +27,7 @@ public class PaymentServlet extends HttpServlet {
         for (int i = 0; i < cart.getItems().size(); i++) {
             String productCode = request.getParameter("productCode_" + i);
             String statusCheckbox = request.getParameter("statusCheckbox_" + i);
-            Product product = productDAO.selectProduct(productCode);
+            Product product = ProductDAO.selectProduct(productCode);
             if (CartDAO.indexProductIsFound(product, cart) != -1) {
                 int x = CartDAO.indexProductIsFound(product, cart);
                 if (statusCheckbox == null){

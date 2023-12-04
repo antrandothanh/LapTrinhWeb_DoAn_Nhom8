@@ -7,7 +7,7 @@ import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import data.*;
-public class productDAO {
+public class ProductDAO {
     public static void insert(Product product)
     {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -39,31 +39,6 @@ public class productDAO {
             em.close();
         }
     }
-//    public static void update(String productCode, String newCode, String newName, long newPrice, String newBrand, String newCollection,
-//                              String newType, String newColor, String newIMG, String newDes) {
-//        EntityManager em = DBUtil.getEmFactory().createEntityManager();
-//        EntityTransaction trans = em.getTransaction();
-//        trans.begin();
-//        try {
-//            Product p = em.find(Product.class, productCode);
-//            p.setCode(newCode);
-//            p.setName(newName);
-//            p.setPrice(newPrice);
-//            p.setBrandCode(newBrand);
-//            p.setCollection(newCollection);
-//            p.setType(newType);
-//            p.setColor(newColor);
-//            p.setImgURL(newIMG);
-//            p.setDescription(newDes);
-//            em.merge(p);
-//            trans.commit();
-//        } catch (Exception e) {
-//            System.out.println(e);
-//            trans.rollback();
-//        } finally {
-//            em.close();
-//        }
-//    }
     public static void delete(String productCode) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

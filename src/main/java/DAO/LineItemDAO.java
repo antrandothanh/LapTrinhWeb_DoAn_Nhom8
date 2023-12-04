@@ -3,11 +3,7 @@ package DAO;
 import Entity.*;
 import data.DBUtil;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
-import javax.sound.sampled.Line;
+import javax.persistence.*;
 import java.util.List;
 
 public class LineItemDAO {

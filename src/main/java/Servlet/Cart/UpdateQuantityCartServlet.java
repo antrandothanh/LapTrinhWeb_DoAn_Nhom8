@@ -1,9 +1,8 @@
 package Servlet.Cart;
 
 import DAO.CartDAO;
-import DAO.productDAO;
+import DAO.ProductDAO;
 import Entity.Cart;
-import Entity.LineItem;
 import Entity.Product;
 import Entity.User;
 
@@ -25,7 +24,7 @@ public class UpdateQuantityCartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         Cart cart = CartDAO.selectCart(user.getId());
-        Product product = productDAO.selectProduct(request.getParameter("productCode"));
+        Product product = ProductDAO.selectProduct(request.getParameter("productCode"));
         if (CartDAO.indexProductIsFound(product, cart) != -1) {
             int i = CartDAO.indexProductIsFound(product, cart);
             cart.getItems().get(i).setQuantity(Integer.parseInt(quantity));

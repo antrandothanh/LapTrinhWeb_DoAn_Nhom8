@@ -94,10 +94,7 @@
                     <hr/>
                     <div class="thank">
                         <span class="text-secondary-d1 text-105">Thank you for your business</span>
-                        <a href="addMoney.jsp" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0" style="margin-top: 10px">Countinue Shopping</a>
-                        <form action="sendMail" method="post">
-                            <button type="submit" style="margin-top: 10px">Send mail for me</button>
-                        </form>
+                        <a href="index.jsp" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0" style="margin-top: 10px">Countinue Shopping</a>
                     </div>
                 </div>
 

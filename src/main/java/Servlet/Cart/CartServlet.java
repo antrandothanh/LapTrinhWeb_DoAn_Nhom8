@@ -1,12 +1,7 @@
 package Servlet.Cart;
 
 import DAO.CartDAO;
-import DAO.LineItemDAO;
-import DAO.UserDAO;
-import DAO.productDAO;
 import Entity.Cart;
-import Entity.LineItem;
-import Entity.Product;
 import Entity.User;
 
 import javax.servlet.ServletException;
@@ -14,10 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sound.sampled.Line;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CartServlet extends HttpServlet {
     @Override

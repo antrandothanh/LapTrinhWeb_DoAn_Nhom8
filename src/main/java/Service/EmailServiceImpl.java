@@ -10,16 +10,16 @@ import java.util.Properties;
 
 
 public class EmailServiceImpl implements EmailService {
-    private static final String FROM = "gmailae";
-    private static final String PASS = "aenhapmk";
+    private static final String FROM = "hunggsamm@gmail.com";
+    private static final String PASS = "rdrefbgglnvojtmw";
 
     @Override
     public void sendHtmlContent(String toEmail, String subject, String htmlBody) {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");             //cổng kết nối an toàn
+        props.put("mail.smtp.auth", "true");            //xác thực email trước khi gửi
+        props.put("mail.smtp.starttls.enable", "true"); //thiết lập kết nối bảo mật
 
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -34,7 +34,8 @@ public class EmailServiceImpl implements EmailService {
             emailMessage.setSubject(subject);
 
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
-            mimeBodyPart.setContent(htmlBody, "text/html");
+            // Create MimeBodyPart with UTF-8 encoding
+            mimeBodyPart.setContent(htmlBody, "text/html; charset=UTF-8");
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(mimeBodyPart);
             emailMessage.setContent(multipart);
