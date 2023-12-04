@@ -100,6 +100,7 @@ public class UserServlet extends HttpServlet {
             customer.setEmail(req.getParameter("customerEmail"));
             customer.setPhone(req.getParameter("customerPhone"));
             customer.setAddress(req.getParameter("customerAddress"));
+            customer.setMoney((long)0);
             if (!UserDAO.userExisted(customer.getUsername())) {
                 UserDAO.insert(customer);
                 message = "Successfully added";
