@@ -40,3 +40,37 @@
 button{
     cursor: pointer;
 }
+.icon-brand-products {
+    display: inline-block;
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    float: right;
+}
+.input-of-product{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.favorite-btn{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    background-image: url("../picture/addtofavorite.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.9s;
+}
+.cart-btn{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    background-image: url("../picture/addtocart.png");
+    background-size: contain; /* Đảm bảo hình ảnh vừa với kích thước của nút */
+    background-repeat: no-repeat;
+    transition: transform 0.9s;
+}

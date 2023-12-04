@@ -46,15 +46,13 @@
                         <div class="img-product">
                             <img src="${product.imgURL}" alt="dongho${product.code}">
                             <div class="icon-brand-products">
-                                    <%--                                    <button class="icon heart-icon" alt="tim"></button>--%>
-                                    <%--                                    <button class="icon cart-icon" alt="cart"></button>--%>
                                 <form action="addFavourite" method="post">
                                     <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
-                                    <input type="submit" value="Add To Favite">
+                                    <a href="#"><input type="submit" value="" class="favorite-btn"></a>
                                 </form>
                                 <form action="addCart" method="get">
                                     <input type="hidden" name="productCode" value="<c:out value='${product.code}'/>">
-                                    <input type="submit" value="Add To Cart">
+                                    <a href="#"><input type="submit" value="" class="cart-btn"></a>
                                 </form>
                             </div>
                         </div>
