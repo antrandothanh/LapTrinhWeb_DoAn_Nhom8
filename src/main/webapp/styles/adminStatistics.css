@@ -19,10 +19,12 @@ h2{
     max-height: 400px; /* Thay đổi chiều cao tối đa cho phù hợp */
     max-width: 1200px;
     margin: 0 auto;
+    table-layout: fixed;
 }
 .tableList th, .tableList td {
     padding: 8px;
     border: 1px solid #393939;
+    width: 120px;
 }
 .tableList th {
     background-color: #393939;
