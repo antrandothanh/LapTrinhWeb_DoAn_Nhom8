@@ -57,11 +57,11 @@
             <h2 class="name-section">NEW ARRIVAL</h2>
             <div class="scrollable-container">
                 <div class="new-arrival-box">
-                    <%
-                        // Đảo ngược danh sách products để lấy 10 sp cuối trong danh sach
-                        java.util.Collections.reverse((java.util.List) session.getAttribute("products"));
-                    %>
                     <c:forEach var="product" items="${sessionScope.products}" varStatus="loop">
+                        <%
+                            // Đảo ngược danh sách products để lấy 10 sp cuối trong danh sach
+                            java.util.Collections.reverse((java.util.List) session.getAttribute("products"));
+                        %>
                         <c:if test="${loop.index < 10}">
                         <div class="product-new-arrival-box">
                             <a href="loadProducts?action=viewProductDetail&amp;productCode=${product.code}">
