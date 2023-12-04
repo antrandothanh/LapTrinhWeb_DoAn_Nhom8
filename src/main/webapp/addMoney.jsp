@@ -17,13 +17,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <div class="card">
     <div class="card-top border-bottom text-center">
-        <a href="index.jsp">Quay về</a>
+        <a href="index.jsp" style="font-size: 16px; font-weight: 700; text-decoration: underline;">Quay về trang chủ</a>
         <span id="logo">Nạp Tiền</span>
     </div>
     <div class="card-body">
-        <div class="row upper">
-            <span id="payment"><span id="three">3</span>Nạp tiền</span>
-        </div>
+        <div class="row upper"></div>
         <div class="row">
             <div class="col-md-7">
                 <div class="left border">
@@ -56,7 +54,7 @@
                     <form action="addMoney" method="post">
                     <div class="row lower">
                         <div class="col text-left">
-                            <label>Nhập số tiền</label> <input name="money" type="text">
+                            <label>Nhập số tiền</label> <input name="money" type="text" value="0">
                         </div>
                     </div>
                     <button type="submit" class="btn">Xác nhận</button>

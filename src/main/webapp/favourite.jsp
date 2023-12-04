@@ -12,13 +12,10 @@
 <%@include file="header.jsp"%>
 
 <section>
-    <div class="all-favourite">
-        <button>Xóa tất cả</button>
-    </div>
     <c:forEach var="product" items="${favourite.products}">
     <div class="container-favourite">
         <div class="tick-fproduct">
-            <input type="checkbox">
+
         </div>
         <div class="image-fproduct">
             <img src="${product.imgURL}">
