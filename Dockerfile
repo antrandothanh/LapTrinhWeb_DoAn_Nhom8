@@ -11,6 +11,8 @@ FROM tomcat:9.0-jdk11-corretto-al2
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 RUN rm -rf /usr/local/tomcat/webapps/examples
 
+ADD home.war /usr/local/tomcat/webapps/
+
 # Add MySQL JDBC driver
 COPY --from=build /root/.m2/repository/mysql/mysql-connector-java/8.0.33/mysql-connector-java-8.0.33.jar /usr/local/tomcat/lib/
 
