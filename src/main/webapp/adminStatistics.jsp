@@ -87,9 +87,10 @@
         </div>
         <div class="Revenue">
             <div class="revenue-box">
-                <label><strong>Total Revenue:  <span><fmt:formatNumber value="${requestScope.totalRevenue}" pattern="#,###"/>₫</span></strong></label>
-                <label><strong>Total Amount Of Products Sold:  <span>${requestScope.totalAmountOfProductsSold}</span></strong></label>
                 <label><strong>Customer amount:  <span>${requestScope.amountOfCustomer}</span></strong></label>
+                <label><strong>Product amount:  <span>${requestScope.amountOfProduct}</span></strong></label>
+                <label><strong>Total Amount Of Products Sold:  <span>${requestScope.totalAmountOfProductsSold}</span></strong></label>
+                <label><strong>Total Revenue:  <span><fmt:formatNumber value="${requestScope.totalRevenue}" pattern="#,###"/>₫</span></strong></label>
             </div>
         </div>
     </section>

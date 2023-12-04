@@ -170,4 +170,10 @@ public class ProductDAO {
         }
         return sortedProducts;
     }
+    public static int demSoLuongSanPham(){
+        int quantity = 0;
+        List<Product> products = selectProducts();
+        quantity = products.size();
+        return quantity;
+    }
 }

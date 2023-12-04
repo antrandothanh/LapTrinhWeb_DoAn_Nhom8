@@ -145,10 +145,8 @@ public class UserServlet extends HttpServlet {
             User user = UserDAO.selectUser(req.getParameter("username"));
 
             user.setPassword(req.getParameter("password"));
-            String name = new String(req.getParameter("name").getBytes("iso-8859-1"), "UTF-8");
-            user.setName(name);
-            String address = new String(req.getParameter("address").getBytes("iso-8859-1"), "UTF-8");
-            user.setAddress(address);
+            user.setName(req.getParameter("name"));
+            user.setAddress(req.getParameter("address"));
             user.setEmail(req.getParameter("email"));
             user.setPhone(req.getParameter("phone"));
 
