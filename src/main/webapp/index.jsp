@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +83,7 @@
                                     <p>Thương hiệu: ${product.brand.name}</p>
                                     <p>Mã sản phẩm: ${product.code}</p>
                                     <p>Description: ${product.description}</p>
-                                    <p class="price">${product.price}₫</p>
+                                    <p class="price"><fmt:formatNumber value="${product.price}" pattern="#,###"/>₫</p>
                                 </div>
                             </a>
                         </div>
