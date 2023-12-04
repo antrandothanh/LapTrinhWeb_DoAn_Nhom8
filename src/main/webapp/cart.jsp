@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
     <link rel="stylesheet" href="styles/cart.css">
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
 </head>
 <body>
 <%@include file="header.jsp"%>
@@ -18,7 +22,7 @@
     <div id="title-column" class="border-after">
         <div class="column-elements" style="width: 30px;"></div>
         <div class="column-elements" style="width: 160px;"></div>
-        <div class="column-elements" style="width: 445px; font-weight: 700; margin: 0 auto;">Tên sản phẩm</div>
+        <div class="column-elements" style="width: 445px; font-weight: 700; margin: 0 auto;text-align: left;padding-left: 10px" >Tên sản phẩm</div>
         <div class="column-elements" style="width: 100px; font-weight: 700;">Số lượng</div>
         <div class="column-elements" style="width: 220px; font-weight: 700">Giá tiền</div>
         <div class="column-elements delete" style="width: 65px;"></div>
@@ -55,7 +59,7 @@
                 <div class="cart-product-elements border-after">
 
                     <!-- ảnh -->
-                    <div class="column-elements image">
+                    <div class="column-elements image" style="background-color: transparent">
                         <a href="#"><img src="${lineItem.item.imgURL}" alt=""></a>
                     </div>
                     <!-- tên -->
@@ -70,7 +74,9 @@
                             <input type="hidden" name="productCode" value="${lineItem.item.code}">
                             <input type="number" class="quantity" name="quantity" value="<c:out value='${lineItem.quantity}'/>" min="1">
                             <button class="quantity-btn plus"></button>
-                            <button type="submit">Update</button>
+                            <button type="submit" style=" cursor: pointer;border: none;background-color: transparent">
+                                <i class="fa-solid fa-arrows-rotate" style="font-size: 27px"></i>
+                            </button>
                         </form>
                     </div>
                     <!--giá-->
@@ -82,7 +88,9 @@
                         <form action="removeCart" method="post">
                             <input type="hidden" name="productCode" value="${lineItem.item.code}">
                             <input type="hidden" name="quantity" value="0">
-                            <button>DELETE</button>
+                            <button type="submit" style="cursor: pointer;border: none; background-color: transparent">
+                                <i class="fa-regular fa-trash-can" style="font-size: 27px;"></i>
+                            </button>
                         </form>
                     </div>
                 </div>

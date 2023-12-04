@@ -12,13 +12,13 @@ body{
     margin-bottom: 20px;
 }
 .container-favourite{
-
-    margin-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     height: 130px;
     display: flex;
     flex-direction: row;
-    border: 1px solid ;
-    border-color: #c7c5c5;
+    border-top: 1px solid ;
+    border-color: rgb(59,59,59);
     border-radius: 4px;
 }
 input{
@@ -51,11 +51,11 @@ input{
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    color: red;
 }
 .add-fcart{
     width: 150px;
     display: flex;
+    justify-items: center;
     justify-content: center;
     text-align: center;
 
@@ -69,16 +69,17 @@ button{
 }
 .add-fcart img{
 
-    max-width: 50px;
+    max-width: 40px;
     object-fit: contain;
 }
 .delete-fproduct{
     flex: 1;
     display: flex;
+    justify-items: center;
     justify-content: center;
     text-align: center;
 }
 .delete-fproduct img{
-    max-width: 40px;
+    max-width: 30px;
     object-fit: contain;
 }
