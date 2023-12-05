@@ -20,6 +20,8 @@
         <a href="index.jsp" style="font-size: 16px; font-weight: 700; text-decoration: underline;">Quay về trang chủ</a>
         <span id="logo">Nạp Tiền</span>
     </div>
+    <form action="addMoney" method="post">
+
     <div class="card-body">
         <div class="row upper"></div>
         <div class="row">
@@ -33,36 +35,34 @@
                             <img src="https://img.icons8.com/color/48/000000/maestro.png"/>
                         </div>
                     </div>
-                    <form>
                         <span>Tên chủ thẻ:</span>
-                        <input placeholder="Linda Williams">
+                        <input placeholder="Linda Williams" required>
                         <span>Số thẻ:</span>
-                        <input placeholder="0125 6780 4567 9909">
+                        <input type="number" placeholder="0125 6780 4567 9909" required>
                         <div class="row">
                             <div class="col-4"><span>Ngày hết hạn:</span>
-                                <input placeholder="YY/MM">
+                                <input placeholder="YY/MM" required>
                             </div>
                             <div class="col-4"><span>CVV:</span>
-                                <input id="cvv">
+                                <input id="cvv" required>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="right border">
-                    <form action="addMoney" method="post">
                     <div class="row lower">
                         <div class="col text-left">
-                            <label>Nhập số tiền</label> <input name="money" type="text" value="0">
+                            <label>Nhập số tiền</label> <input  name="money" type="number" value="0" min="0">
                         </div>
                     </div>
                     <button type="submit" class="btn">Xác nhận</button>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
+    </form>
+
     <div>
     </div>
 </div>

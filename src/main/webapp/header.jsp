@@ -71,7 +71,8 @@
                     %>
                     <a href="adminInformation.jsp">QUẢN LÍ</a>
                     <%
-                } else {
+                } else if(user != null && user.getUsername().contains("CUSTOMER"))
+                        {
                     %>
                     <a href="addMoney.jsp">NẠP TIỀN</a>
                     <%

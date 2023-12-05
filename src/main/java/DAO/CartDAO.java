@@ -110,14 +110,7 @@ public class CartDAO {
         }
 
     }
-    public static int indexProductIsFound(Product product, Cart cart) {
-        for (int i = 0; i < cart.getItems().size(); i++) {
-            if (cart.getItems().get(i).getItem().getCode().equals(product.getCode())) {
-                return i;
-            }
-        }
-        return -1;
-    }
+
     public static Cart selectCart(long userId){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT c FROM Cart c WHERE c.user.id = :userId";
