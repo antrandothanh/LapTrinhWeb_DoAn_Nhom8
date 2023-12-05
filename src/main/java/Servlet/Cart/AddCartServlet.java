@@ -28,12 +28,14 @@ public class AddCartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         if (user == null){
-            response.getWriter().write("Please Login!");
+            url = "/login.jsp";
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+            return;
         }
         Cart cart = CartDAO.selectCart(user.getId());
         Product product = ProductDAO.selectProduct(request.getParameter("productCode"));
-        if (CartDAO.indexProductIsFound(product, cart) != -1) {
-            int i = CartDAO.indexProductIsFound(product, cart);
+        if (cart.indexProductIsFound(product) != -1) {
+            int i = cart.indexProductIsFound(product);
             cart.getItems().get(i).setQuantity(cart.getItems().get(i).getQuantity() + 1);
             CartDAO.update(cart);
         } else {

@@ -81,58 +81,58 @@ public class InvoiceDAO {
         }
         return invoices;
     }
-    public static int[] timUserMuaNhieuNhat(List<Invoice> invoices){
-        int max = 0;
-        int [] index_value = new int[2];
-        int b[] = new int[invoices.size()];
-        for (int i=0; i<invoices.size(); i++){
-            for (int j=0; j<=i; j++){
-                if (invoices.get(i).getUser().getId() == invoices.get(j).getUser().getId()){
-                    b[i] += 1;
-                }
-            }
-        }
-        max = b[0];
-        for (int i=0; i<invoices.size(); i++){
-            if (b[i] > max){
-                max = b[i];
-            }
-        }
-        for (int i=0; i<invoices.size(); i++){
-            if (b[i] == max){
-                System.out.println("Ma khach hang mua nhieu nhat: "+ invoices.get(i).getUser().getId());
-                System.out.println("Khach hang mua nhieu nhat: "+ invoices.get(i).getUser().getName());
-                System.out.println("So lan mua hang: " + b[i]);
-                index_value[0] = i;
-                index_value[1] = b[i];
-            }
-        }
-
-        return index_value;
-    }
-    public static long total_amount_purchased(List<Invoice> invoices, long userid){
-        long total = 0;
-        for (int i=0; i< invoices.size(); i++){
-            if (invoices.get(i).getUser().getId() == userid){
-                total += invoices.get(i).getTotalPrice();
-            }
-        }
-        return total;
-    }
-    public static long totalRevenue(List<Invoice> invoices) {
-        long total = 0;
-        for (int i = 0; i < invoices.size(); i++) {
-            total += invoices.get(i).getTotalPrice();
-        }
-        return total;
-    }
-    public static int totalAmountOfProduct(List<Invoice> invoices){
-        int quantity = 0;
-        for (int i=0; i<invoices.size(); i++){
-            quantity += invoices.get(i).getToTalAmountOfProduct();
-        }
-        return quantity;
-    }
+//    public static int[] timUserMuaNhieuNhat(List<Invoice> invoices){
+//        int max = 0;
+//        int [] index_value = new int[2];
+//        int b[] = new int[invoices.size()];
+//        for (int i=0; i<invoices.size(); i++){
+//            for (int j=0; j<=i; j++){
+//                if (invoices.get(i).getUser().getId() == invoices.get(j).getUser().getId()){
+//                    b[i] += 1;
+//                }
+//            }
+//        }
+//        max = b[0];
+//        for (int i=0; i<invoices.size(); i++){
+//            if (b[i] > max){
+//                max = b[i];
+//            }
+//        }
+//        for (int i=0; i<invoices.size(); i++){
+//            if (b[i] == max){
+//                System.out.println("Ma khach hang mua nhieu nhat: "+ invoices.get(i).getUser().getId());
+//                System.out.println("Khach hang mua nhieu nhat: "+ invoices.get(i).getUser().getName());
+//                System.out.println("So lan mua hang: " + b[i]);
+//                index_value[0] = i;
+//                index_value[1] = b[i];
+//            }
+//        }
+//
+//        return index_value;
+//    }
+//    public static long total_amount_purchased(List<Invoice> invoices, long userid){
+//        long total = 0;
+//        for (int i=0; i< invoices.size(); i++){
+//            if (invoices.get(i).getUser().getId() == userid){
+//                total += invoices.get(i).getTotalPrice();
+//            }
+//        }
+//        return total;
+//    }
+//    public static long totalRevenue(List<Invoice> invoices) {
+//        long total = 0;
+//        for (int i = 0; i < invoices.size(); i++) {
+//            total += invoices.get(i).getTotalPrice();
+//        }
+//        return total;
+//    }
+//    public static int totalAmountOfProduct(List<Invoice> invoices){
+//        int quantity = 0;
+//        for (int i=0; i<invoices.size(); i++){
+//            quantity += invoices.get(i).getToTalAmountOfProduct();
+//        }
+//        return quantity;
+//    }
 }
 
 

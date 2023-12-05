@@ -24,8 +24,8 @@ public class RemoveCartServlet extends HttpServlet {
         Cart cart = CartDAO.selectCart(user.getId());
         String code =request.getParameter("productCode");
         Product product = ProductDAO.selectProduct(code);
-        if (CartDAO.indexProductIsFound(product, cart) != -1) {
-            int i = CartDAO.indexProductIsFound(product, cart);
+        if (cart.indexProductIsFound(product) != -1) {
+            int i = cart.indexProductIsFound(product);
             cart.getItems().remove(i);
             CartDAO.update(cart);
         }

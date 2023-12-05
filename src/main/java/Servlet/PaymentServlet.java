@@ -28,8 +28,8 @@ public class PaymentServlet extends HttpServlet {
             String productCode = request.getParameter("productCode_" + i);
             String statusCheckbox = request.getParameter("statusCheckbox_" + i);
             Product product = ProductDAO.selectProduct(productCode);
-            if (CartDAO.indexProductIsFound(product, cart) != -1) {
-                int x = CartDAO.indexProductIsFound(product, cart);
+            if (cart.indexProductIsFound(product) != -1) {
+                int x = cart.indexProductIsFound(product);
                 if (statusCheckbox == null){
                     cart.getItems().get(x).setStatus("False");
                 } else {

@@ -25,7 +25,9 @@ public class AddFavouriteServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         if (user == null){
-            response.getWriter().write("Please Login!");
+            url = "/login.jsp";
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+            return;
         }
         Favourite favourite = FavouriteDAO.selectFavourite(user.getId());
         Product product = ProductDAO.selectProduct(request.getParameter("productCode"));
