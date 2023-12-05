@@ -39,13 +39,21 @@
                     User user = (User)session.getAttribute("user");
                     if (user != null) {
                         %>
-                        <span><a href="userPage.jsp"><%=user.getName()%></a></span>
-                        <span><a href="login?action=logout">Đăng xuất</a></span>
+                            <div style="display: flex;justify-content: center;justify-items: center;text-align: center;align-items: center;">
+                                <a  style="text-decoration: none;width: 95px;height: 30px" href="userPage.jsp"><%=user.getName()%></a>
+                            </div>
+                            <div style="display: flex;justify-content: center;justify-items: center;text-align: center;align-items: center;">
+                                <a  style="text-decoration: none;width: 95px;height: 30px" href="login?action=logout">Đăng Xuất</a>
+                            </div>
                         <%
                     } else {
                         %>
-                        <span><a href="login.jsp">Đăng nhập</a></span>
-                        <span><a href="register.jsp">Đăng kí</a></span>
+                            <div style="display: flex;justify-content: center;justify-items: center;text-align: center;align-items: center;">
+                                <a style="text-decoration: none;width: 95px;height: 30px" href="login.jsp">Đăng Nhập</a>
+                            </div>
+                            <div style="display: flex;justify-content: center;justify-items: center;text-align: center;align-items: center;">
+                                <a style="text-decoration: none; width: 95px;height: 30px" href="register.jsp">Đăng Kí</a>
+                            </div>
                         <%
                     }
                 %>
@@ -63,7 +71,8 @@
                     %>
                     <a href="adminInformation.jsp">QUẢN LÍ</a>
                     <%
-                } else {
+                } else if(user != null && user.getUsername().contains("CUSTOMER"))
+                        {
                     %>
                     <a href="addMoney.jsp">NẠP TIỀN</a>
                     <%

@@ -36,4 +36,12 @@ public class Cart implements Serializable{
         this.user = user;
         items = new ArrayList<>();
     }
+    public int indexProductIsFound(Product product) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getItem().getCode().equals(product.getCode())) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

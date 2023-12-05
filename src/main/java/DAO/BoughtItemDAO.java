@@ -105,33 +105,33 @@ public class BoughtItemDAO {
         }
         return boughtItems;
     }
-    public static int[] timSanPhamXuatHienNhieuNhat(List<BoughtItem> listBought){
-        int max = 0;
-        int[] index_value = new int[2];
-        int []b = new int[listBought.size()]; //tao mang b co listBought.size phan tu = 0
-        for (int i=0; i<listBought.size(); i++){
-            for (int j=0; j<=i; j++){
-                if (listBought.get(i).getItem().getCode().equals(listBought.get(j).getItem().getCode())){
-                    b[i]+=listBought.get(j).getQuantity();
-                }
-            }
-        }
-        //tim max
-        max = b[0];
-        for (int i=1; i<listBought.size(); i++){
-            if (b[i] > max){
-                max =  b[i];
-            }
-        }
-        for (int i=0; i<listBought.size(); i++){
-            if (b[i] == max){
-                System.out.println("San pham xh nhieu nhat: "+ listBought.get(i).getItem().getCode());
-                System.out.println("So luong: " + b[i]);
-                index_value[0] = i;
-                index_value[1] = b[i];
-            }
-        }
-        return index_value;
-    }
+//    public static int[] timSanPhamXuatHienNhieuNhat(List<BoughtItem> listBought){
+//        int max = 0;
+//        int[] index_value = new int[2];
+//        int []b = new int[listBought.size()]; //tao mang b co listBought.size phan tu = 0
+//        for (int i=0; i<listBought.size(); i++){
+//            for (int j=0; j<=i; j++){
+//                if (listBought.get(i).getItem().getCode().equals(listBought.get(j).getItem().getCode())){
+//                    b[i]+=listBought.get(j).getQuantity();
+//                }
+//            }
+//        }
+//        //tim max
+//        max = b[0];
+//        for (int i=1; i<listBought.size(); i++){
+//            if (b[i] > max){
+//                max =  b[i];
+//            }
+//        }
+//        for (int i=0; i<listBought.size(); i++){
+//            if (b[i] == max){
+//                System.out.println("San pham xh nhieu nhat: "+ listBought.get(i).getItem().getCode());
+//                System.out.println("So luong: " + b[i]);
+//                index_value[0] = i;
+//                index_value[1] = b[i];
+//            }
+//        }
+//        return index_value;
+//    }
 
 }

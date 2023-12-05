@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,7 @@
                 <p>Color: ${requestScope.product.color}</p>
                 <p>Description: ${requestScope.product.description}</p>
                 <p>Type: ${requestScope.product.type}</p>
-                <p class="price">Price: ${requestScope.product.price} VNĐ</p>
+                <p class="price">Price: <fmt:formatNumber value="${requestScope.product.price}" pattern="#,###"/>₫</p>
                 <button class="addToCart-button" >THÊM VÀO GIỎ HÀNG</button>
             </form>
         </div>

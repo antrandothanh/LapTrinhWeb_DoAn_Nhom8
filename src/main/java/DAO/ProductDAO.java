@@ -112,7 +112,7 @@ public class ProductDAO {
     }
     public static List<Product> getProductsMore500M() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String query = "SELECT p FROM Product p WHERE p.price > 5000000";
+        String query = "SELECT p FROM Product p WHERE p.price >= 500000000";
         TypedQuery<Product> q = em.createQuery(query, Product.class);
         List<Product> highPriceProducts;
         try {
@@ -127,7 +127,7 @@ public class ProductDAO {
     }
     public static List<Product> getProductsLess500M() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String query = "SELECT p FROM Product p WHERE p.price < 5000000";
+        String query = "SELECT p FROM Product p WHERE p.price <= 500000000";
         TypedQuery<Product> q = em.createQuery(query, Product.class);
         List<Product> highPriceProducts;
         try {

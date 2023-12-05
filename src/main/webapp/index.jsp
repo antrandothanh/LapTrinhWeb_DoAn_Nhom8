@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,10 +57,12 @@
             <h2 class="name-section">NEW ARRIVAL</h2>
             <div class="scrollable-container">
                 <div class="new-arrival-box">
+                    <c:if test="${sessionScope.products != null}">
                     <%
                         // Đảo ngược danh sách products để lấy 10 sp cuối trong danh sach
                         java.util.Collections.reverse((java.util.List) session.getAttribute("products"));
                     %>
+                    </c:if>
                     <c:forEach var="product" items="${sessionScope.products}" varStatus="loop">
                         <c:if test="${loop.index < 10}">
                         <div class="product-new-arrival-box">
@@ -82,7 +85,7 @@
                                     <p>Thương hiệu: ${product.brand.name}</p>
                                     <p>Mã sản phẩm: ${product.code}</p>
                                     <p>Description: ${product.description}</p>
-                                    <p class="price">${product.price}₫</p>
+                                    <p class="price"><fmt:formatNumber value="${product.price}" pattern="#,###"/>₫</p>
                                 </div>
                             </a>
                         </div>
