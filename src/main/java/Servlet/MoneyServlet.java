@@ -14,7 +14,7 @@ public class MoneyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String contextPath = request.getServletContext().getContextPath();
 
-        String url = "/access.jsp";
+        String url = "/confirm.jsp";
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         String moneystr = request.getParameter("money");
